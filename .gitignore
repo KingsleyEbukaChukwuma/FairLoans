@@ -6,20 +6,23 @@ __pycache__/
 
 .vscode/
 
+.venv/
+
 .env
 
 models/*.pkl
-
 models/*.joblib
+
+catboost_info/
 
 reports/
 
 *.csv
-
 *.xlsx
-
 *.png
-
 *.jpg
 
 .DS_Store
+
+.json
+.tsv
