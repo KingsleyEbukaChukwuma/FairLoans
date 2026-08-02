@@ -6,9 +6,12 @@ import joblib
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.pipeline import Pipeline
 
+from src.utils.logger import get_logger
+
 from configs.config import (
     CALIBRATION_METHOD,
     CALIBRATION_CV,
+    TRAINING_LOG
 )
 
 
@@ -21,6 +24,8 @@ class ModelTrainer:
     def __init__(self, pipeline: Pipeline):
 
         self.pipeline = pipeline
+        self.calibrated_pipeline = None
+
 
     def fit(self, X_train, y_train):
 
@@ -38,14 +43,16 @@ class ModelTrainer:
 
         calibrated.fit(X_train, y_train)
 
-        self.pipeline = calibrated
+        self.calibrated_pipeline = calibrated
 
         return self
-
 
     @classmethod
     def load(cls, path):
 
         pipeline = joblib.load(path)
 
-        return cls(pipeline)
+        trainer = cls(pipeline)
+        trainer.calibrated_pipeline = pipeline
+
+        return trainer

@@ -15,9 +15,12 @@ PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
 MODEL_DIR = ROOT_DIR / "models"
 REPORT_DIR = ROOT_DIR / "reports"
-LOG_DIR = ROOT_DIR / "logs"
 ARTIFACT_DIR = ROOT_DIR / "artifacts"
 STUDY_DIR = MODEL_DIR / "studies"
+LOG_DIR = ROOT_DIR / "logs"
+TRAINING_LOG = "training.log"
+PREDICTION_LOG = "prediction.log"
+METRICS_DIR = ARTIFACT_DIR / "metrics"
 
 # =============================================================================
 # Dataset
@@ -79,7 +82,23 @@ CV_FOLDS = 5
 
 N_JOBS = -1
 
+N_JOBS2 = 1
+
 LOGISTIC_MAX_ITER = 3000
+
+# =============================================================================
+# Model Selection
+# =============================================================================
+
+MODEL_SELECTION_WEIGHTS = {
+    "ROC AUC": 0.20,
+    "KS": 0.15,
+    "MCC": 0.15,
+    "F1": 0.10,
+    "PR AUC": 0.10,
+    "Log Loss": 0.15,
+    "Brier Score": 0.15,
+}
 # =============================================================================
 # Hyperparameter Tuning
 # =============================================================================
@@ -128,6 +147,10 @@ PIPELINE_FILENAME = "fairloans_pipeline.joblib"
 
 METRICS_FILENAME = "metrics.json"
 
+FEATURE_NAMES_FILENAME = "feature_names.pkl"
+
+TRAINING_SUMMARY_FILENAME = "training_summary.json"
+
 RESULTS_FILENAME = "model_results.csv"
 
 THRESHOLD_FILENAME = "threshold.json"
@@ -141,3 +164,5 @@ STUDY_FILENAME = "optuna_study.pkl"
 LOG_LEVEL = "INFO"
 
 LOG_FILE = LOG_DIR / "training.log"
+
+

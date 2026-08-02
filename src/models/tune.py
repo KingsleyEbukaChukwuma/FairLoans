@@ -8,10 +8,11 @@ from sklearn.model_selection import cross_val_score
 from configs.config import (
     CV_FOLDS,
     N_JOBS,
+    N_JOBS2,
     OPTUNA_DIRECTION,
     OPTIMIZATION_METRIC,
-    OPTUNA_RANDOM_STATE
-    OPTUNA_TIMEOUT
+    OPTUNA_RANDOM_STATE,
+    OPTUNA_TIMEOUT,
 )
 
 
@@ -272,7 +273,7 @@ class ModelTuner:
             self.y,
             scoring=OPTIMIZATION_METRIC,
             cv=self.cv,
-            n_jobs=N_JOBS,
+            n_jobs=N_JOBS2,
         )
 
         return scores.mean()

@@ -1,0 +1,6 @@
+{
+    "learning_rate": 0.12328540271476811,
+    "max_iter": 236,
+    "max_depth": 15,
+    "min_samples_leaf": 16
+}

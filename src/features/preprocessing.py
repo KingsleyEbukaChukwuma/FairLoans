@@ -74,7 +74,9 @@ class CreditPreprocessor:
                     f"Column '{column}' must be numeric."
                 )
 
-    def prepare_data(self, df: pd.DataFrame,
+    def prepare_data(
+        self,
+        df: pd.DataFrame,
     ) -> tuple[pd.DataFrame, pd.Series, pd.Series]:
         """
         Prepare the dataset for modelling.
@@ -90,6 +92,7 @@ class CreditPreprocessor:
         sensitive : pd.Series
             Protected attribute used for fairness evaluation.
         """
+
         self.validate_schema(df)
         df = self.extract_gender(df)
         df = self.create_target(df)
@@ -102,10 +105,9 @@ class CreditPreprocessor:
 
     @staticmethod
     def build_transformer() -> ColumnTransformer:
-
-    """
-    Build the preprocessing pipeline for numeric and categorical features.
-    """
+        """
+        Build the preprocessing pipeline for numeric and categorical features.
+        """
 
         numeric_transformer = Pipeline(
             [
@@ -153,3 +155,8 @@ class CreditPreprocessor:
             ],
             remainder="drop",
         )
+        transformer.set_output(
+            transform="pandas",
+        )
+
+        return transformer
