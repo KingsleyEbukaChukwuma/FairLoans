@@ -13,12 +13,14 @@ __pycache__/
 # Models
 models/*.joblib
 models/*.pkl
+models/*.json
 
 # Generated artifacts
 artifacts/
 reports/
 logs/
 notebooks/
+models/
 
 # CatBoost
 catboost_info/
