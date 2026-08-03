@@ -1,28 +1,27 @@
 __pycache__/
 
+# Python
+__pycache__/
+.pytest_cache/
 .ipynb_checkpoints/
 
-.pytest_cache/
-
+# IDE
 .vscode/
-
 .venv/
-
 .env
 
-models/*.pkl
+# Models
 models/*.joblib
+models/*.pkl
 
+# Generated artifacts
+artifacts/
+reports/
+logs/
+notebooks/
+
+# CatBoost
 catboost_info/
 
-reports/
-
-*.csv
-*.xlsx
-*.png
-*.jpg
-
+# OS
 .DS_Store
-
-.json
-.tsv
