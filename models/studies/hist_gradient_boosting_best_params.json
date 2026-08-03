@@ -1,6 +1,6 @@
 {
-    "learning_rate": 0.12328540271476811,
-    "max_iter": 236,
-    "max_depth": 15,
-    "min_samples_leaf": 16
+    "learning_rate": 0.07101476818776721,
+    "max_iter": 386,
+    "max_depth": 16,
+    "min_samples_leaf": 19
 }

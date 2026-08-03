@@ -17,9 +17,18 @@ from configs.config import (
     FEATURE_NAMES_FILENAME,
     OPTIMIZATION_METRIC,
     CV_FOLDS,
+    TRAINING_LOG,
+    FAIRNESS_DIR,
+    FAIRNESS_COMPARISON_FILENAME,
+    FAIRNESS_SUMMARY_FILENAME,
+    COMPARISON_DIR,
+    GOVERNANCE_REPORT_FILENAME,
+    EXECUTIVE_SUMMARY_FILENAME,
+    FAIRNESS_CONSTRAINT,
+    FAIRNESS_OBJECTIVE,
 )
 
-
+from src.fairness.evaluator import FairnessEvaluator
 from src.data.loader import DataLoader
 from src.features.preprocessing import CreditPreprocessor
 
@@ -30,8 +39,10 @@ from src.models.tune import ModelTuner
 from src.models.evaluate import ModelEvaluator
 from src.models.select_best import select_best
 from src.models.save import (save_model, save_study, save_json, save_dataframe, save_pickle,)
-from configs.config import TRAINING_LOG
 from src.utils.logger import get_logger
+from src.fairness.mitigation import BiasMitigator
+from src.fairness.comparison import FairnessComparison
+from src.fairness.governance import GovernanceReport
 
 
 class TrainingManager:
@@ -156,7 +167,7 @@ class TrainingManager:
 
             self.logger.info(metrics)
 
-    def save_best_model(self, X_train, y_train, X_test):
+    def save_best_model(self, X_train, y_train, dataset_size):
 
         best = select_best(self.results)
 
@@ -174,7 +185,7 @@ class TrainingManager:
         )
 
         save_model(
-            trainer.pipeline,
+            trainer.calibrated_pipeline,
             MODEL_DIR / PIPELINE_FILENAME,
         )
 
@@ -185,13 +196,181 @@ class TrainingManager:
           "calibrated": True,
           "cross_validation_folds": CV_FOLDS,
           "optuna_trials": OPTUNA_TRIALS,
-          "dataset_size": len(X_train) + len(X_test),
+          "dataset_size": dataset_size,
         }
 
         save_json(
            summary,
            MODEL_DIR / TRAINING_SUMMARY_FILENAME,
         )
+
+        return trainer
+
+    def responsible_ai_pipeline(
+        self,
+        trainer,
+        X_train,
+        X_test,
+        y_train,
+        y_test,
+    ):
+        """
+        Execute the Responsible AI workflow.
+
+        1. Evaluate baseline fairness
+        2. Apply bias mitigation
+        3. Evaluate mitigated model
+        4. Compare baseline vs mitigated
+        5. Save all artifacts
+        """
+
+        self.logger.info("Evaluating baseline fairness...")
+
+        # ---------------------------------------------------------
+        # Baseline predictions
+        # ---------------------------------------------------------
+
+        baseline_pred = trainer.calibrated_pipeline.predict(
+            X_test
+        )
+
+        baseline_prob = trainer.calibrated_pipeline.predict_proba(
+            X_test
+        )[:, 1]
+
+
+        baseline_performance = ModelEvaluator.evaluate(
+            trainer.calibrated_pipeline,
+            X_test,
+            y_test,
+        )
+
+        baseline_fairness = FairnessEvaluator.evaluate(
+            y_true=y_test,
+            y_pred=baseline_pred,
+            y_prob=baseline_prob,
+            sensitive_features=self.sensitive_test,
+        )
+
+        FairnessEvaluator.save(
+            baseline_fairness,
+            stage="baseline",
+        )
+
+
+        # ---------------------------------------------------------
+        # Bias Mitigation
+        # ---------------------------------------------------------
+
+        self.logger.info("Applying Threshold Optimizer...")
+
+        mitigator = BiasMitigator.threshold_optimizer(
+            estimator=trainer.calibrated_pipeline,
+            X_train=X_train,
+            y_train=y_train,
+            sensitive_features=self.sensitive_train,
+            constraints=FAIRNESS_CONSTRAINT,
+            objective=FAIRNESS_OBJECTIVE,
+        )
+
+        mitigated_pred = BiasMitigator.predict(
+            mitigator,
+            X_test,
+            self.sensitive_test,
+        )
+
+        # ThresholdOptimizer does not change probabilities,
+        # so we reuse the calibrated probabilities.
+        mitigated_prob = baseline_prob
+
+        mitigated_fairness = FairnessEvaluator.evaluate(
+            y_true=y_test,
+            y_pred=mitigated_pred,
+            y_prob=mitigated_prob,
+            sensitive_features=self.sensitive_test,
+        )
+
+        FairnessEvaluator.save(
+            mitigated_fairness,
+            stage="mitigated",
+        )
+
+        # ---------------------------------------------------------
+        # Performance after mitigation
+        # ---------------------------------------------------------
+
+        mitigated_performance = {}
+
+        mitigated_performance.update(
+
+            ModelEvaluator.classification_metrics(
+                y_test,
+                mitigated_pred,
+                mitigated_prob,
+            )
+
+        )
+
+        mitigated_performance.update(
+
+            ModelEvaluator.credit_metrics(
+                y_test,
+                mitigated_prob,
+            )
+
+        )
+
+        # ---------------------------------------------------------
+        # Comparison
+        # ---------------------------------------------------------
+
+        comparison = FairnessComparison.compare(
+
+            baseline_performance=baseline_performance,
+
+            mitigated_performance=mitigated_performance,
+
+            baseline_fairness=baseline_fairness["overall"],
+
+            mitigated_fairness=mitigated_fairness["overall"],
+        )
+
+        summary = FairnessComparison.summary(
+            comparison
+        )
+
+        governance = GovernanceReport.generate(
+            comparison,
+        )
+
+        executive_summary = GovernanceReport.executive_summary(
+            comparison,
+        )
+        save_dataframe(
+            comparison,
+            FAIRNESS_DIR / FAIRNESS_COMPARISON_FILENAME,
+        )
+
+        save_json(
+            summary,
+            FAIRNESS_DIR / FAIRNESS_SUMMARY_FILENAME,
+        )
+
+        save_dataframe(
+            governance,
+            COMPARISON_DIR / GOVERNANCE_REPORT_FILENAME,
+        )
+
+        save_json(
+            executive_summary,
+            COMPARISON_DIR / EXECUTIVE_SUMMARY_FILENAME,
+        )
+
+        self.logger.info(
+            "Responsible AI pipeline completed."
+        )
+
+        return comparison
 
     def save_results(self):
 
@@ -200,22 +379,33 @@ class TrainingManager:
             REPORT_DIR / RESULTS_FILENAME,
         )
 
+
     def run(self):
 
-        self.logger.info(  "Loading data" )
+        self.logger.info("Loading data")
 
         df = self.load_data()
 
-        self.logger.info(  "Splitting dataset" )
+        self.logger.info("Splitting dataset")
 
-        (X_train, X_test, y_train, y_test, sensitive_train, sensitive_test, ) = self.split_data(df)
+        (
+            X_train,
+            X_test,
+            y_train,
+            y_test,
+            sensitive_train,
+            sensitive_test,
+        ) = self.split_data(df)
 
-        save_pickle(X_train.columns.tolist(), MODEL_DIR / FEATURE_NAMES_FILENAME,)
+        save_pickle(
+            X_train.columns.tolist(),
+            MODEL_DIR / FEATURE_NAMES_FILENAME,
+        )
 
         self.sensitive_train = sensitive_train
         self.sensitive_test = sensitive_test
 
-        self.logger.info(  "Training models" )
+        self.logger.info("Training models")
 
         self.train_models(
             X_train,
@@ -224,20 +414,35 @@ class TrainingManager:
             y_test,
         )
 
+        self.logger.info("Selecting best model")
 
-
-        self.logger.info(  "Selecting best model." )
-
-        self.save_best_model(
+        trainer = self.save_best_model(
             X_train,
             y_train,
-	    X_test,
+            dataset_size=len(df),
         )
 
-        self.logger.info(  "Saving results." )
+        self.logger.info(
+            "Running Responsible AI pipeline"
+        )
+
+        self.responsible_ai_pipeline(
+            trainer,
+            X_train,
+            X_test,
+            y_train,
+            y_test,
+        )
+
+        self.logger.info(
+            "Saving benchmark results"
+        )
+
         self.save_results()
 
-        self.logger.info(  "Training completed successfully." )
+        self.logger.info(
+            "Training completed successfully."
+        )
 
 
 if __name__ == "__main__":

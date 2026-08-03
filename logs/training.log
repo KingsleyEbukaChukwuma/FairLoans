@@ -160,3 +160,587 @@
 2026-08-02 12:07:03,153 | INFO | training | Saving results.
 2026-08-02 12:07:03,162 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\reports\model_results.csv
 2026-08-02 12:07:03,162 | INFO | training | Training completed successfully.
+2026-08-02 15:25:30,271 | INFO | training | Loading data
+2026-08-02 15:25:30,302 | INFO | training | Splitting dataset
+2026-08-02 15:25:30,311 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-02 15:25:30,312 | INFO | training | Training models
+2026-08-02 15:25:30,312 | INFO | training | ============================================================
+2026-08-02 15:25:30,313 | INFO | training | Training model: logistic
+2026-08-02 15:25:30,313 | INFO | training | ============================================================
+2026-08-02 15:25:46,479 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-02 15:25:46,481 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-02 15:25:46,542 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.7998412698412699, 'PR AUC': 0.5834969325100124, 'Log Loss': 0.4908105781413237, 'Brier Score': 0.16401335614943147, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.5996825396825398, 'KS': 0.4904761904761905, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-02 15:25:46,543 | INFO | training | ============================================================
+2026-08-02 15:25:46,543 | INFO | training | Training model: random_forest
+2026-08-02 15:25:46,543 | INFO | training | ============================================================
+2026-08-02 15:27:29,076 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-02 15:27:29,078 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-02 15:27:29,424 | INFO | training | {'Accuracy': 0.77, 'Balanced Accuracy': 0.6515873015873016, 'Precision': 0.7441860465116279, 'Recall': 0.35555555555555557, 'F1': 0.48120300751879697, 'ROC AUC': 0.7933333333333333, 'PR AUC': 0.6332472507563149, 'Log Loss': 0.4984430153382549, 'Brier Score': 0.16509926865049532, 'MCC': 0.39648150243680114, 'Cohen Kappa': 0.35634328358208944, 'Gini': 0.5866666666666667, 'KS': 0.4634920634920635, 'Confusion Matrix': [[199, 11], [58, 32]], 'Model': 'random_forest'}
+2026-08-02 15:27:29,424 | INFO | training | ============================================================
+2026-08-02 15:27:29,425 | INFO | training | Training model: extra_trees
+2026-08-02 15:27:29,425 | INFO | training | ============================================================
+2026-08-02 15:29:07,421 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-02 15:29:07,422 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-02 15:29:07,614 | INFO | training | {'Accuracy': 0.7633333333333333, 'Balanced Accuracy': 0.6436507936507936, 'Precision': 0.7209302325581395, 'Recall': 0.34444444444444444, 'F1': 0.46616541353383456, 'ROC AUC': 0.7922222222222223, 'PR AUC': 0.6258042412945259, 'Log Loss': 0.5002556659208092, 'Brier Score': 0.16571542659733887, 'MCC': 0.3757233085919425, 'Cohen Kappa': 0.337686567164179, 'Gini': 0.5844444444444445, 'KS': 0.4761904761904762, 'Confusion Matrix': [[198, 12], [59, 31]], 'Model': 'extra_trees'}
+2026-08-02 15:29:07,615 | INFO | training | ============================================================
+2026-08-02 15:29:07,615 | INFO | training | Training model: hist_gradient_boosting
+2026-08-02 15:29:07,615 | INFO | training | ============================================================
+2026-08-02 15:34:05,812 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-02 15:34:05,814 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-02 15:34:06,352 | INFO | training | {'Accuracy': 0.77, 'Balanced Accuracy': 0.7087301587301588, 'Precision': 0.6329113924050633, 'Recall': 0.5555555555555556, 'F1': 0.591715976331361, 'ROC AUC': 0.7870899470899471, 'PR AUC': 0.6405518886078361, 'Log Loss': 0.763040179650338, 'Brier Score': 0.18832040924224772, 'MCC': 0.43434659236382217, 'Cohen Kappa': 0.4325657894736842, 'Gini': 0.5741798941798941, 'KS': 0.473015873015873, 'Confusion Matrix': [[181, 29], [40, 50]], 'Model': 'hist_gradient_boosting'}
+2026-08-02 15:34:06,353 | INFO | training | ============================================================
+2026-08-02 15:34:06,353 | INFO | training | Training model: lightgbm
+2026-08-02 15:34:06,354 | INFO | training | ============================================================
+2026-08-02 15:34:25,490 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-02 15:34:25,491 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-02 15:34:25,622 | INFO | training | {'Accuracy': 0.7666666666666667, 'Balanced Accuracy': 0.719047619047619, 'Precision': 0.6136363636363636, 'Recall': 0.6, 'F1': 0.6067415730337079, 'ROC AUC': 0.7875661375661376, 'PR AUC': 0.6332392315468444, 'Log Loss': 0.8554004887722715, 'Brier Score': 0.1944785192484232, 'MCC': 0.44095083380561173, 'Cohen Kappa': 0.4408945686900959, 'Gini': 0.5751322751322752, 'KS': 0.47301587301587306, 'Confusion Matrix': [[176, 34], [36, 54]], 'Model': 'lightgbm'}
+2026-08-02 15:34:25,622 | INFO | training | ============================================================
+2026-08-02 15:34:25,623 | INFO | training | Training model: catboost
+2026-08-02 15:34:25,623 | INFO | training | ============================================================
+2026-08-02 15:37:53,026 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-02 15:37:53,034 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-02 15:37:57,840 | INFO | training | {'Accuracy': 0.77, 'Balanced Accuracy': 0.6928571428571428, 'Precision': 0.6521739130434783, 'Recall': 0.5, 'F1': 0.5660377358490566, 'ROC AUC': 0.807936507936508, 'PR AUC': 0.6762985756807997, 'Log Loss': 0.476224720427458, 'Brier Score': 0.15629885446252226, 'MCC': 0.42001624785636316, 'Cohen Kappa': 0.41326530612244894, 'Gini': 0.6158730158730159, 'KS': 0.4825396825396826, 'Confusion Matrix': [[186, 24], [45, 45]], 'Model': 'catboost'}
+2026-08-02 15:37:57,841 | INFO | training | ============================================================
+2026-08-02 15:37:57,841 | INFO | training | Training model: ebm
+2026-08-02 15:37:57,841 | INFO | training | ============================================================
+2026-08-02 16:00:28,192 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-02 16:00:28,195 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-02 16:00:52,974 | INFO | training | {'Accuracy': 0.74, 'Balanced Accuracy': 0.680952380952381, 'Precision': 0.5714285714285714, 'Recall': 0.5333333333333333, 'F1': 0.5517241379310345, 'ROC AUC': 0.7793121693121694, 'PR AUC': 0.5900304309363921, 'Log Loss': 0.5404163597062214, 'Brier Score': 0.1772271491065078, 'MCC': 0.36936750089587606, 'Cohen Kappa': 0.3689320388349514, 'Gini': 0.5586243386243388, 'KS': 0.4666666666666666, 'Confusion Matrix': [[174, 36], [42, 48]], 'Model': 'ebm'}
+2026-08-02 16:00:52,974 | INFO | training | Selecting best model
+2026-08-02 16:00:52,985 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-02 16:00:52,985 | INFO | training | Best model selected: catboost
+2026-08-02 16:01:12,194 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-02 16:01:12,196 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-02 16:01:12,196 | INFO | training | Running Responsible AI pipeline
+2026-08-02 16:01:12,196 | INFO | training | Evaluating baseline fairness...
+2026-08-02 16:08:45,260 | INFO | training | Loading data
+2026-08-02 16:08:45,293 | INFO | training | Splitting dataset
+2026-08-02 16:08:45,305 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-02 16:08:45,305 | INFO | training | Training models
+2026-08-02 16:08:45,305 | INFO | training | ============================================================
+2026-08-02 16:08:45,305 | INFO | training | Training model: logistic
+2026-08-02 16:08:45,306 | INFO | training | ============================================================
+2026-08-02 16:09:01,208 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-02 16:09:01,210 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-02 16:09:01,279 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.7996825396825397, 'PR AUC': 0.5826122349585526, 'Log Loss': 0.4910542591623023, 'Brier Score': 0.16408126819629767, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.5993650793650793, 'KS': 0.4888888888888889, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-02 16:09:01,279 | INFO | training | ============================================================
+2026-08-02 16:09:01,280 | INFO | training | Training model: random_forest
+2026-08-02 16:09:01,280 | INFO | training | ============================================================
+2026-08-02 16:11:53,923 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-02 16:11:53,925 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-02 16:11:54,656 | INFO | training | {'Accuracy': 0.75, 'Balanced Accuracy': 0.6150793650793651, 'Precision': 0.7142857142857143, 'Recall': 0.2777777777777778, 'F1': 0.4, 'ROC AUC': 0.7928042328042328, 'PR AUC': 0.6075412756739008, 'Log Loss': 0.5046511829078594, 'Brier Score': 0.16747292878494546, 'MCC': 0.3285499426546597, 'Cohen Kappa': 0.27884615384615385, 'Gini': 0.5856084656084657, 'KS': 0.46984126984126984, 'Confusion Matrix': [[200, 10], [65, 25]], 'Model': 'random_forest'}
+2026-08-02 16:11:54,657 | INFO | training | ============================================================
+2026-08-02 16:11:54,657 | INFO | training | Training model: extra_trees
+2026-08-02 16:11:54,657 | INFO | training | ============================================================
+2026-08-02 16:14:10,473 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-02 16:14:10,475 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-02 16:14:11,168 | INFO | training | {'Accuracy': 0.77, 'Balanced Accuracy': 0.6642857142857144, 'Precision': 0.7058823529411765, 'Recall': 0.4, 'F1': 0.5106382978723404, 'ROC AUC': 0.7900529100529101, 'PR AUC': 0.6280465843120756, 'Log Loss': 0.49857074062178686, 'Brier Score': 0.16516082025393677, 'MCC': 0.4008445069104218, 'Cohen Kappa': 0.375, 'Gini': 0.5801058201058202, 'KS': 0.4444444444444444, 'Confusion Matrix': [[195, 15], [54, 36]], 'Model': 'extra_trees'}
+2026-08-02 16:14:11,168 | INFO | training | ============================================================
+2026-08-02 16:14:11,168 | INFO | training | Training model: hist_gradient_boosting
+2026-08-02 16:14:11,169 | INFO | training | ============================================================
+2026-08-02 16:20:36,468 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-02 16:20:36,469 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-02 16:20:38,348 | INFO | training | {'Accuracy': 0.7433333333333333, 'Balanced Accuracy': 0.676984126984127, 'Precision': 0.5822784810126582, 'Recall': 0.5111111111111111, 'F1': 0.5443786982248521, 'ROC AUC': 0.7837566137566137, 'PR AUC': 0.6200897604809854, 'Log Loss': 0.7065707687935788, 'Brier Score': 0.19131934659346256, 'MCC': 0.36828627413358306, 'Cohen Kappa': 0.3667763157894737, 'Gini': 0.5675132275132273, 'KS': 0.45873015873015877, 'Confusion Matrix': [[177, 33], [44, 46]], 'Model': 'hist_gradient_boosting'}
+2026-08-02 16:20:38,348 | INFO | training | ============================================================
+2026-08-02 16:20:38,348 | INFO | training | Training model: lightgbm
+2026-08-02 16:20:38,349 | INFO | training | ============================================================
+2026-08-02 16:21:01,418 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-02 16:21:01,420 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-02 16:21:01,617 | INFO | training | {'Accuracy': 0.75, 'Balanced Accuracy': 0.6912698412698413, 'Precision': 0.5903614457831325, 'Recall': 0.5444444444444444, 'F1': 0.5664739884393064, 'ROC AUC': 0.7909523809523811, 'PR AUC': 0.6391102797142274, 'Log Loss': 0.5208272909964793, 'Brier Score': 0.1669045465196606, 'MCC': 0.39186681050758343, 'Cohen Kappa': 0.39123376623376616, 'Gini': 0.5819047619047621, 'KS': 0.4936507936507937, 'Confusion Matrix': [[176, 34], [41, 49]], 'Model': 'lightgbm'}
+2026-08-02 16:21:01,617 | INFO | training | ============================================================
+2026-08-02 16:21:01,617 | INFO | training | Training model: catboost
+2026-08-02 16:21:01,618 | INFO | training | ============================================================
+2026-08-02 16:23:57,762 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-02 16:23:57,764 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-02 16:23:59,005 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.6714285714285715, 'Precision': 0.6176470588235294, 'Recall': 0.4666666666666667, 'F1': 0.5316455696202531, 'ROC AUC': 0.8005820105820106, 'PR AUC': 0.6256140012486922, 'Log Loss': 0.4847382618366234, 'Brier Score': 0.161085526066213, 'MCC': 0.3752715620603564, 'Cohen Kappa': 0.3686006825938566, 'Gini': 0.6011640211640212, 'KS': 0.4841269841269841, 'Confusion Matrix': [[184, 26], [48, 42]], 'Model': 'catboost'}
+2026-08-02 16:23:59,005 | INFO | training | ============================================================
+2026-08-02 16:23:59,006 | INFO | training | Training model: ebm
+2026-08-02 16:23:59,006 | INFO | training | ============================================================
+2026-08-02 16:49:20,123 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-02 16:49:20,124 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-02 16:49:45,970 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6888888888888889, 'Precision': 0.5833333333333334, 'Recall': 0.5444444444444444, 'F1': 0.5632183908045977, 'ROC AUC': 0.7741269841269841, 'PR AUC': 0.5845550734488855, 'Log Loss': 0.5501511696417877, 'Brier Score': 0.17953626107524237, 'MCC': 0.3855678298825373, 'Cohen Kappa': 0.3851132686084142, 'Gini': 0.5482539682539682, 'KS': 0.4666666666666666, 'Confusion Matrix': [[175, 35], [41, 49]], 'Model': 'ebm'}
+2026-08-02 16:49:45,970 | INFO | training | Selecting best model
+2026-08-02 16:49:45,986 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-02 16:49:45,986 | INFO | training | Best model selected: catboost
+2026-08-02 16:49:51,312 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-02 16:49:51,314 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-02 16:49:51,314 | INFO | training | Running Responsible AI pipeline
+2026-08-02 16:49:51,314 | INFO | training | Evaluating baseline fairness...
+2026-08-02 17:33:58,231 | INFO | training | Loading data
+2026-08-02 17:33:58,554 | INFO | training | Splitting dataset
+2026-08-02 17:33:58,673 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-02 17:33:58,675 | INFO | training | Training models
+2026-08-02 17:33:58,677 | INFO | training | ============================================================
+2026-08-02 17:33:58,678 | INFO | training | Training model: logistic
+2026-08-02 17:33:58,680 | INFO | training | ============================================================
+2026-08-02 17:35:46,697 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-02 17:35:46,706 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-02 17:35:47,280 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.7996296296296297, 'PR AUC': 0.5823981406030014, 'Log Loss': 0.4910606682488958, 'Brier Score': 0.16408040161632742, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.5992592592592594, 'KS': 0.4888888888888889, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-02 17:35:47,282 | INFO | training | ============================================================
+2026-08-02 17:35:47,283 | INFO | training | Training model: random_forest
+2026-08-02 17:35:47,285 | INFO | training | ============================================================
+2026-08-02 22:43:37,219 | INFO | training | Loading data
+2026-08-02 22:43:37,251 | INFO | training | Splitting dataset
+2026-08-02 22:43:37,258 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-02 22:43:37,259 | INFO | training | Training models
+2026-08-02 22:43:37,259 | INFO | training | ============================================================
+2026-08-02 22:43:37,259 | INFO | training | Training model: logistic
+2026-08-02 22:43:37,259 | INFO | training | ============================================================
+2026-08-02 22:43:50,710 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-02 22:43:50,712 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-02 22:43:50,772 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.7996825396825397, 'PR AUC': 0.5826122349585526, 'Log Loss': 0.49105114783778486, 'Brier Score': 0.1640803799230054, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.5993650793650793, 'KS': 0.4888888888888889, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-02 22:43:50,772 | INFO | training | ============================================================
+2026-08-02 22:43:50,773 | INFO | training | Training model: random_forest
+2026-08-02 22:43:50,773 | INFO | training | ============================================================
+2026-08-02 22:46:04,175 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-02 22:46:04,177 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-02 22:46:04,799 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.6365079365079365, 'Precision': 0.6739130434782609, 'Recall': 0.34444444444444444, 'F1': 0.45588235294117646, 'ROC AUC': 0.7929100529100528, 'PR AUC': 0.6133930845176394, 'Log Loss': 0.5019440275011207, 'Brier Score': 0.16647873376398073, 'MCC': 0.34723462534158317, 'Cohen Kappa': 0.31734317343173435, 'Gini': 0.5858201058201056, 'KS': 0.4761904761904763, 'Confusion Matrix': [[195, 15], [59, 31]], 'Model': 'random_forest'}
+2026-08-02 22:46:04,799 | INFO | training | ============================================================
+2026-08-02 22:46:04,799 | INFO | training | Training model: extra_trees
+2026-08-02 22:46:04,800 | INFO | training | ============================================================
+2026-08-02 22:47:35,956 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-02 22:47:35,957 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-02 22:47:36,133 | INFO | training | {'Accuracy': 0.77, 'Balanced Accuracy': 0.6579365079365079, 'Precision': 0.723404255319149, 'Recall': 0.37777777777777777, 'F1': 0.49635036496350365, 'ROC AUC': 0.7911640211640211, 'PR AUC': 0.64590494692033, 'Log Loss': 0.4996562179247535, 'Brier Score': 0.16532597735190835, 'MCC': 0.3982302436404776, 'Cohen Kappa': 0.3658088235294118, 'Gini': 0.5823280423280421, 'KS': 0.46349206349206346, 'Confusion Matrix': [[197, 13], [56, 34]], 'Model': 'extra_trees'}
+2026-08-02 22:47:36,134 | INFO | training | ============================================================
+2026-08-02 22:47:36,134 | INFO | training | Training model: hist_gradient_boosting
+2026-08-02 22:47:36,134 | INFO | training | ============================================================
+2026-08-02 22:50:42,308 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-02 22:50:42,309 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-02 22:50:42,527 | INFO | training | {'Accuracy': 0.73, 'Balanced Accuracy': 0.6706349206349207, 'Precision': 0.5529411764705883, 'Recall': 0.5222222222222223, 'F1': 0.5371428571428571, 'ROC AUC': 0.7744973544973545, 'PR AUC': 0.6120721788624431, 'Log Loss': 0.5692323541983313, 'Brier Score': 0.18041466428583364, 'MCC': 0.3470564496904051, 'Cohen Kappa': 0.3467741935483871, 'Gini': 0.5489947089947089, 'KS': 0.4841269841269841, 'Confusion Matrix': [[172, 38], [43, 47]], 'Model': 'hist_gradient_boosting'}
+2026-08-02 22:50:42,527 | INFO | training | ============================================================
+2026-08-02 22:50:42,527 | INFO | training | Training model: lightgbm
+2026-08-02 22:50:42,527 | INFO | training | ============================================================
+2026-08-02 22:51:01,055 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-02 22:51:01,057 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-02 22:51:01,189 | INFO | training | {'Accuracy': 0.7766666666666666, 'Balanced Accuracy': 0.7261904761904762, 'Precision': 0.6352941176470588, 'Recall': 0.6, 'F1': 0.6171428571428571, 'ROC AUC': 0.7930687830687831, 'PR AUC': 0.6302818491842845, 'Log Loss': 0.540367695004936, 'Brier Score': 0.16906762064069009, 'MCC': 0.4600515728454207, 'Cohen Kappa': 0.45967741935483875, 'Gini': 0.5861375661375663, 'KS': 0.4857142857142857, 'Confusion Matrix': [[179, 31], [36, 54]], 'Model': 'lightgbm'}
+2026-08-02 22:51:01,190 | INFO | training | ============================================================
+2026-08-02 22:51:01,190 | INFO | training | Training model: catboost
+2026-08-02 22:51:01,190 | INFO | training | ============================================================
+2026-08-02 22:53:05,837 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-02 22:53:05,838 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-02 22:53:06,337 | INFO | training | {'Accuracy': 0.7566666666666667, 'Balanced Accuracy': 0.6738095238095239, 'Precision': 0.6268656716417911, 'Recall': 0.4666666666666667, 'F1': 0.535031847133758, 'ROC AUC': 0.7924867724867725, 'PR AUC': 0.6154737113300672, 'Log Loss': 0.4912639350909622, 'Brier Score': 0.1635349037196364, 'MCC': 0.382489137227692, 'Cohen Kappa': 0.3750000000000001, 'Gini': 0.5849735449735449, 'KS': 0.4841269841269841, 'Confusion Matrix': [[185, 25], [48, 42]], 'Model': 'catboost'}
+2026-08-02 22:53:06,337 | INFO | training | ============================================================
+2026-08-02 22:53:06,337 | INFO | training | Training model: ebm
+2026-08-02 22:53:06,338 | INFO | training | ============================================================
+2026-08-02 23:20:15,995 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-02 23:20:15,997 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-02 23:20:44,560 | INFO | training | {'Accuracy': 0.7433333333333333, 'Balanced Accuracy': 0.6833333333333333, 'Precision': 0.5783132530120482, 'Recall': 0.5333333333333333, 'F1': 0.5549132947976878, 'ROC AUC': 0.7793650793650794, 'PR AUC': 0.5906520673665683, 'Log Loss': 0.5371509398154495, 'Brier Score': 0.17685002418142023, 'MCC': 0.37560677687656335, 'Cohen Kappa': 0.3749999999999999, 'Gini': 0.5587301587301587, 'KS': 0.4761904761904762, 'Confusion Matrix': [[175, 35], [42, 48]], 'Model': 'ebm'}
+2026-08-02 23:20:44,561 | INFO | training | Selecting best model
+2026-08-02 23:20:44,569 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-02 23:20:44,570 | INFO | training | Best model selected: lightgbm
+2026-08-02 23:20:45,220 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-02 23:20:45,224 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-02 23:20:45,224 | INFO | training | Running Responsible AI pipeline
+2026-08-02 23:20:45,225 | INFO | training | Evaluating baseline fairness...
+2026-08-02 23:20:45,745 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_metrics.json
+2026-08-02 23:20:45,753 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_by_group.csv
+2026-08-02 23:20:45,755 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_difference.csv
+2026-08-02 23:20:45,757 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\worst_group.json
+2026-08-02 23:20:45,758 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\best_group.json
+2026-08-02 23:29:48,026 | INFO | training | Loading data
+2026-08-02 23:29:48,053 | INFO | training | Splitting dataset
+2026-08-02 23:29:48,064 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-02 23:29:48,064 | INFO | training | Training models
+2026-08-02 23:29:48,064 | INFO | training | ============================================================
+2026-08-02 23:29:48,065 | INFO | training | Training model: logistic
+2026-08-02 23:29:48,065 | INFO | training | ============================================================
+2026-08-02 23:30:04,039 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-02 23:30:04,040 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-02 23:30:04,101 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.8001587301587301, 'PR AUC': 0.5838052205650112, 'Log Loss': 0.49068359845995163, 'Brier Score': 0.16397932219589403, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.6003174603174601, 'KS': 0.5, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-02 23:30:04,101 | INFO | training | ============================================================
+2026-08-02 23:30:04,101 | INFO | training | Training model: random_forest
+2026-08-02 23:30:04,102 | INFO | training | ============================================================
+2026-08-02 23:33:17,022 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-02 23:33:17,024 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-02 23:33:17,738 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6095238095238095, 'Precision': 0.7058823529411765, 'Recall': 0.26666666666666666, 'F1': 0.3870967741935484, 'ROC AUC': 0.795079365079365, 'PR AUC': 0.6311224177829686, 'Log Loss': 0.5041089945262109, 'Brier Score': 0.16714341313559974, 'MCC': 0.31665705048588033, 'Cohen Kappa': 0.2664092664092663, 'Gini': 0.5901587301587301, 'KS': 0.45079365079365075, 'Confusion Matrix': [[200, 10], [66, 24]], 'Model': 'random_forest'}
+2026-08-02 23:33:17,738 | INFO | training | ============================================================
+2026-08-02 23:33:17,738 | INFO | training | Training model: extra_trees
+2026-08-02 23:33:17,738 | INFO | training | ============================================================
+2026-08-02 23:35:01,735 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-02 23:35:01,736 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-02 23:35:01,926 | INFO | training | {'Accuracy': 0.76, 'Balanced Accuracy': 0.6476190476190476, 'Precision': 0.6875, 'Recall': 0.36666666666666664, 'F1': 0.4782608695652174, 'ROC AUC': 0.7870899470899471, 'PR AUC': 0.6095506086652043, 'Log Loss': 0.5034181484218857, 'Brier Score': 0.16707647629291034, 'MCC': 0.36904761904761907, 'Cohen Kappa': 0.34065934065934056, 'Gini': 0.5741798941798941, 'KS': 0.45714285714285713, 'Confusion Matrix': [[195, 15], [57, 33]], 'Model': 'extra_trees'}
+2026-08-02 23:35:01,927 | INFO | training | ============================================================
+2026-08-02 23:35:01,927 | INFO | training | Training model: hist_gradient_boosting
+2026-08-02 23:35:01,927 | INFO | training | ============================================================
+2026-08-02 23:39:45,310 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-02 23:39:45,311 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-02 23:39:46,178 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.7, 'Precision': 0.5930232558139535, 'Recall': 0.5666666666666667, 'F1': 0.5795454545454546, 'ROC AUC': 0.788994708994709, 'PR AUC': 0.6368991071094516, 'Log Loss': 0.8674376537358728, 'Brier Score': 0.19280749196950356, 'MCC': 0.40535429695995473, 'Cohen Kappa': 0.4051446945337621, 'Gini': 0.577989417989418, 'KS': 0.4952380952380952, 'Confusion Matrix': [[175, 35], [39, 51]], 'Model': 'hist_gradient_boosting'}
+2026-08-02 23:39:46,178 | INFO | training | ============================================================
+2026-08-02 23:39:46,178 | INFO | training | Training model: lightgbm
+2026-08-02 23:39:46,178 | INFO | training | ============================================================
+2026-08-02 23:40:06,753 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-02 23:40:06,754 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-02 23:40:06,902 | INFO | training | {'Accuracy': 0.7633333333333333, 'Balanced Accuracy': 0.7039682539682539, 'Precision': 0.6172839506172839, 'Recall': 0.5555555555555556, 'F1': 0.5847953216374269, 'ROC AUC': 0.7942857142857144, 'PR AUC': 0.6312996722483669, 'Log Loss': 0.6027724891310593, 'Brier Score': 0.17843758139437077, 'MCC': 0.4210744684717736, 'Cohen Kappa': 0.4199346405228759, 'Gini': 0.5885714285714287, 'KS': 0.473015873015873, 'Confusion Matrix': [[179, 31], [40, 50]], 'Model': 'lightgbm'}
+2026-08-02 23:40:06,903 | INFO | training | ============================================================
+2026-08-02 23:40:06,903 | INFO | training | Training model: catboost
+2026-08-02 23:40:06,903 | INFO | training | ============================================================
+2026-08-02 23:44:42,364 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-02 23:44:42,368 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-02 23:44:43,767 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.6777777777777778, 'Precision': 0.6111111111111112, 'Recall': 0.4888888888888889, 'F1': 0.5432098765432098, 'ROC AUC': 0.8034391534391535, 'PR AUC': 0.6405737216865957, 'Log Loss': 0.4807734490733543, 'Brier Score': 0.1593126320211066, 'MCC': 0.38150892234620093, 'Cohen Kappa': 0.37710437710437716, 'Gini': 0.606878306878307, 'KS': 0.48730158730158735, 'Confusion Matrix': [[182, 28], [46, 44]], 'Model': 'catboost'}
+2026-08-02 23:44:43,767 | INFO | training | ============================================================
+2026-08-02 23:44:43,768 | INFO | training | Training model: ebm
+2026-08-02 23:44:43,768 | INFO | training | ============================================================
+2026-08-03 00:07:05,269 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-03 00:07:05,271 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-03 00:07:29,669 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.6968253968253968, 'Precision': 0.5952380952380952, 'Recall': 0.5555555555555556, 'F1': 0.5747126436781609, 'ROC AUC': 0.7752380952380953, 'PR AUC': 0.5837056332227336, 'Log Loss': 0.5442531098413127, 'Brier Score': 0.1782928780422305, 'MCC': 0.40176815886919853, 'Cohen Kappa': 0.40129449838187703, 'Gini': 0.5504761904761906, 'KS': 0.4523809523809524, 'Confusion Matrix': [[176, 34], [40, 50]], 'Model': 'ebm'}
+2026-08-03 00:07:29,671 | INFO | training | Selecting best model
+2026-08-03 00:07:29,679 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-03 00:07:29,680 | INFO | training | Best model selected: catboost
+2026-08-03 00:07:36,324 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-03 00:07:36,326 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-03 00:07:36,326 | INFO | training | Running Responsible AI pipeline
+2026-08-03 00:07:36,326 | INFO | training | Evaluating baseline fairness...
+2026-08-03 00:07:36,782 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_metrics.json
+2026-08-03 00:07:36,790 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_by_group.csv
+2026-08-03 00:07:36,792 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_difference.csv
+2026-08-03 00:07:36,793 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\worst_group.json
+2026-08-03 00:07:36,794 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\best_group.json
+2026-08-03 00:07:38,952 | INFO | training | Applying Threshold Optimizer...
+2026-08-03 00:07:39,237 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_metrics.json
+2026-08-03 00:07:39,240 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_by_group.csv
+2026-08-03 00:07:39,245 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_difference.csv
+2026-08-03 00:07:39,246 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\worst_group.json
+2026-08-03 00:07:39,247 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\best_group.json
+2026-08-03 00:07:41,274 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison.csv
+2026-08-03 00:07:41,275 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison_summary.json
+2026-08-03 00:07:41,277 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison\governance_report.csv
+2026-08-03 00:07:41,279 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison\executive_summary.json
+2026-08-03 00:07:41,280 | INFO | training | Responsible AI pipeline completed.
+2026-08-03 00:07:41,280 | INFO | training | Saving benchmark results
+2026-08-03 00:07:41,283 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\reports\model_results.csv
+2026-08-03 00:07:41,283 | INFO | training | Training completed successfully.
+2026-08-03 10:21:43,020 | INFO | training | Loading data
+2026-08-03 10:21:43,047 | INFO | training | Splitting dataset
+2026-08-03 10:21:43,056 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-03 10:21:43,056 | INFO | training | Training models
+2026-08-03 10:21:43,057 | INFO | training | ============================================================
+2026-08-03 10:21:43,057 | INFO | training | Training model: logistic
+2026-08-03 10:21:43,057 | INFO | training | ============================================================
+2026-08-03 10:21:57,745 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-03 10:21:57,746 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-03 10:21:57,842 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.7995767195767196, 'PR AUC': 0.5823665253365303, 'Log Loss': 0.4910984633704538, 'Brier Score': 0.16409072147372258, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.5991534391534392, 'KS': 0.4888888888888889, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-03 10:21:57,843 | INFO | training | ============================================================
+2026-08-03 10:21:57,843 | INFO | training | Training model: random_forest
+2026-08-03 10:21:57,843 | INFO | training | ============================================================
+2026-08-03 10:24:09,551 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-03 10:24:09,553 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-03 10:24:10,003 | INFO | training | {'Accuracy': 0.75, 'Balanced Accuracy': 0.6214285714285714, 'Precision': 0.6923076923076923, 'Recall': 0.3, 'F1': 0.4186046511627907, 'ROC AUC': 0.7971957671957672, 'PR AUC': 0.6306703039030066, 'Log Loss': 0.49999594850623624, 'Brier Score': 0.1658100241877751, 'MCC': 0.33092473234361874, 'Cohen Kappa': 0.2897727272727272, 'Gini': 0.5943915343915345, 'KS': 0.473015873015873, 'Confusion Matrix': [[198, 12], [63, 27]], 'Model': 'random_forest'}
+2026-08-03 10:24:10,003 | INFO | training | ============================================================
+2026-08-03 10:24:10,004 | INFO | training | Training model: extra_trees
+2026-08-03 10:24:10,004 | INFO | training | ============================================================
+2026-08-03 10:26:45,893 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-03 10:26:45,895 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-03 10:26:46,437 | INFO | training | {'Accuracy': 0.77, 'Balanced Accuracy': 0.6611111111111111, 'Precision': 0.7142857142857143, 'Recall': 0.3888888888888889, 'F1': 0.5035971223021583, 'ROC AUC': 0.7925925925925926, 'PR AUC': 0.6323779856084363, 'Log Loss': 0.49617079617644805, 'Brier Score': 0.1643870685000601, 'MCC': 0.3994399418210305, 'Cohen Kappa': 0.3704379562043796, 'Gini': 0.5851851851851853, 'KS': 0.42539682539682544, 'Confusion Matrix': [[196, 14], [55, 35]], 'Model': 'extra_trees'}
+2026-08-03 10:26:46,437 | INFO | training | ============================================================
+2026-08-03 10:26:46,437 | INFO | training | Training model: hist_gradient_boosting
+2026-08-03 10:26:46,437 | INFO | training | ============================================================
+2026-08-03 10:30:27,900 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-03 10:30:27,902 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-03 10:30:28,920 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.6904761904761905, 'Precision': 0.6, 'Recall': 0.5333333333333333, 'F1': 0.5647058823529412, 'ROC AUC': 0.7806349206349206, 'PR AUC': 0.6224566274977056, 'Log Loss': 0.5484762178244308, 'Brier Score': 0.17559097157083703, 'MCC': 0.3947710169758614, 'Cohen Kappa': 0.39344262295081966, 'Gini': 0.5612698412698411, 'KS': 0.46666666666666673, 'Confusion Matrix': [[178, 32], [42, 48]], 'Model': 'hist_gradient_boosting'}
+2026-08-03 10:30:28,921 | INFO | training | ============================================================
+2026-08-03 10:30:28,921 | INFO | training | Training model: lightgbm
+2026-08-03 10:30:28,922 | INFO | training | ============================================================
+2026-08-03 10:30:48,881 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-03 10:30:48,883 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-03 10:30:48,990 | INFO | training | {'Accuracy': 0.7566666666666667, 'Balanced Accuracy': 0.6928571428571428, 'Precision': 0.6075949367088608, 'Recall': 0.5333333333333333, 'F1': 0.5680473372781065, 'ROC AUC': 0.7880423280423281, 'PR AUC': 0.6123426354928637, 'Log Loss': 0.5772279752330404, 'Brier Score': 0.17712087376153834, 'MCC': 0.4013164332487026, 'Cohen Kappa': 0.39967105263157887, 'Gini': 0.5760846560846562, 'KS': 0.48730158730158735, 'Confusion Matrix': [[179, 31], [42, 48]], 'Model': 'lightgbm'}
+2026-08-03 10:30:48,991 | INFO | training | ============================================================
+2026-08-03 10:30:48,991 | INFO | training | Training model: catboost
+2026-08-03 10:30:48,991 | INFO | training | ============================================================
+2026-08-03 10:33:37,369 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-03 10:33:37,370 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-03 10:33:38,347 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6634920634920635, 'Precision': 0.6029411764705882, 'Recall': 0.45555555555555555, 'F1': 0.5189873417721519, 'ROC AUC': 0.7968253968253969, 'PR AUC': 0.6303075572973413, 'Log Loss': 0.48656404673109893, 'Brier Score': 0.16243491245064695, 'MCC': 0.3578978786316362, 'Cohen Kappa': 0.3515358361774743, 'Gini': 0.5936507936507938, 'KS': 0.4841269841269841, 'Confusion Matrix': [[183, 27], [49, 41]], 'Model': 'catboost'}
+2026-08-03 10:33:38,347 | INFO | training | ============================================================
+2026-08-03 10:33:38,348 | INFO | training | Training model: ebm
+2026-08-03 10:33:38,348 | INFO | training | ============================================================
+2026-08-03 11:02:06,474 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-03 11:02:06,476 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-03 11:02:29,401 | INFO | training | {'Accuracy': 0.74, 'Balanced Accuracy': 0.680952380952381, 'Precision': 0.5714285714285714, 'Recall': 0.5333333333333333, 'F1': 0.5517241379310345, 'ROC AUC': 0.77994708994709, 'PR AUC': 0.5964703424941941, 'Log Loss': 0.5353265987712162, 'Brier Score': 0.17573147556263613, 'MCC': 0.36936750089587606, 'Cohen Kappa': 0.3689320388349514, 'Gini': 0.5598941798941801, 'KS': 0.4761904761904762, 'Confusion Matrix': [[174, 36], [42, 48]], 'Model': 'ebm'}
+2026-08-03 11:02:29,402 | INFO | training | Selecting best model
+2026-08-03 11:02:29,412 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-03 11:02:29,412 | INFO | training | Best model selected: catboost
+2026-08-03 11:02:34,097 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-03 11:02:34,099 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-03 11:02:34,099 | INFO | training | Running Responsible AI pipeline
+2026-08-03 11:02:34,099 | INFO | training | Evaluating baseline fairness...
+2026-08-03 11:09:13,676 | INFO | training | Loading data
+2026-08-03 11:09:13,700 | INFO | training | Splitting dataset
+2026-08-03 11:09:13,709 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-03 11:09:13,709 | INFO | training | Training models
+2026-08-03 11:09:13,709 | INFO | training | ============================================================
+2026-08-03 11:09:13,710 | INFO | training | Training model: logistic
+2026-08-03 11:09:13,710 | INFO | training | ============================================================
+2026-08-03 11:09:26,637 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-03 11:09:26,639 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-03 11:09:26,700 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.7995767195767195, 'PR AUC': 0.582438001497052, 'Log Loss': 0.49102286827663943, 'Brier Score': 0.16407238523960652, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.599153439153439, 'KS': 0.4888888888888889, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-03 11:09:26,701 | INFO | training | ============================================================
+2026-08-03 11:09:26,701 | INFO | training | Training model: random_forest
+2026-08-03 11:09:26,701 | INFO | training | ============================================================
+2026-08-03 11:11:41,672 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-03 11:11:41,674 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-03 11:11:42,340 | INFO | training | {'Accuracy': 0.7366666666666667, 'Balanced Accuracy': 0.5928571428571429, 'Precision': 0.6774193548387096, 'Recall': 0.23333333333333334, 'F1': 0.34710743801652894, 'ROC AUC': 0.7905820105820105, 'PR AUC': 0.6053569464700486, 'Log Loss': 0.5092118944981253, 'Brier Score': 0.16917330799646013, 'MCC': 0.27958845066574206, 'Cohen Kappa': 0.228515625, 'Gini': 0.581164021164021, 'KS': 0.45873015873015877, 'Confusion Matrix': [[200, 10], [69, 21]], 'Model': 'random_forest'}
+2026-08-03 11:11:42,340 | INFO | training | ============================================================
+2026-08-03 11:11:42,341 | INFO | training | Training model: extra_trees
+2026-08-03 11:11:42,341 | INFO | training | ============================================================
+2026-08-03 11:13:42,787 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-03 11:13:42,789 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-03 11:13:43,284 | INFO | training | {'Accuracy': 0.7766666666666666, 'Balanced Accuracy': 0.6690476190476191, 'Precision': 0.7346938775510204, 'Recall': 0.4, 'F1': 0.5179856115107914, 'ROC AUC': 0.7901587301587302, 'PR AUC': 0.6340703801374643, 'Log Loss': 0.4992444619996788, 'Brier Score': 0.16536915379608946, 'MCC': 0.4191167862457118, 'Cohen Kappa': 0.38868613138686126, 'Gini': 0.5803174603174603, 'KS': 0.44761904761904764, 'Confusion Matrix': [[197, 13], [54, 36]], 'Model': 'extra_trees'}
+2026-08-03 11:13:43,284 | INFO | training | ============================================================
+2026-08-03 11:13:43,284 | INFO | training | Training model: hist_gradient_boosting
+2026-08-03 11:13:43,284 | INFO | training | ============================================================
+2026-08-03 11:18:06,571 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-03 11:18:06,573 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-03 11:18:07,498 | INFO | training | {'Accuracy': 0.7366666666666667, 'Balanced Accuracy': 0.6785714285714286, 'Precision': 0.5647058823529412, 'Recall': 0.5333333333333333, 'F1': 0.5485714285714286, 'ROC AUC': 0.7848148148148149, 'PR AUC': 0.6459649791487501, 'Log Loss': 1.4255241441495456, 'Brier Score': 0.22714260681840742, 'MCC': 0.3631986101411216, 'Cohen Kappa': 0.3629032258064516, 'Gini': 0.5696296296296297, 'KS': 0.4746031746031746, 'Confusion Matrix': [[173, 37], [42, 48]], 'Model': 'hist_gradient_boosting'}
+2026-08-03 11:18:07,499 | INFO | training | ============================================================
+2026-08-03 11:18:07,499 | INFO | training | Training model: lightgbm
+2026-08-03 11:18:07,499 | INFO | training | ============================================================
+2026-08-03 11:18:24,495 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-03 11:18:24,497 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-03 11:18:24,590 | INFO | training | {'Accuracy': 0.7666666666666667, 'Balanced Accuracy': 0.7126984126984126, 'Precision': 0.6190476190476191, 'Recall': 0.5777777777777777, 'F1': 0.5977011494252874, 'ROC AUC': 0.7780952380952381, 'PR AUC': 0.6087224985017197, 'Log Loss': 0.6454261601873192, 'Brier Score': 0.18422133213273, 'MCC': 0.434168816842521, 'Cohen Kappa': 0.43365695792880254, 'Gini': 0.5561904761904761, 'KS': 0.46825396825396826, 'Confusion Matrix': [[178, 32], [38, 52]], 'Model': 'lightgbm'}
+2026-08-03 11:18:24,590 | INFO | training | ============================================================
+2026-08-03 11:18:24,590 | INFO | training | Training model: catboost
+2026-08-03 11:18:24,591 | INFO | training | ============================================================
+2026-08-03 11:22:53,268 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-03 11:22:53,270 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-03 11:22:54,208 | INFO | training | {'Accuracy': 0.7633333333333333, 'Balanced Accuracy': 0.6563492063492063, 'Precision': 0.6862745098039216, 'Recall': 0.3888888888888889, 'F1': 0.49645390070921985, 'ROC AUC': 0.7975661375661375, 'PR AUC': 0.6222910008932676, 'Log Loss': 0.4922470143079149, 'Brier Score': 0.16336104123802722, 'MCC': 0.3814800379775512, 'Cohen Kappa': 0.3568840579710145, 'Gini': 0.595132275132275, 'KS': 0.45238095238095244, 'Confusion Matrix': [[194, 16], [55, 35]], 'Model': 'catboost'}
+2026-08-03 11:22:54,209 | INFO | training | ============================================================
+2026-08-03 11:22:54,209 | INFO | training | Training model: ebm
+2026-08-03 11:22:54,209 | INFO | training | ============================================================
+2026-08-03 11:51:00,838 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-03 11:51:00,840 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-03 11:51:23,878 | INFO | training | {'Accuracy': 0.7433333333333333, 'Balanced Accuracy': 0.6833333333333333, 'Precision': 0.5783132530120482, 'Recall': 0.5333333333333333, 'F1': 0.5549132947976878, 'ROC AUC': 0.7808465608465609, 'PR AUC': 0.5929151433750992, 'Log Loss': 0.5344426712872994, 'Brier Score': 0.17573496837006328, 'MCC': 0.37560677687656335, 'Cohen Kappa': 0.3749999999999999, 'Gini': 0.5616931216931218, 'KS': 0.4761904761904762, 'Confusion Matrix': [[175, 35], [42, 48]], 'Model': 'ebm'}
+2026-08-03 11:51:23,878 | INFO | training | Selecting best model
+2026-08-03 11:51:23,887 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-03 11:51:23,888 | INFO | training | Best model selected: logistic
+2026-08-03 11:51:24,085 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-03 11:51:24,089 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-03 11:51:24,090 | INFO | training | Running Responsible AI pipeline
+2026-08-03 11:51:24,090 | INFO | training | Evaluating baseline fairness...
+2026-08-03 11:51:24,396 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_metrics.json
+2026-08-03 11:51:24,402 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_by_group.csv
+2026-08-03 11:51:24,404 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_difference.csv
+2026-08-03 11:51:24,406 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\worst_group.json
+2026-08-03 11:51:24,408 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\best_group.json
+2026-08-03 11:51:26,414 | INFO | training | Applying Threshold Optimizer...
+2026-08-03 11:51:26,623 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_metrics.json
+2026-08-03 11:51:26,625 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_by_group.csv
+2026-08-03 11:51:26,629 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_difference.csv
+2026-08-03 11:51:26,630 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\worst_group.json
+2026-08-03 11:51:26,632 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\best_group.json
+2026-08-03 11:51:28,486 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison.csv
+2026-08-03 11:51:28,487 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison_summary.json
+2026-08-03 11:51:28,493 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison\governance_report.csv
+2026-08-03 11:51:28,494 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison\executive_summary.json
+2026-08-03 11:51:28,495 | INFO | training | Responsible AI pipeline completed.
+2026-08-03 11:51:28,495 | INFO | training | Saving benchmark results
+2026-08-03 11:51:28,499 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\reports\model_results.csv
+2026-08-03 11:51:28,499 | INFO | training | Training completed successfully.
+2026-08-03 11:56:16,434 | INFO | training | Loading data
+2026-08-03 11:56:16,461 | INFO | training | Splitting dataset
+2026-08-03 11:56:16,469 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-03 11:56:16,470 | INFO | training | Training models
+2026-08-03 11:56:16,470 | INFO | training | ============================================================
+2026-08-03 11:56:16,470 | INFO | training | Training model: logistic
+2026-08-03 11:56:16,470 | INFO | training | ============================================================
+2026-08-03 11:56:32,686 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-03 11:56:32,687 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-03 11:56:32,748 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.79994708994709, 'PR AUC': 0.5835391862675554, 'Log Loss': 0.49076596160546215, 'Brier Score': 0.16400168748981345, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.5998941798941799, 'KS': 0.49523809523809526, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-03 11:56:32,748 | INFO | training | ============================================================
+2026-08-03 11:56:32,748 | INFO | training | Training model: random_forest
+2026-08-03 11:56:32,749 | INFO | training | ============================================================
+2026-08-03 11:59:38,724 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-03 11:59:38,725 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-03 11:59:39,433 | INFO | training | {'Accuracy': 0.75, 'Balanced Accuracy': 0.611904761904762, 'Precision': 0.7272727272727273, 'Recall': 0.26666666666666666, 'F1': 0.3902439024390244, 'ROC AUC': 0.7938624338624339, 'PR AUC': 0.6279766460263506, 'Log Loss': 0.5042425204498701, 'Brier Score': 0.16732701005655973, 'MCC': 0.3277908788478548, 'Cohen Kappa': 0.2732558139534883, 'Gini': 0.5877248677248679, 'KS': 0.46825396825396826, 'Confusion Matrix': [[201, 9], [66, 24]], 'Model': 'random_forest'}
+2026-08-03 11:59:39,433 | INFO | training | ============================================================
+2026-08-03 11:59:39,434 | INFO | training | Training model: extra_trees
+2026-08-03 11:59:39,434 | INFO | training | ============================================================
+2026-08-03 12:01:58,243 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-03 12:01:58,244 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-03 12:01:58,798 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.626984126984127, 'Precision': 0.7, 'Recall': 0.3111111111111111, 'F1': 0.4307692307692308, 'ROC AUC': 0.7911111111111111, 'PR AUC': 0.6270579271672212, 'Log Loss': 0.502659607503327, 'Brier Score': 0.16671863079006768, 'MCC': 0.34236839400873037, 'Cohen Kappa': 0.30188679245283023, 'Gini': 0.5822222222222222, 'KS': 0.4428571428571429, 'Confusion Matrix': [[198, 12], [62, 28]], 'Model': 'extra_trees'}
+2026-08-03 12:01:58,799 | INFO | training | ============================================================
+2026-08-03 12:01:58,799 | INFO | training | Training model: hist_gradient_boosting
+2026-08-03 12:01:58,799 | INFO | training | ============================================================
+2026-08-03 12:06:09,291 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-03 12:06:09,293 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-03 12:06:09,598 | INFO | training | {'Accuracy': 0.7333333333333333, 'Balanced Accuracy': 0.653968253968254, 'Precision': 0.5694444444444444, 'Recall': 0.45555555555555555, 'F1': 0.5061728395061729, 'ROC AUC': 0.7831746031746032, 'PR AUC': 0.581095030496665, 'Log Loss': 0.5022495325399564, 'Brier Score': 0.16850612326022188, 'MCC': 0.33041397738912043, 'Cohen Kappa': 0.32659932659932667, 'Gini': 0.5663492063492064, 'KS': 0.4746031746031746, 'Confusion Matrix': [[179, 31], [49, 41]], 'Model': 'hist_gradient_boosting'}
+2026-08-03 12:06:09,599 | INFO | training | ============================================================
+2026-08-03 12:06:09,599 | INFO | training | Training model: lightgbm
+2026-08-03 12:06:09,599 | INFO | training | ============================================================
+2026-08-03 12:06:27,831 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-03 12:06:27,833 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-03 12:06:28,019 | INFO | training | {'Accuracy': 0.7566666666666667, 'Balanced Accuracy': 0.7055555555555555, 'Precision': 0.5977011494252874, 'Recall': 0.5777777777777777, 'F1': 0.5875706214689266, 'ROC AUC': 0.7821164021164021, 'PR AUC': 0.6244272165096085, 'Log Loss': 0.6392179980630036, 'Brier Score': 0.18175073838887565, 'MCC': 0.4151840764662168, 'Cohen Kappa': 0.41506410256410253, 'Gini': 0.5642328042328042, 'KS': 0.46984126984126984, 'Confusion Matrix': [[175, 35], [38, 52]], 'Model': 'lightgbm'}
+2026-08-03 12:06:28,020 | INFO | training | ============================================================
+2026-08-03 12:06:28,020 | INFO | training | Training model: catboost
+2026-08-03 12:06:28,020 | INFO | training | ============================================================
+2026-08-03 12:09:38,335 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-03 12:09:38,336 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-03 12:09:40,143 | INFO | training | {'Accuracy': 0.7566666666666667, 'Balanced Accuracy': 0.6801587301587302, 'Precision': 0.6197183098591549, 'Recall': 0.4888888888888889, 'F1': 0.546583850931677, 'ROC AUC': 0.8022222222222223, 'PR AUC': 0.6280066211610176, 'Log Loss': 0.4830983660716968, 'Brier Score': 0.16157046947966472, 'MCC': 0.38848056285857996, 'Cohen Kappa': 0.38344594594594594, 'Gini': 0.6044444444444446, 'KS': 0.4650793650793651, 'Confusion Matrix': [[183, 27], [46, 44]], 'Model': 'catboost'}
+2026-08-03 12:09:40,144 | INFO | training | ============================================================
+2026-08-03 12:09:40,144 | INFO | training | Training model: ebm
+2026-08-03 12:09:40,144 | INFO | training | ============================================================
+2026-08-03 12:37:29,461 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-03 12:37:29,463 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-03 12:37:52,528 | INFO | training | {'Accuracy': 0.74, 'Balanced Accuracy': 0.680952380952381, 'Precision': 0.5714285714285714, 'Recall': 0.5333333333333333, 'F1': 0.5517241379310345, 'ROC AUC': 0.7791534391534392, 'PR AUC': 0.5903807870233273, 'Log Loss': 0.539988129008773, 'Brier Score': 0.17715528365953845, 'MCC': 0.36936750089587606, 'Cohen Kappa': 0.3689320388349514, 'Gini': 0.5583068783068783, 'KS': 0.473015873015873, 'Confusion Matrix': [[174, 36], [42, 48]], 'Model': 'ebm'}
+2026-08-03 12:37:52,529 | INFO | training | Selecting best model
+2026-08-03 12:37:52,535 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-03 12:37:52,536 | INFO | training | Best model selected: catboost
+2026-08-03 12:38:01,614 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-03 12:38:01,616 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-03 12:38:01,616 | INFO | training | Running Responsible AI pipeline
+2026-08-03 12:38:01,616 | INFO | training | Evaluating baseline fairness...
+2026-08-03 12:38:02,081 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_metrics.json
+2026-08-03 12:38:02,089 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_by_group.csv
+2026-08-03 12:38:02,091 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_difference.csv
+2026-08-03 12:38:02,092 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\worst_group.json
+2026-08-03 12:38:02,093 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\best_group.json
+2026-08-03 12:38:04,634 | INFO | training | Applying Threshold Optimizer...
+2026-08-03 12:38:04,925 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_metrics.json
+2026-08-03 12:38:04,927 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_by_group.csv
+2026-08-03 12:38:04,931 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_difference.csv
+2026-08-03 12:38:04,932 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\worst_group.json
+2026-08-03 12:38:04,933 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\best_group.json
+2026-08-03 12:38:06,943 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison.csv
+2026-08-03 12:38:06,945 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison_summary.json
+2026-08-03 12:38:06,947 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison\governance_report.csv
+2026-08-03 12:38:06,949 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison\executive_summary.json
+2026-08-03 12:38:06,949 | INFO | training | Responsible AI pipeline completed.
+2026-08-03 12:38:06,950 | INFO | training | Saving benchmark results
+2026-08-03 12:38:06,952 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\reports\model_results.csv
+2026-08-03 12:38:06,952 | INFO | training | Training completed successfully.
+2026-08-03 13:21:34,596 | INFO | training | Loading data
+2026-08-03 13:21:34,638 | INFO | training | Splitting dataset
+2026-08-03 13:21:34,658 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-03 13:21:34,658 | INFO | training | Training models
+2026-08-03 13:21:34,659 | INFO | training | ============================================================
+2026-08-03 13:21:34,659 | INFO | training | Training model: logistic
+2026-08-03 13:21:34,659 | INFO | training | ============================================================
+2026-08-03 13:21:48,019 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-03 13:21:48,020 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-03 13:21:48,093 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.8000529100529101, 'PR AUC': 0.5837646278545316, 'Log Loss': 0.49064892662635723, 'Brier Score': 0.16396963789253788, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.6001058201058203, 'KS': 0.49523809523809526, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-03 13:21:48,093 | INFO | training | ============================================================
+2026-08-03 13:21:48,094 | INFO | training | Training model: random_forest
+2026-08-03 13:21:48,094 | INFO | training | ============================================================
+2026-08-03 13:24:28,456 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-03 13:24:28,458 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-03 13:24:28,996 | INFO | training | {'Accuracy': 0.76, 'Balanced Accuracy': 0.6317460317460317, 'Precision': 0.7368421052631579, 'Recall': 0.3111111111111111, 'F1': 0.4375, 'ROC AUC': 0.7928571428571428, 'PR AUC': 0.6213713871049653, 'Log Loss': 0.5019339511165668, 'Brier Score': 0.16629756436067486, 'MCC': 0.3630412690817618, 'Cohen Kappa': 0.3155893536121672, 'Gini': 0.5857142857142856, 'KS': 0.4428571428571429, 'Confusion Matrix': [[200, 10], [62, 28]], 'Model': 'random_forest'}
+2026-08-03 13:24:28,997 | INFO | training | ============================================================
+2026-08-03 13:24:28,997 | INFO | training | Training model: extra_trees
+2026-08-03 13:24:28,997 | INFO | training | ============================================================
+2026-08-03 13:26:08,215 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-03 13:26:08,216 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-03 13:26:08,547 | INFO | training | {'Accuracy': 0.7566666666666667, 'Balanced Accuracy': 0.6261904761904762, 'Precision': 0.7297297297297297, 'Recall': 0.3, 'F1': 0.4251968503937008, 'ROC AUC': 0.7854497354497355, 'PR AUC': 0.6151757116223276, 'Log Loss': 0.5054391016856926, 'Brier Score': 0.16794695040365185, 'MCC': 0.35172945626663915, 'Cohen Kappa': 0.3034351145038169, 'Gini': 0.570899470899471, 'KS': 0.43492063492063493, 'Confusion Matrix': [[200, 10], [63, 27]], 'Model': 'extra_trees'}
+2026-08-03 13:26:08,547 | INFO | training | ============================================================
+2026-08-03 13:26:08,547 | INFO | training | Training model: hist_gradient_boosting
+2026-08-03 13:26:08,548 | INFO | training | ============================================================
+2026-08-03 13:29:52,433 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-03 13:29:52,434 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-03 13:29:52,624 | INFO | training | {'Accuracy': 0.7266666666666667, 'Balanced Accuracy': 0.6555555555555556, 'Precision': 0.5512820512820513, 'Recall': 0.4777777777777778, 'F1': 0.5119047619047619, 'ROC AUC': 0.7765079365079366, 'PR AUC': 0.6029651712097293, 'Log Loss': 0.5147689111609183, 'Brier Score': 0.17130818374814097, 'MCC': 0.32502939196956576, 'Cohen Kappa': 0.32343234323432335, 'Gini': 0.5530158730158732, 'KS': 0.4634920634920635, 'Confusion Matrix': [[175, 35], [47, 43]], 'Model': 'hist_gradient_boosting'}
+2026-08-03 13:29:52,624 | INFO | training | ============================================================
+2026-08-03 13:29:52,624 | INFO | training | Training model: lightgbm
+2026-08-03 13:29:52,625 | INFO | training | ============================================================
+2026-08-03 13:30:10,372 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-03 13:30:10,374 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-03 13:30:10,459 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.6841269841269841, 'Precision': 0.6052631578947368, 'Recall': 0.5111111111111111, 'F1': 0.5542168674698795, 'ROC AUC': 0.7940211640211641, 'PR AUC': 0.6113566942590641, 'Log Loss': 0.5150040172806861, 'Brier Score': 0.16875579679065128, 'MCC': 0.3880141219409875, 'Cohen Kappa': 0.38538205980066453, 'Gini': 0.5880423280423281, 'KS': 0.4857142857142857, 'Confusion Matrix': [[180, 30], [44, 46]], 'Model': 'lightgbm'}
+2026-08-03 13:30:10,460 | INFO | training | ============================================================
+2026-08-03 13:30:10,460 | INFO | training | Training model: catboost
+2026-08-03 13:30:10,460 | INFO | training | ============================================================
+2026-08-03 13:32:42,996 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-03 13:32:43,000 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-03 13:32:43,544 | INFO | training | {'Accuracy': 0.75, 'Balanced Accuracy': 0.6531746031746032, 'Precision': 0.6271186440677966, 'Recall': 0.4111111111111111, 'F1': 0.4966442953020134, 'ROC AUC': 0.7988888888888889, 'PR AUC': 0.6076358773002846, 'Log Loss': 0.4900821003393524, 'Brier Score': 0.16292779015127892, 'MCC': 0.35319385140569176, 'Cohen Kappa': 0.33978873239436613, 'Gini': 0.5977777777777777, 'KS': 0.4952380952380952, 'Confusion Matrix': [[188, 22], [53, 37]], 'Model': 'catboost'}
+2026-08-03 13:32:43,544 | INFO | training | ============================================================
+2026-08-03 13:32:43,544 | INFO | training | Training model: ebm
+2026-08-03 13:32:43,544 | INFO | training | ============================================================
+2026-08-03 13:59:40,372 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-03 13:59:40,374 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-03 14:00:03,559 | INFO | training | {'Accuracy': 0.7433333333333333, 'Balanced Accuracy': 0.6833333333333333, 'Precision': 0.5783132530120482, 'Recall': 0.5333333333333333, 'F1': 0.5549132947976878, 'ROC AUC': 0.7774074074074074, 'PR AUC': 0.5928510058247803, 'Log Loss': 0.5379808574971802, 'Brier Score': 0.1764033269748523, 'MCC': 0.37560677687656335, 'Cohen Kappa': 0.3749999999999999, 'Gini': 0.5548148148148149, 'KS': 0.47142857142857136, 'Confusion Matrix': [[175, 35], [42, 48]], 'Model': 'ebm'}
+2026-08-03 14:00:03,560 | INFO | training | Selecting best model
+2026-08-03 14:00:03,569 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-03 14:00:03,570 | INFO | training | Best model selected: catboost
+2026-08-03 14:00:05,959 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-03 14:00:05,960 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-03 14:00:05,961 | INFO | training | Running Responsible AI pipeline
+2026-08-03 14:00:05,961 | INFO | training | Evaluating baseline fairness...
+2026-08-03 14:00:06,379 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_metrics.json
+2026-08-03 14:00:06,386 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_by_group.csv
+2026-08-03 14:00:06,388 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_difference.csv
+2026-08-03 14:00:06,389 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\worst_group.json
+2026-08-03 14:00:06,390 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\best_group.json
+2026-08-03 14:00:09,006 | INFO | training | Applying Threshold Optimizer...
+2026-08-03 14:00:09,268 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_metrics.json
+2026-08-03 14:00:09,270 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_by_group.csv
+2026-08-03 14:00:09,273 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_difference.csv
+2026-08-03 14:00:09,275 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\worst_group.json
+2026-08-03 14:00:09,276 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\best_group.json
+2026-08-03 14:00:11,092 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison.csv
+2026-08-03 14:00:11,095 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison_summary.json
+2026-08-03 14:00:34,619 | INFO | training | Loading data
+2026-08-03 14:00:34,654 | INFO | training | Splitting dataset
+2026-08-03 14:00:34,674 | INFO | save | Pickle saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\feature_names.pkl
+2026-08-03 14:00:34,674 | INFO | training | Training models
+2026-08-03 14:00:34,675 | INFO | training | ============================================================
+2026-08-03 14:00:34,675 | INFO | training | Training model: logistic
+2026-08-03 14:00:34,676 | INFO | training | ============================================================
+2026-08-03 14:00:49,394 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_study.joblib
+2026-08-03 14:00:49,396 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\logistic_best_params.json
+2026-08-03 14:00:49,459 | INFO | training | {'Accuracy': 0.7466666666666667, 'Balanced Accuracy': 0.6666666666666667, 'Precision': 0.6, 'Recall': 0.4666666666666667, 'F1': 0.525, 'ROC AUC': 0.8001058201058202, 'PR AUC': 0.5838388801340766, 'Log Loss': 0.4906452237835603, 'Brier Score': 0.16396859497814276, 'MCC': 0.36115755925730764, 'Cohen Kappa': 0.35593220338983056, 'Gini': 0.6002116402116404, 'KS': 0.49523809523809526, 'Confusion Matrix': [[182, 28], [48, 42]], 'Model': 'logistic'}
+2026-08-03 14:00:49,459 | INFO | training | ============================================================
+2026-08-03 14:00:49,459 | INFO | training | Training model: random_forest
+2026-08-03 14:00:49,460 | INFO | training | ============================================================
+2026-08-03 14:03:37,791 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_study.joblib
+2026-08-03 14:03:37,794 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\random_forest_best_params.json
+2026-08-03 14:03:38,279 | INFO | training | {'Accuracy': 0.7533333333333333, 'Balanced Accuracy': 0.6238095238095238, 'Precision': 0.7105263157894737, 'Recall': 0.3, 'F1': 0.421875, 'ROC AUC': 0.7922751322751322, 'PR AUC': 0.617222870860907, 'Log Loss': 0.5027779121942388, 'Brier Score': 0.16699153493148794, 'MCC': 0.341171313112981, 'Cohen Kappa': 0.2965779467680607, 'Gini': 0.5845502645502645, 'KS': 0.4619047619047619, 'Confusion Matrix': [[199, 11], [63, 27]], 'Model': 'random_forest'}
+2026-08-03 14:03:38,279 | INFO | training | ============================================================
+2026-08-03 14:03:38,279 | INFO | training | Training model: extra_trees
+2026-08-03 14:03:38,280 | INFO | training | ============================================================
+2026-08-03 14:05:48,915 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_study.joblib
+2026-08-03 14:05:48,916 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\extra_trees_best_params.json
+2026-08-03 14:05:49,375 | INFO | training | {'Accuracy': 0.7733333333333333, 'Balanced Accuracy': 0.6825396825396826, 'Precision': 0.6833333333333333, 'Recall': 0.45555555555555555, 'F1': 0.5466666666666666, 'ROC AUC': 0.7895767195767196, 'PR AUC': 0.6317778935999054, 'Log Loss': 0.49580112222044154, 'Brier Score': 0.1644309110536214, 'MCC': 0.41825095628565206, 'Cohen Kappa': 0.4035087719298246, 'Gini': 0.5791534391534392, 'KS': 0.473015873015873, 'Confusion Matrix': [[191, 19], [49, 41]], 'Model': 'extra_trees'}
+2026-08-03 14:05:49,375 | INFO | training | ============================================================
+2026-08-03 14:05:49,375 | INFO | training | Training model: hist_gradient_boosting
+2026-08-03 14:05:49,376 | INFO | training | ============================================================
+2026-08-03 14:11:07,707 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_study.joblib
+2026-08-03 14:11:07,708 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\hist_gradient_boosting_best_params.json
+2026-08-03 14:11:09,043 | INFO | training | {'Accuracy': 0.75, 'Balanced Accuracy': 0.6849206349206349, 'Precision': 0.5949367088607594, 'Recall': 0.5222222222222223, 'F1': 0.5562130177514792, 'ROC AUC': 0.7912698412698412, 'PR AUC': 0.6192210801065773, 'Log Loss': 0.8529045657286558, 'Brier Score': 0.19917244484498056, 'MCC': 0.3848013536911428, 'Cohen Kappa': 0.3832236842105263, 'Gini': 0.5825396825396825, 'KS': 0.4777777777777778, 'Confusion Matrix': [[178, 32], [43, 47]], 'Model': 'hist_gradient_boosting'}
+2026-08-03 14:11:09,043 | INFO | training | ============================================================
+2026-08-03 14:11:09,043 | INFO | training | Training model: lightgbm
+2026-08-03 14:11:09,043 | INFO | training | ============================================================
+2026-08-03 14:11:25,509 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_study.joblib
+2026-08-03 14:11:25,510 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\lightgbm_best_params.json
+2026-08-03 14:11:25,621 | INFO | training | {'Accuracy': 0.7866666666666666, 'Balanced Accuracy': 0.7365079365079366, 'Precision': 0.6547619047619048, 'Recall': 0.6111111111111112, 'F1': 0.632183908045977, 'ROC AUC': 0.7896296296296297, 'PR AUC': 0.6468663320164609, 'Log Loss': 0.7095673466428869, 'Brier Score': 0.18267126901167088, 'MCC': 0.48276980380250467, 'Cohen Kappa': 0.4822006472491909, 'Gini': 0.5792592592592594, 'KS': 0.47301587301587306, 'Confusion Matrix': [[181, 29], [35, 55]], 'Model': 'lightgbm'}
+2026-08-03 14:11:25,621 | INFO | training | ============================================================
+2026-08-03 14:11:25,622 | INFO | training | Training model: catboost
+2026-08-03 14:11:25,622 | INFO | training | ============================================================
+2026-08-03 14:14:16,012 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_study.joblib
+2026-08-03 14:14:16,013 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\catboost_best_params.json
+2026-08-03 14:14:17,451 | INFO | training | {'Accuracy': 0.7666666666666667, 'Balanced Accuracy': 0.6873015873015873, 'Precision': 0.6470588235294118, 'Recall': 0.4888888888888889, 'F1': 0.5569620253164557, 'ROC AUC': 0.8022751322751323, 'PR AUC': 0.6317754543616809, 'Log Loss': 0.48226543186829485, 'Brier Score': 0.1605144111280267, 'MCC': 0.4100189289177968, 'Cohen Kappa': 0.40273037542662116, 'Gini': 0.6045502645502645, 'KS': 0.48095238095238096, 'Confusion Matrix': [[186, 24], [46, 44]], 'Model': 'catboost'}
+2026-08-03 14:14:17,452 | INFO | training | ============================================================
+2026-08-03 14:14:17,452 | INFO | training | Training model: ebm
+2026-08-03 14:14:17,452 | INFO | training | ============================================================
+2026-08-03 14:40:40,890 | INFO | save | Study saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_study.joblib
+2026-08-03 14:40:40,891 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\studies\ebm_best_params.json
+2026-08-03 14:41:04,456 | INFO | training | {'Accuracy': 0.7433333333333333, 'Balanced Accuracy': 0.6833333333333333, 'Precision': 0.5783132530120482, 'Recall': 0.5333333333333333, 'F1': 0.5549132947976878, 'ROC AUC': 0.778941798941799, 'PR AUC': 0.5885596511175591, 'Log Loss': 0.5387022937778296, 'Brier Score': 0.1769211716920135, 'MCC': 0.37560677687656335, 'Cohen Kappa': 0.3749999999999999, 'Gini': 0.5578835978835981, 'KS': 0.4634920634920635, 'Confusion Matrix': [[175, 35], [42, 48]], 'Model': 'ebm'}
+2026-08-03 14:41:04,456 | INFO | training | Selecting best model
+2026-08-03 14:41:04,466 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\metrics.json
+2026-08-03 14:41:04,467 | INFO | training | Best model selected: catboost
+2026-08-03 14:41:11,254 | INFO | save | Model saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\fairloans_pipeline.joblib
+2026-08-03 14:41:11,255 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\models\training_summary.json
+2026-08-03 14:41:11,256 | INFO | training | Running Responsible AI pipeline
+2026-08-03 14:41:11,256 | INFO | training | Evaluating baseline fairness...
+2026-08-03 14:41:11,678 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_metrics.json
+2026-08-03 14:41:11,685 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_by_group.csv
+2026-08-03 14:41:11,686 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\fairness_difference.csv
+2026-08-03 14:41:11,687 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\worst_group.json
+2026-08-03 14:41:11,689 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\baseline\best_group.json
+2026-08-03 14:41:13,913 | INFO | training | Applying Threshold Optimizer...
+2026-08-03 14:41:14,196 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_metrics.json
+2026-08-03 14:41:14,198 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_by_group.csv
+2026-08-03 14:41:14,202 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\fairness_difference.csv
+2026-08-03 14:41:14,204 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\worst_group.json
+2026-08-03 14:41:14,205 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\mitigated\best_group.json
+2026-08-03 14:41:16,067 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison.csv
+2026-08-03 14:41:16,068 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison_summary.json
+2026-08-03 14:41:16,071 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison\governance_report.csv
+2026-08-03 14:41:16,075 | INFO | save | JSON saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\artifacts\fairness\comparison\executive_summary.json
+2026-08-03 14:41:16,076 | INFO | training | Responsible AI pipeline completed.
+2026-08-03 14:41:16,076 | INFO | training | Saving benchmark results
+2026-08-03 14:41:16,078 | INFO | save | Dataframe saved to C:\Users\chukw\Desktop\DATA SCIENCE AND BUSINESS ANALYTICS\Data Engineering\FairLoans\reports\model_results.csv
+2026-08-03 14:41:16,079 | INFO | training | Training completed successfully.

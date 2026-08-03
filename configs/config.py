@@ -21,6 +21,21 @@ LOG_DIR = ROOT_DIR / "logs"
 TRAINING_LOG = "training.log"
 PREDICTION_LOG = "prediction.log"
 METRICS_DIR = ARTIFACT_DIR / "metrics"
+FAIRNESS_DIR = ARTIFACT_DIR / "fairness"
+FAIRNESS_METRICS_FILENAME = "fairness_metrics.json"
+FAIRNESS_BY_GROUP_FILENAME = "fairness_by_group.csv"
+FAIRNESS_DIFFERENCE_FILENAME = "fairness_difference.csv"
+WORST_GROUP_FILENAME = "worst_group.json"
+BEST_GROUP_FILENAME = "best_group.json"
+FAIRNESS_PLOTS_DIR = FAIRNESS_DIR / "plots"
+BASELINE_DIR = FAIRNESS_DIR / "baseline"
+MITIGATED_DIR = FAIRNESS_DIR / "mitigated"
+COMPARISON_DIR = FAIRNESS_DIR / "comparison"
+FAIRNESS_SUMMARY_FILENAME = "fairness_summary.json"
+FAIRNESS_COMPARISON_FILENAME = "comparison.csv"
+FAIRNESS_SUMMARY_FILENAME = "comparison_summary.json"
+GOVERNANCE_REPORT_FILENAME = "governance_report.csv"
+EXECUTIVE_SUMMARY_FILENAME = "executive_summary.json"
 
 # =============================================================================
 # Dataset
@@ -165,4 +180,21 @@ LOG_LEVEL = "INFO"
 
 LOG_FILE = LOG_DIR / "training.log"
 
+# =============================================================================
+# Fairness
+# =============================================================================
+
+FAIRNESS_CONSTRAINT = "equalized_odds"
+
+FAIRNESS_OBJECTIVE = "accuracy_score"
+
+FAIRNESS_MITIGATION_METHOD = "threshold_optimizer"
+
+# =============================================================================
+# Governance
+# =============================================================================
+
+MAX_ROC_AUC_DEGRADATION = 0.01
+
+MAX_F1_DEGRADATION = 0.02
 
