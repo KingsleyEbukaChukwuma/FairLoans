@@ -6,7 +6,7 @@ FairLoans is an end-to-end machine learning system for credit risk assessment bu
 
 The project demonstrates the complete machine learning lifecycle, from data ingestion and preprocessing to hyperparameter optimization, calibration, fairness evaluation, bias mitigation, explainability, and governance reporting.
 
-Rather than focusing solely on predictive performance, FairLoans evaluates models across multiple dimensions including accuracy, calibration, fairness, and operational governance.
+FairLoan evaluates models across multiple dimensions including accuracy, calibration, fairness, and operational governance.
 
 ---
 
