@@ -85,7 +85,7 @@ def main():
 
         print("✓ Prediction successful")
 
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
 
         raise RuntimeError(f"Prediction failed: {e}")
 

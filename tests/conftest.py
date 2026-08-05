@@ -14,8 +14,6 @@ def sample_data():
 
     loader = DataLoader()
 
-    preprocessor = CreditPreprocessor()
-
     df = loader.load_arff(RAW_DATA_DIR / DATASET_FILENAME)
 
     # Random sample of 50 rows

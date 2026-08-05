@@ -26,7 +26,7 @@ def false_positive_rate(
     False Positive Rate.
     """
 
-    tn, fp, fn, tp = confusion_matrix(
+    tn, fp, _, _ = confusion_matrix(
         y_true,
         y_pred,
     ).ravel()
@@ -47,7 +47,7 @@ def false_negative_rate(
     False Negative Rate.
     """
 
-    tn, fp, fn, tp = confusion_matrix(
+    _, _, fn, tp = confusion_matrix(
         y_true,
         y_pred,
     ).ravel()
@@ -68,7 +68,7 @@ def true_positive_rate(
     True Positive Rate (Recall).
     """
 
-    tn, fp, fn, tp = confusion_matrix(
+    _, _, fn, tp = confusion_matrix(
         y_true,
         y_pred,
     ).ravel()

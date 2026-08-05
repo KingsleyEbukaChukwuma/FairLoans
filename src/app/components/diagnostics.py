@@ -71,7 +71,7 @@ class Diagnostics:
         # Calibration diagnostics
         #
 
-        left, center, right = st.columns([1, 2, 1])
+        _, center, _ = st.columns([1, 2, 1])
 
         with center:
 

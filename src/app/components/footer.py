@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 
 import streamlit as st
 
@@ -58,7 +58,7 @@ Generated from saved model artifacts.
             )
 
         st.caption(f"""
-Generated on **{datetime.now().strftime("%Y-%m-%d %H:%M")}**
+Generated on **{datetime.now(UTC).strftime("%Y-%m-%d %H:%M")}**
 
 This dashboard displays precomputed evaluation,
 fairness and explainability artifacts. No model

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import ClassVar
+
 import pandas as pd
 
 
@@ -9,7 +11,7 @@ class FairnessComparison:
     """
 
     # Higher values are better
-    HIGHER_IS_BETTER = {
+    HIGHER_IS_BETTER: ClassVar[set[str]] = {
         "Accuracy",
         "Balanced Accuracy",
         "Precision",
@@ -25,7 +27,7 @@ class FairnessComparison:
     }
 
     # Lower values are better
-    LOWER_IS_BETTER = {
+    LOWER_IS_BETTER: ClassVar[set[str]] = {
         "Log Loss",
         "Brier Score",
         "Demographic Parity Difference",

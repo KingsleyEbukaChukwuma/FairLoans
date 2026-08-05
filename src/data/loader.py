@@ -30,7 +30,7 @@ class DataLoader:
         pd.DataFrame
         """
 
-        data, meta = arff.loadarff(path)
+        data, _ = arff.loadarff(path)
 
         df = pd.DataFrame(data)
 
