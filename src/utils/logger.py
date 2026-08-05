@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-from src.configs.config import LOG_DIR
+from configs.config import LOG_DIR
 
 
 def get_logger(

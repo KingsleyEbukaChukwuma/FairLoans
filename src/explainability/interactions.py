@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from src.configs.config import (
+from configs.config import (
     EXPLAINABILITY_DIR,
     INTERACTION_FILENAME,
     INTERACTION_VALUES_FILENAME,

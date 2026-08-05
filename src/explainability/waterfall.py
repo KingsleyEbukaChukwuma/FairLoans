@@ -5,7 +5,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import shap
 
-from src.configs.config import (
+from configs.config import (
     EXPLAINABILITY_DIR,
     SHAP_MAX_DISPLAY,
     WATERFALL_FILENAME,

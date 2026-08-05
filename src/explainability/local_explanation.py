@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.configs.config import (
+from configs.config import (
     EXPLAINABILITY_DIR,
     LOCAL_EXPLANATION_FILENAME,
 )

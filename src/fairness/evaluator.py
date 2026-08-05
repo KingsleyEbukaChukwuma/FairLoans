@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from src.configs.config import (
+from configs.config import (
     BASELINE_DIR,
     BEST_GROUP_FILENAME,
     FAIRNESS_BY_GROUP_FILENAME,

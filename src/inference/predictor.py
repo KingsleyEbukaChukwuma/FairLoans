@@ -3,7 +3,7 @@ from __future__ import annotations
 import joblib
 import pandas as pd
 
-from src.configs.config import (
+from configs.config import (
     APPROVAL_THRESHOLD,
     MODEL_DIR,
     PIPELINE_FILENAME,

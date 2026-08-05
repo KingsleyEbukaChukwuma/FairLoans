@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 
-from src.configs.config import (
+from configs.config import (
     COMPARISON_DIR,
     CV_FOLDS,
     DATASET_FILENAME,

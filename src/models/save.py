@@ -6,7 +6,7 @@ from pathlib import Path
 import joblib
 import pandas as pd
 
-from src.configs.config import TRAINING_LOG
+from configs.config import TRAINING_LOG
 from src.utils.logger import get_logger
 
 logger = get_logger(

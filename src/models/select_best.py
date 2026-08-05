@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from src.configs.config import MODEL_SELECTION_WEIGHTS
+from configs.config import MODEL_SELECTION_WEIGHTS
 
 HIGHER_IS_BETTER = [
     "ROC AUC",

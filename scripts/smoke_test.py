@@ -3,7 +3,7 @@ from pathlib import Path
 import joblib
 import pandas as pd
 
-from src.configs.config import (
+from configs.config import (
     FEATURE_NAMES_FILENAME,
     METRICS_FILENAME,
     MODEL_DIR,
