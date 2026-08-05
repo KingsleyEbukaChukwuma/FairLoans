@@ -1,10 +1,16 @@
 from __future__ import annotations
 
+import os
+import sys
+
 import streamlit as st
 
-from configs.config import (
-    APP_NAME,
-)
+st.write("Current working directory:", os.getcwd())
+st.write("Python path:")
+st.write(sys.path)
+
+
+from configs.config import APP_NAME
 
 st.set_page_config(
     page_title=APP_NAME,
