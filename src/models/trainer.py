@@ -1,18 +1,10 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 import joblib
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.pipeline import Pipeline
 
-from src.utils.logger import get_logger
-
-from configs.config import (
-    CALIBRATION_METHOD,
-    CALIBRATION_CV,
-    TRAINING_LOG
-)
+from configs.config import CALIBRATION_CV, CALIBRATION_METHOD
 
 
 class ModelTrainer:
@@ -25,7 +17,6 @@ class ModelTrainer:
 
         self.pipeline = pipeline
         self.calibrated_pipeline = None
-
 
     def fit(self, X_train, y_train):
 

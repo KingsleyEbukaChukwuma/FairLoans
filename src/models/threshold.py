@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import numpy as np
-
 from sklearn.metrics import (
     balanced_accuracy_score,
     f1_score,
@@ -51,9 +50,7 @@ class DecisionThresholdOptimizer:
 
         for threshold in thresholds:
 
-            y_pred = (
-                y_prob >= threshold
-            ).astype(int)
+            y_pred = (y_prob >= threshold).astype(int)
 
             if metric == "balanced_accuracy":
 
@@ -78,9 +75,7 @@ class DecisionThresholdOptimizer:
 
             else:
 
-                raise ValueError(
-                    f"Unsupported metric: {metric}"
-                )
+                raise ValueError(f"Unsupported metric: {metric}")
 
             if score > best_score:
 
@@ -102,6 +97,4 @@ class DecisionThresholdOptimizer:
         a custom decision threshold.
         """
 
-        return (
-            y_prob >= threshold
-        ).astype(int)
+        return (y_prob >= threshold).astype(int)

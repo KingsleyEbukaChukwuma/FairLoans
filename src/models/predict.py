@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 import json
+
 import joblib
 import pandas as pd
 
 from configs.config import (
+    HIGH_CONFIDENCE,
+    LOW_CONFIDENCE,
     MODEL_DIR,
     PIPELINE_FILENAME,
     THRESHOLD_FILENAME,
-    HIGH_CONFIDENCE,
-    LOW_CONFIDENCE,
 )
 
 
@@ -21,18 +22,14 @@ class CreditPredictor:
 
     def __init__(self):
 
-        self.pipeline = joblib.load(
-            MODEL_DIR / PIPELINE_FILENAME
-        )
+        self.pipeline = joblib.load(MODEL_DIR / PIPELINE_FILENAME)
 
         with open(
             MODEL_DIR / THRESHOLD_FILENAME,
             "r",
         ) as file:
 
-            self.threshold = json.load(
-                file
-            )["threshold"]
+            self.threshold = json.load(file)["threshold"]
 
     def predict(
         self,
@@ -42,60 +39,26 @@ class CreditPredictor:
         Predict the applicant's credit risk.
         """
 
-        X = pd.DataFrame(
-            [applicant]
-        )
+        X = pd.DataFrame([applicant])
 
-        probability_default = float(
+        probability_default = float(self.pipeline.predict_proba(X)[0, 1])
 
-            self.pipeline.predict_proba(
-                X
-            )[0, 1]
+        prediction = int(probability_default >= self.threshold)
 
-        )
-
-        prediction = int(
-
-            probability_default
-            >= self.threshold
-
-        )
-
-        probability_good = (
-            1.0 - probability_default
-        )
+        probability_good = 1.0 - probability_default
 
         return {
-
             "prediction": prediction,
-
-            "decision":
-
-                "Bad Credit"
-
-                if prediction
-
-                else "Good Credit",
-
-            "probability_default":
+            "decision": "Bad Credit" if prediction else "Good Credit",
+            "probability_default": probability_default,
+            "probability_good": probability_good,
+            "threshold": self.threshold,
+            "risk_level": self.risk_level(
                 probability_default,
-
-            "probability_good":
-                probability_good,
-
-            "threshold":
-                self.threshold,
-
-            "risk_level":
-                self.risk_level(
-                    probability_default,
-                ),
-
-            "confidence":
-                self.confidence(
-                    probability_default,
-                ),
-
+            ),
+            "confidence": self.confidence(
+                probability_default,
+            ),
         }
 
     @staticmethod
@@ -122,10 +85,7 @@ class CreditPredictor:
         probability: float,
     ) -> str:
 
-        if (
-            probability >= HIGH_CONFIDENCE
-            or probability <= LOW_CONFIDENCE
-        ):
+        if probability >= HIGH_CONFIDENCE or probability <= LOW_CONFIDENCE:
             return "High"
 
         return "Medium"

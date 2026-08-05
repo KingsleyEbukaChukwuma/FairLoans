@@ -5,8 +5,9 @@ from pathlib import Path
 
 import joblib
 import pandas as pd
-from src.utils.logger import get_logger
+
 from configs.config import TRAINING_LOG
+from src.utils.logger import get_logger
 
 logger = get_logger(
     "save",
@@ -41,7 +42,7 @@ def save_model(model, path: str | Path) -> None:
         path,
     )
 
-    logger.info( f"Model saved to {path}")
+    logger.info(f"Model saved to {path}")
 
 
 def save_study(study, path: str | Path) -> None:
@@ -56,8 +57,7 @@ def save_study(study, path: str | Path) -> None:
         path,
     )
 
-
-    logger.info( f"Study saved to {path}")
+    logger.info(f"Study saved to {path}")
 
 
 def save_json(data: dict, path: str | Path) -> None:
@@ -74,7 +74,7 @@ def save_json(data: dict, path: str | Path) -> None:
             indent=4,
         )
 
-    logger.info( f"JSON saved to {path}")
+    logger.info(f"JSON saved to {path}")
 
 
 def save_dataframe(
@@ -93,7 +93,8 @@ def save_dataframe(
         index=index,
     )
 
-    logger.info( f"Dataframe saved to {path}")
+    logger.info(f"Dataframe saved to {path}")
+
 
 def save_pickle(obj, path):
     """
@@ -107,6 +108,4 @@ def save_pickle(obj, path):
         path,
     )
 
-    logger.info(
-        f"Pickle saved to {path}"
-    )
+    logger.info(f"Pickle saved to {path}")

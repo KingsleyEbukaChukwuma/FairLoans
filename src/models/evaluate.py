@@ -2,21 +2,20 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-
 from sklearn.metrics import (
     accuracy_score,
+    average_precision_score,
     balanced_accuracy_score,
+    brier_score_loss,
+    cohen_kappa_score,
+    confusion_matrix,
+    f1_score,
+    log_loss,
+    matthews_corrcoef,
     precision_score,
     recall_score,
-    f1_score,
     roc_auc_score,
-    average_precision_score,
-    matthews_corrcoef,
-    cohen_kappa_score,
-    log_loss,
-    brier_score_loss,
     roc_curve,
-    confusion_matrix,
 )
 
 
@@ -42,11 +41,7 @@ class ModelEvaluator:
         df["cum_bad"] = df["target"].cumsum() / bad
         df["cum_good"] = (1 - df["target"]).cumsum() / good
 
-        return float(np.max(
-            np.abs(
-                df["cum_bad"] - df["cum_good"]
-            ))
-        )
+        return float(np.max(np.abs(df["cum_bad"] - df["cum_good"])))
 
     @staticmethod
     def classification_metrics(
@@ -61,69 +56,47 @@ class ModelEvaluator:
         )
 
         return {
-
-            "Accuracy":
-                accuracy_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "Balanced Accuracy":
-                balanced_accuracy_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "Precision":
-                precision_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "Recall":
-                recall_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "F1":
-                f1_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "ROC AUC":
-                auc,
-
-            "PR AUC":
-                average_precision_score(
-                    y_true,
-                    y_prob,
-                ),
-
-            "Log Loss":
-                log_loss(
-                    y_true,
-                    y_prob,
-                ),
-
-            "Brier Score":
-                brier_score_loss(
-                    y_true,
-                    y_prob,
-                ),
-
-            "MCC":
-                matthews_corrcoef(
-                    y_true,
-                    y_pred,
-                ),
-
-            "Cohen Kappa":
-                cohen_kappa_score(
-                    y_true,
-                    y_pred,
-                ),
+            "Accuracy": accuracy_score(
+                y_true,
+                y_pred,
+            ),
+            "Balanced Accuracy": balanced_accuracy_score(
+                y_true,
+                y_pred,
+            ),
+            "Precision": precision_score(
+                y_true,
+                y_pred,
+            ),
+            "Recall": recall_score(
+                y_true,
+                y_pred,
+            ),
+            "F1": f1_score(
+                y_true,
+                y_pred,
+            ),
+            "ROC AUC": auc,
+            "PR AUC": average_precision_score(
+                y_true,
+                y_prob,
+            ),
+            "Log Loss": log_loss(
+                y_true,
+                y_prob,
+            ),
+            "Brier Score": brier_score_loss(
+                y_true,
+                y_prob,
+            ),
+            "MCC": matthews_corrcoef(
+                y_true,
+                y_pred,
+            ),
+            "Cohen Kappa": cohen_kappa_score(
+                y_true,
+                y_pred,
+            ),
         }
 
     @staticmethod
@@ -138,16 +111,11 @@ class ModelEvaluator:
         )
 
         return {
-
-            "Gini":
-                (2 * auc) - 1,
-
-            "KS":
-                ModelEvaluator.ks_statistic(
-                    y_true,
-                    y_prob,
-                ),
-
+            "Gini": (2 * auc) - 1,
+            "KS": ModelEvaluator.ks_statistic(
+                y_true,
+                y_prob,
+            ),
         }
 
     @staticmethod
@@ -160,50 +128,35 @@ class ModelEvaluator:
         """
 
         return {
-
-            "Accuracy":
-                accuracy_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "Balanced Accuracy":
-                balanced_accuracy_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "Precision":
-                precision_score(
-                    y_true,
-                    y_pred,
-                ),
-    
-            "Recall":
-                recall_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "F1":
-                f1_score(
-                    y_true,
-                    y_pred,
-                ),
-
-            "MCC":
-                matthews_corrcoef(
-                    y_true,
-                    y_pred,
-                ),
-
-            "Cohen Kappa":
-                cohen_kappa_score(
-                    y_true,
-                    y_pred,
-                ),
+            "Accuracy": accuracy_score(
+                y_true,
+                y_pred,
+            ),
+            "Balanced Accuracy": balanced_accuracy_score(
+                y_true,
+                y_pred,
+            ),
+            "Precision": precision_score(
+                y_true,
+                y_pred,
+            ),
+            "Recall": recall_score(
+                y_true,
+                y_pred,
+            ),
+            "F1": f1_score(
+                y_true,
+                y_pred,
+            ),
+            "MCC": matthews_corrcoef(
+                y_true,
+                y_pred,
+            ),
+            "Cohen Kappa": cohen_kappa_score(
+                y_true,
+                y_pred,
+            ),
         }
-
 
     @staticmethod
     def basic_evaluation(
@@ -230,18 +183,14 @@ class ModelEvaluator:
             }
         )
 
-        metrics["Confusion Matrix"] = (
-            confusion_matrix(
-                y_true,
-                y_pred,
-            ).tolist()
-        )
+        metrics["Confusion Matrix"] = confusion_matrix(
+            y_true,
+            y_pred,
+        ).tolist()
 
         return metrics
 
-
     @staticmethod
-
     def evaluate(
         model,
         X_test,
@@ -255,24 +204,20 @@ class ModelEvaluator:
         if hasattr(model, "predict_proba"):
 
             y_prob = model.predict_proba(X_test)[:, 1]
-    
-            metrics.update(
 
+            metrics.update(
                 ModelEvaluator.classification_metrics(
                     y_test,
                     y_pred,
                     y_prob,
                 )
-
             )
 
             metrics.update(
-
                 ModelEvaluator.credit_metrics(
                     y_test,
                     y_prob,
                 )
-
             )
 
         else:

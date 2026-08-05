@@ -4,7 +4,6 @@ import pandas as pd
 
 from configs.config import MODEL_SELECTION_WEIGHTS
 
-
 HIGHER_IS_BETTER = [
     "ROC AUC",
     "KS",
@@ -55,10 +54,7 @@ def score_models(results: pd.DataFrame) -> pd.DataFrame:
             higher_is_better=True,
         )
 
-        results["Overall Score"] += (
-            normalized
-            * MODEL_SELECTION_WEIGHTS[metric]
-        )
+        results["Overall Score"] += normalized * MODEL_SELECTION_WEIGHTS[metric]
 
     for metric in LOWER_IS_BETTER:
 
@@ -67,10 +63,7 @@ def score_models(results: pd.DataFrame) -> pd.DataFrame:
             higher_is_better=False,
         )
 
-        results["Overall Score"] += (
-            normalized
-            * MODEL_SELECTION_WEIGHTS[metric]
-        )
+        results["Overall Score"] += normalized * MODEL_SELECTION_WEIGHTS[metric]
 
     return results
 

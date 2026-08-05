@@ -1,9 +1,6 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 import matplotlib.pyplot as plt
-
 from sklearn.calibration import calibration_curve
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
@@ -11,11 +8,11 @@ from sklearn.metrics import (
 )
 
 from configs.config import (
-    PERFORMANCE_DIR,
-    ROC_CURVE_FILENAME,
-    CONFUSION_MATRIX_FILENAME,
     CALIBRATION_CURVE_FILENAME,
+    CONFUSION_MATRIX_FILENAME,
+    PERFORMANCE_DIR,
     RELIABILITY_DIAGRAM_FILENAME,
+    ROC_CURVE_FILENAME,
 )
 
 
@@ -43,8 +40,7 @@ class EvaluationPlots:
         plt.tight_layout()
 
         plt.savefig(
-            PERFORMANCE_DIR
-            / ROC_CURVE_FILENAME,
+            PERFORMANCE_DIR / ROC_CURVE_FILENAME,
             dpi=300,
             bbox_inches="tight",
         )
@@ -65,8 +61,7 @@ class EvaluationPlots:
         plt.tight_layout()
 
         plt.savefig(
-            PERFORMANCE_DIR
-            / CONFUSION_MATRIX_FILENAME,
+            PERFORMANCE_DIR / CONFUSION_MATRIX_FILENAME,
             dpi=300,
             bbox_inches="tight",
         )
@@ -99,23 +94,16 @@ class EvaluationPlots:
             "--",
         )
 
-        plt.xlabel(
-            "Predicted Probability"
-        )
+        plt.xlabel("Predicted Probability")
 
-        plt.ylabel(
-            "Observed Frequency"
-        )
+        plt.ylabel("Observed Frequency")
 
-        plt.title(
-            "Calibration Curve"
-        )
+        plt.title("Calibration Curve")
 
         plt.tight_layout()
 
         plt.savefig(
-            PERFORMANCE_DIR
-            / CALIBRATION_CURVE_FILENAME,
+            PERFORMANCE_DIR / CALIBRATION_CURVE_FILENAME,
             dpi=300,
             bbox_inches="tight",
         )
@@ -135,23 +123,16 @@ class EvaluationPlots:
             bins=10,
         )
 
-        plt.xlabel(
-            "Predicted Probability"
-        )
+        plt.xlabel("Predicted Probability")
 
-        plt.ylabel(
-            "Count"
-        )
+        plt.ylabel("Count")
 
-        plt.title(
-            "Reliability Diagram"
-        )
+        plt.title("Reliability Diagram")
 
         plt.tight_layout()
 
         plt.savefig(
-            PERFORMANCE_DIR
-            / RELIABILITY_DIAGRAM_FILENAME,
+            PERFORMANCE_DIR / RELIABILITY_DIAGRAM_FILENAME,
             dpi=300,
             bbox_inches="tight",
         )

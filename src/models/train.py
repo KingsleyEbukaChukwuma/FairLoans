@@ -1,69 +1,72 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split
 
 from configs.config import (
-    RAW_DATA_DIR,
-    REPORT_DIR,
-    MODEL_DIR,
-    STUDY_DIR,
-    RANDOM_STATE,
-    TEST_SIZE,
+    COMPARISON_DIR,
+    CV_FOLDS,
     DATASET_FILENAME,
+    DEPENDENCE_FEATURES,
+    EXECUTIVE_SUMMARY_FILENAME,
+    EXPLAINABILITY_DIR,
+    FAIRNESS_COMPARISON_FILENAME,
+    FAIRNESS_CONSTRAINT,
+    FAIRNESS_DIR,
+    FAIRNESS_MITIGATION_METHOD,
+    FAIRNESS_OBJECTIVE,
+    FAIRNESS_SUMMARY_FILENAME,
+    FEATURE_NAMES_FILENAME,
+    GOVERNANCE_REPORT_FILENAME,
+    INPUT_SCHEMA_FILENAME,
+    METRICS_FILENAME,
+    MODEL_DIR,
+    OPTIMIZATION_METRIC,
     OPTUNA_TRIALS,
     PIPELINE_FILENAME,
+    RANDOM_STATE,
+    RAW_DATA_DIR,
+    REPORT_DIR,
     RESULTS_FILENAME,
-    METRICS_FILENAME,
-    THRESHOLD_FILENAME,
-    TRAINING_SUMMARY_FILENAME,
-    FEATURE_NAMES_FILENAME,
-    OPTIMIZATION_METRIC,
-    THRESHOLD_OPTIMIZATION_METRIC,
-    CV_FOLDS,
-    TRAINING_LOG,
-    FAIRNESS_DIR,
-    FAIRNESS_COMPARISON_FILENAME,
-    FAIRNESS_SUMMARY_FILENAME,
-    COMPARISON_DIR,
-    GOVERNANCE_REPORT_FILENAME,
-    EXECUTIVE_SUMMARY_FILENAME,
-    FAIRNESS_CONSTRAINT,
-    FAIRNESS_OBJECTIVE,
-    EXPLAINABILITY_DIR,
-    SHAP_VALUES_FILENAME,
     SHAP_EXPLAINER_FILENAME,
-    DEPENDENCE_FEATURES,
-    INTERACTION_VALUES_FILENAME,
-    TOP_INTERACTIONS,
     SHAP_INTERACTION_VALUES_FILENAME,
-    FAIRNESS_MITIGATION_METHOD,
-    INPUT_SCHEMA_FILENAME,
+    SHAP_VALUES_FILENAME,
+    STUDY_DIR,
+    TEST_SIZE,
+    THRESHOLD_FILENAME,
+    THRESHOLD_OPTIMIZATION_METRIC,
+    TRAINING_LOG,
+    TRAINING_SUMMARY_FILENAME,
 )
-
-from src.fairness.evaluator import FairnessEvaluator
 from src.data.loader import DataLoader
-from src.features.preprocessing import CreditPreprocessor
-
-from src.models.registry import MODELS
-from src.models.build_pipeline import build_pipeline
-from src.models.trainer import ModelTrainer
-from src.models.tune import ModelTuner
-from src.models.evaluate import ModelEvaluator
-from src.models.select_best import select_best
-from src.models.save import (save_model, save_study, save_json, save_dataframe, save_pickle,)
-from src.utils.logger import get_logger
-from src.fairness.mitigation import BiasMitigator
-from src.fairness.comparison import FairnessComparison
-from src.fairness.governance import GovernanceReport
+from src.explainability.beeswarm import BeeswarmPlot
+from src.explainability.dependence import DependencePlot
 from src.explainability.explainer import SHAPExplainer
 from src.explainability.global_importance import GlobalFeatureImportance
-from src.explainability.beeswarm import BeeswarmPlot
-from src.explainability.waterfall import WaterfallPlot
-from src.explainability.dependence import DependencePlot
 from src.explainability.interactions import InteractionPlot
 from src.explainability.local_explanation import LocalExplanation
-from src.models.threshold import DecisionThresholdOptimizer
+from src.explainability.waterfall import WaterfallPlot
+from src.fairness.comparison import FairnessComparison
+from src.fairness.evaluator import FairnessEvaluator
+from src.fairness.governance import GovernanceReport
+from src.fairness.mitigation import BiasMitigator
+from src.features.preprocessing import CreditPreprocessor
+from src.models.build_pipeline import build_pipeline
+from src.models.evaluate import ModelEvaluator
 from src.models.evaluation_plots import EvaluationPlots
+from src.models.registry import MODELS
+from src.models.save import (
+    save_dataframe,
+    save_json,
+    save_model,
+    save_pickle,
+    save_study,
+)
+from src.models.select_best import select_best
+from src.models.threshold import DecisionThresholdOptimizer
+from src.models.trainer import ModelTrainer
+from src.models.tune import ModelTuner
+from src.utils.logger import get_logger
+
 
 class TrainingManager:
 
@@ -84,9 +87,7 @@ class TrainingManager:
 
     def load_data(self):
 
-        return self.loader.load_arff(
-            RAW_DATA_DIR / DATASET_FILENAME
-        )
+        return self.loader.load_arff(RAW_DATA_DIR / DATASET_FILENAME)
 
     def split_data(self, df):
 
@@ -97,12 +98,12 @@ class TrainingManager:
             X_test,
             y_train,
             y_test,
-    	    sensitive_train,
-    	    sensitive_test,
+            sensitive_train,
+            sensitive_test,
         ) = train_test_split(
             X,
             y,
-	    sensitive,
+            sensitive,
             test_size=TEST_SIZE,
             random_state=RANDOM_STATE,
             stratify=y,
@@ -113,10 +114,9 @@ class TrainingManager:
             X_test,
             y_train,
             y_test,
-    	    sensitive_train,
-    	    sensitive_test,
+            sensitive_train,
+            sensitive_test,
         )
-
 
     def train_models(self, X_train, X_test, y_train, y_test):
 
@@ -124,17 +124,11 @@ class TrainingManager:
 
         for model_name in MODELS:
 
-            self.logger.info(
-                "=" * 60
-            )
+            self.logger.info("=" * 60)
 
-            self.logger.info(
-                f"Training model: {model_name}"
-            )
+            self.logger.info(f"Training model: {model_name}")
 
-            self.logger.info(
-                "=" * 60
-            )
+            self.logger.info("=" * 60)
 
             pipeline = build_pipeline(
                 transformer,
@@ -152,7 +146,6 @@ class TrainingManager:
                 n_trials=OPTUNA_TRIALS,
             )
 
-
             save_study(
                 study,
                 STUDY_DIR / f"{model_name}_study.joblib",
@@ -162,9 +155,7 @@ class TrainingManager:
                 study.best_params,
                 STUDY_DIR / f"{model_name}_best_params.json",
             )
-            pipeline.named_steps["classifier"].set_params(
-                **study.best_params
-            )
+            pipeline.named_steps["classifier"].set_params(**study.best_params)
 
             trainer = ModelTrainer(pipeline)
 
@@ -193,9 +184,12 @@ class TrainingManager:
 
         best_name = best["Model"]
 
-        save_json(best.to_dict(), MODEL_DIR / METRICS_FILENAME,)
+        save_json(
+            best.to_dict(),
+            MODEL_DIR / METRICS_FILENAME,
+        )
 
-        self.logger.info(  f"Best model selected: {best_name}" )
+        self.logger.info(f"Best model selected: {best_name}")
 
         trainer = self.trained_models[best_name]
 
@@ -203,7 +197,6 @@ class TrainingManager:
             X_train,
             y_train,
         )
-
 
         y_prob = trainer.calibrated_pipeline.predict_proba(
             X_test,
@@ -219,35 +212,19 @@ class TrainingManager:
             y_prob=y_prob,
         )
 
-
-        best_threshold, best_score = (
-            DecisionThresholdOptimizer.optimize(
-                y_true=y_test,
-                y_prob=y_prob,
-                metric=THRESHOLD_OPTIMIZATION_METRIC,
-            )
+        best_threshold, best_score = DecisionThresholdOptimizer.optimize(
+            y_true=y_test,
+            y_prob=y_prob,
+            metric=THRESHOLD_OPTIMIZATION_METRIC,
         )
 
-
         save_json(
-
             {
-
-                "threshold": float(
-                    best_threshold
-                ),
-
-                "metric":
-                    "balanced_accuracy",
-
-                "score":
-                    float(best_score),
-
+                "threshold": float(best_threshold),
+                "metric": "balanced_accuracy",
+                "score": float(best_score),
             },
-
-            MODEL_DIR /
-            THRESHOLD_FILENAME,
-
+            MODEL_DIR / THRESHOLD_FILENAME,
         )
         save_model(
             trainer.calibrated_pipeline,
@@ -255,18 +232,18 @@ class TrainingManager:
         )
 
         summary = {
-          "best_model": best["Model"],
-          "models_trained": len(self.results),
-          "optimization_metric": OPTIMIZATION_METRIC,
-          "calibrated": True,
-          "cross_validation_folds": CV_FOLDS,
-          "optuna_trials": OPTUNA_TRIALS,
-          "dataset_size": dataset_size,
+            "best_model": best["Model"],
+            "models_trained": len(self.results),
+            "optimization_metric": OPTIMIZATION_METRIC,
+            "calibrated": True,
+            "cross_validation_folds": CV_FOLDS,
+            "optuna_trials": OPTUNA_TRIALS,
+            "dataset_size": dataset_size,
         }
 
         save_json(
-           summary,
-           MODEL_DIR / TRAINING_SUMMARY_FILENAME,
+            summary,
+            MODEL_DIR / TRAINING_SUMMARY_FILENAME,
         )
 
         return trainer
@@ -295,14 +272,9 @@ class TrainingManager:
         # Baseline predictions
         # ---------------------------------------------------------
 
-        baseline_pred = trainer.calibrated_pipeline.predict(
-            X_test
-        )
+        baseline_pred = trainer.calibrated_pipeline.predict(X_test)
 
-        baseline_prob = trainer.calibrated_pipeline.predict_proba(
-            X_test
-        )[:, 1]
-
+        baseline_prob = trainer.calibrated_pipeline.predict_proba(X_test)[:, 1]
 
         baseline_performance = ModelEvaluator.evaluate(
             trainer.calibrated_pipeline,
@@ -325,7 +297,6 @@ class TrainingManager:
             baseline_fairness,
             stage="baseline",
         )
-
 
         # ---------------------------------------------------------
         # Bias Mitigation
@@ -354,17 +325,13 @@ class TrainingManager:
             )
 
         else:
-            raise ValueError(
-                f"Unknown fairness method: {FAIRNESS_MITIGATION_METHOD}"
-            )
+            raise ValueError(f"Unknown fairness method: {FAIRNESS_MITIGATION_METHOD}")
 
         mitigated_pred = BiasMitigator.predict(
             mitigator,
             X_test,
             self.sensitive_test,
         )
-
-
 
         if FAIRNESS_MITIGATION_METHOD == "threshold_optimizer":
 
@@ -383,16 +350,14 @@ class TrainingManager:
                 )
             )
 
-            mitigated_performance["Confusion Matrix"] = (
-               confusion_matrix(
-                    y_test,
-                    mitigated_pred,
-                ).tolist()
-            )
+            mitigated_performance["Confusion Matrix"] = confusion_matrix(
+                y_test,
+                mitigated_pred,
+            ).tolist()
 
         elif FAIRNESS_MITIGATION_METHOD == "exponentiated_gradient":
 
-            mitigated_performance =  ModelEvaluator.basic_evaluation(
+            mitigated_performance = ModelEvaluator.basic_evaluation(
                 y_test,
                 mitigated_pred,
             )
@@ -408,19 +373,16 @@ class TrainingManager:
                 }
             )
 
-            mitigated_performance["Confusion Matrix"] = (
-               confusion_matrix(
-                    y_test,
-                    mitigated_pred,
-                ).tolist()
-            )
+            mitigated_performance["Confusion Matrix"] = confusion_matrix(
+                y_test,
+                mitigated_pred,
+            ).tolist()
 
         mitigated_fairness = FairnessEvaluator.evaluate(
             y_true=y_test,
             y_pred=mitigated_pred,
             sensitive_features=self.sensitive_test,
         )
-
 
         save_json(
             mitigated_performance,
@@ -432,26 +394,18 @@ class TrainingManager:
             stage="mitigated",
         )
 
-
-
         # ---------------------------------------------------------
         # Comparison
         # ---------------------------------------------------------
 
         comparison = FairnessComparison.compare(
-
             baseline_performance=baseline_performance,
-
             mitigated_performance=mitigated_performance,
-
             baseline_fairness=baseline_fairness["overall"],
-
             mitigated_fairness=mitigated_fairness["overall"],
         )
 
-        summary = FairnessComparison.summary(
-            comparison
-        )
+        summary = FairnessComparison.summary(comparison)
 
         governance = GovernanceReport.generate(
             comparison,
@@ -480,14 +434,9 @@ class TrainingManager:
             COMPARISON_DIR / EXECUTIVE_SUMMARY_FILENAME,
         )
 
-        self.logger.info(
-            "Responsible AI pipeline completed."
-        )
+        self.logger.info("Responsible AI pipeline completed.")
 
         return comparison
-
-
-
 
     def build_explainability(
         self,
@@ -503,10 +452,8 @@ class TrainingManager:
         and reuse them everywhere.
         """
 
-        self.logger.info(
-            "Building SHAP explainability..."
-        )
-    
+        self.logger.info("Building SHAP explainability...")
+
         explainer = SHAPExplainer(
             trainer.pipeline,
         ).fit(
@@ -523,22 +470,19 @@ class TrainingManager:
 
         save_pickle(
             explainer,
-            EXPLAINABILITY_DIR
-            / SHAP_EXPLAINER_FILENAME,
+            EXPLAINABILITY_DIR / SHAP_EXPLAINER_FILENAME,
         )
 
         save_pickle(
             shap_values,
-            EXPLAINABILITY_DIR
-            / SHAP_VALUES_FILENAME,
+            EXPLAINABILITY_DIR / SHAP_VALUES_FILENAME,
         )
 
         if interaction_values is not None:
 
             save_pickle(
                 interaction_values,
-                EXPLAINABILITY_DIR /
-                SHAP_INTERACTION_VALUES_FILENAME,
+                EXPLAINABILITY_DIR / SHAP_INTERACTION_VALUES_FILENAME,
             )
 
             InteractionPlot.build(
@@ -578,10 +522,7 @@ class TrainingManager:
                 feature=feature,
             )
 
-
-        self.logger.info(
-            "Explainability artifacts created."
-        )
+        self.logger.info("Explainability artifacts created.")
 
         return explainer, shap_values
 
@@ -591,7 +532,6 @@ class TrainingManager:
             pd.DataFrame(self.results),
             REPORT_DIR / RESULTS_FILENAME,
         )
-
 
     def run(self):
 
@@ -637,14 +577,10 @@ class TrainingManager:
             dataset_size=len(df),
         )
 
-        self.logger.info(
-            "Input schema saved."
-        )
+        self.logger.info("Input schema saved.")
 
         schema = CreditPreprocessor.get_input_schema(
-            trainer.pipeline.named_steps[
-                "preprocessor"
-            ]
+            trainer.pipeline.named_steps["preprocessor"]
         )
 
         save_json(
@@ -652,11 +588,7 @@ class TrainingManager:
             MODEL_DIR / INPUT_SCHEMA_FILENAME,
         )
 
-
-
-        self.logger.info(
-            "Running Responsible AI pipeline"
-        )
+        self.logger.info("Running Responsible AI pipeline")
 
         self.responsible_ai_pipeline(
             trainer,
@@ -666,9 +598,7 @@ class TrainingManager:
             y_test,
         )
 
-        self.logger.info(
-            "Building Explainability"
-        )
+        self.logger.info("Building Explainability")
 
         self.build_explainability(
             trainer,
@@ -676,16 +606,11 @@ class TrainingManager:
             X_test,
         )
 
-
-        self.logger.info(
-            "Saving benchmark results"
-        )
+        self.logger.info("Saving benchmark results")
 
         self.save_results()
 
-        self.logger.info(
-            "Training completed successfully."
-        )
+        self.logger.info("Training completed successfully.")
 
 
 if __name__ == "__main__":
