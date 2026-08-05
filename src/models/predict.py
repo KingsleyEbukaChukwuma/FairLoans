@@ -5,7 +5,7 @@ import json
 import joblib
 import pandas as pd
 
-from configs.config import (
+from src.configs.config import (
     HIGH_CONFIDENCE,
     LOW_CONFIDENCE,
     MODEL_DIR,

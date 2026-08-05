@@ -4,7 +4,7 @@ import optuna
 from sklearn.base import clone
 from sklearn.model_selection import cross_val_score
 
-from configs.config import (
+from src.configs.config import (
     CV_FOLDS,
     N_JOBS,
     N_JOBS2,

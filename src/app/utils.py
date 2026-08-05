@@ -3,7 +3,7 @@ from functools import lru_cache
 
 import pandas as pd
 
-from configs.config import (
+from src.configs.config import (
     BAR_IMPORTANCE_FILENAME,
     BASELINE_DIR,
     BEESWARM_FILENAME,

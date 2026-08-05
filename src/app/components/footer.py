@@ -4,7 +4,7 @@ from datetime import UTC, datetime
 
 import streamlit as st
 
-from configs.config import (
+from src.configs.config import (
     APP_NAME,
     VERSION,
 )
