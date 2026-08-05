@@ -70,9 +70,7 @@ class CreditPreprocessor:
 
         required_columns = MODEL_FEATURES + [TARGET_RAW_COLUMN]
 
-        missing_columns = [
-            column for column in required_columns if column not in df.columns
-        ]
+        missing_columns = [column for column in required_columns if column not in df.columns]
 
         if missing_columns:
 

@@ -51,12 +51,7 @@ class FairnessEvaluator:
             inplace=True,
         )
 
-        differences = (
-            metric_frame.difference()
-            .rename("Difference")
-            .reset_index()
-            .rename(columns={"index": "Metric"})
-        )
+        differences = metric_frame.difference().rename("Difference").reset_index().rename(columns={"index": "Metric"})
 
         return {
             "overall": overall_metrics,

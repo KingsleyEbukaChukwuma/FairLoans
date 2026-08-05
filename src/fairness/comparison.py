@@ -161,9 +161,7 @@ class FairnessComparison:
         fairness = comparison[comparison["Category"] == "Fairness"]
 
         return {
-            "Performance Metrics Improved": int(
-                (performance["Outcome"] == "Improved").sum()
-            ),
+            "Performance Metrics Improved": int((performance["Outcome"] == "Improved").sum()),
             "Performance Metrics Worse": int((performance["Outcome"] == "Worse").sum()),
             "Fairness Metrics Improved": int((fairness["Outcome"] == "Improved").sum()),
             "Fairness Metrics Worse": int((fairness["Outcome"] == "Worse").sum()),

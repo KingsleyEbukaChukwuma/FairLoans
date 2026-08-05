@@ -53,9 +53,7 @@ Generated from saved model artifacts.
 
             st.caption(f"**Training Samples:** {summary['dataset_size']}")
 
-            st.caption(
-                f"**Cross Validation:** {summary['cross_validation_folds']}-Fold"
-            )
+            st.caption(f"**Cross Validation:** {summary['cross_validation_folds']}-Fold")
 
         st.caption(f"""
 Generated on **{datetime.now(UTC).strftime("%Y-%m-%d %H:%M")}**

@@ -103,11 +103,7 @@ class GovernanceReport:
 
         fairness_improved = dp["outcome"] == "Improved" and eo["outcome"] == "Improved"
 
-        if (
-            fairness_improved
-            and roc_drop <= MAX_ROC_AUC_DEGRADATION
-            and f1_drop <= MAX_F1_DEGRADATION
-        ):
+        if fairness_improved and roc_drop <= MAX_ROC_AUC_DEGRADATION and f1_drop <= MAX_F1_DEGRADATION:
 
             recommendation = (
                 "Adopt the mitigated model because "
@@ -129,9 +125,7 @@ class GovernanceReport:
             "Performance Summary": performance_summary,
             "Calibration Summary": calibration_summary,
             "Fairness Summary": fairness_summary,
-            "Performance Metrics Improved": int(
-                (performance["Outcome"] == "Improved").sum()
-            ),
+            "Performance Metrics Improved": int((performance["Outcome"] == "Improved").sum()),
             "Performance Metrics Worse": int((performance["Outcome"] == "Worse").sum()),
             "Fairness Metrics Improved": int((fairness["Outcome"] == "Improved").sum()),
             "Fairness Metrics Worse": int((fairness["Outcome"] == "Worse").sum()),

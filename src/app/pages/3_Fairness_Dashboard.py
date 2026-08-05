@@ -29,9 +29,7 @@ st.set_page_config(
 
 st.title("⚖️ Responsible AI Dashboard")
 
-st.caption(
-    "Evaluate fairness, bias mitigation " "and governance of the selected model."
-)
+st.caption("Evaluate fairness, bias mitigation " "and governance of the selected model.")
 
 #
 # -------------------------------------------------------

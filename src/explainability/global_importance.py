@@ -35,11 +35,7 @@ class GlobalFeatureImportance:
             }
         )
 
-        importance = (
-            importance.sort_values("Importance", ascending=False)
-            .head(SHAP_MAX_DISPLAY)
-            .reset_index(drop=True)
-        )
+        importance = importance.sort_values("Importance", ascending=False).head(SHAP_MAX_DISPLAY).reset_index(drop=True)
         return importance
 
     @staticmethod

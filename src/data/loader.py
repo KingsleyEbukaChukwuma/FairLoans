@@ -37,9 +37,7 @@ class DataLoader:
         object_columns = df.select_dtypes(include="object").columns
 
         for col in object_columns:
-            df[col] = df[col].apply(
-                lambda x: x.decode("utf-8") if isinstance(x, bytes) else x
-            )
+            df[col] = df[col].apply(lambda x: x.decode("utf-8") if isinstance(x, bytes) else x)
 
         return df
 

@@ -491,9 +491,7 @@ class TrainingManager:
             )
         else:
 
-            self.logger.warning(
-                "Selected model does not support SHAP interaction values."
-            )
+            self.logger.warning("Selected model does not support SHAP interaction values.")
 
         GlobalFeatureImportance.build(
             explainer,
@@ -579,9 +577,7 @@ class TrainingManager:
 
         self.logger.info("Input schema saved.")
 
-        schema = CreditPreprocessor.get_input_schema(
-            trainer.pipeline.named_steps["preprocessor"]
-        )
+        schema = CreditPreprocessor.get_input_schema(trainer.pipeline.named_steps["preprocessor"])
 
         save_json(
             schema,

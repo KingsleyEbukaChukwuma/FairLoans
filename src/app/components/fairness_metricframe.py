@@ -19,9 +19,7 @@ class FairnessMetricFrame:
             include="number",
         ).columns
 
-        return df.style.format(
-            {column: "{:.3f}" for column in numeric}
-        ).background_gradient(
+        return df.style.format({column: "{:.3f}" for column in numeric}).background_gradient(
             cmap="Blues",
             subset=numeric,
         )

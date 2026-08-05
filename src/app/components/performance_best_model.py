@@ -139,9 +139,7 @@ for deployment.
 
         if summary["calibrated"]:
 
-            st.success(
-                "✔ Model probabilities are calibrated " "using **Sigmoid Calibration**."
-            )
+            st.success("✔ Model probabilities are calibrated " "using **Sigmoid Calibration**.")
 
         else:
 

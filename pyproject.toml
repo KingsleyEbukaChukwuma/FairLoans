@@ -1,0 +1,19 @@
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N"]
+
+# Ignore rules that don't fit Streamlit or ML conventions
+ignore = [
+    "N803",  # function arguments like X_train, X_test
+    "N806",  # variables like X, X_processed
+    "N999",  # Streamlit Home.py filename
+]
+
+[tool.ruff.lint.per-file-ignores]
+"src/app/Home.py" = ["E402"]
