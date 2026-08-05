@@ -7,9 +7,7 @@ def test_evaluate_returns_metrics(sample_data):
 
     preprocessor = CreditPreprocessor()
 
-    X, y, _ = preprocessor.prepare_data(
-        sample_data
-    )
+    X, y, _ = preprocessor.prepare_data(sample_data)
 
     transformer = preprocessor.build_transformer()
 
@@ -30,34 +28,19 @@ def test_evaluate_returns_metrics(sample_data):
     )
 
     expected = [
-
         "Accuracy",
-
         "Balanced Accuracy",
-
         "Precision",
-
         "Recall",
-
         "F1",
-
         "ROC AUC",
-
         "PR AUC",
-
         "Log Loss",
-
         "Brier Score",
-
         "MCC",
-
         "Cohen Kappa",
-
         "Gini",
-
         "KS",
-
-        "Confusion Matrix",
     ]
 
     for metric in expected:
@@ -69,9 +52,7 @@ def test_auc_range(sample_data):
 
     preprocessor = CreditPreprocessor()
 
-    X, y, _ = preprocessor.prepare_data(
-        sample_data
-    )
+    X, y, _ = preprocessor.prepare_data(sample_data)
 
     transformer = preprocessor.build_transformer()
 

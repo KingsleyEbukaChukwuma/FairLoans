@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from fairlearn.postprocessing import ThresholdOptimizer
 from fairlearn.reductions import (
-    ExponentiatedGradient,
     DemographicParity,
     EqualizedOdds,
+    ExponentiatedGradient,
 )
+from sklearn.base import clone
 
 
 class BiasMitigator:
@@ -41,24 +42,16 @@ class BiasMitigator:
         """
 
         mitigator = ThresholdOptimizer(
-
             estimator=estimator,
-
             constraints=constraints,
-
             objective=objective,
-
             predict_method="predict_proba",
-
             prefit=True,
         )
 
         mitigator.fit(
-
             X_train,
-
             y_train,
-
             sensitive_features=sensitive_features,
         )
 
@@ -94,41 +87,58 @@ class BiasMitigator:
 
         else:
 
-            raise ValueError(
-                f"Unsupported constraint: {constraint}"
-            )
+            raise ValueError(f"Unsupported constraint: {constraint}")
+
+        preprocessor = estimator.named_steps["preprocessor"]
+
+        classifier = clone(estimator.named_steps["classifier"])
+
+        X_train_processed = preprocessor.transform(
+            X_train,
+        )
 
         mitigator = ExponentiatedGradient(
-
-            estimator=estimator,
-
+            estimator=classifier,
             constraints=fairness_constraint,
         )
 
         mitigator.fit(
-
-            X_train,
-
+            X_train_processed,
             y_train,
-
             sensitive_features=sensitive_features,
         )
 
-        return mitigator
+        return {
+            "preprocessor": preprocessor,
+            "mitigator": mitigator,
+        }
 
     @staticmethod
     def predict(
         mitigated_model,
         X,
-        sensitive_features,
+        sensitive_features=None,
     ):
         """
         Predict using a mitigated model.
         """
 
-        return mitigated_model.predict(
+        # ThresholdOptimizer
+        if isinstance(
+            mitigated_model,
+            ThresholdOptimizer,
+        ):
 
+            return mitigated_model.predict(
+                X,
+                sensitive_features=sensitive_features,
+            )
+
+        # ExponentiatedGradient
+        X_processed = mitigated_model["preprocessor"].transform(
             X,
+        )
 
-            sensitive_features=sensitive_features,
+        return mitigated_model["mitigator"].predict(
+            X_processed,
         )

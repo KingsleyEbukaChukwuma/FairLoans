@@ -18,3 +18,6 @@ pytest
 interpret
 streamlit-option-menu
 streamlit-extras
+black
+ruff
+pytest

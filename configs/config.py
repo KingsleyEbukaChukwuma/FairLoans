@@ -33,9 +33,10 @@ MITIGATED_DIR = FAIRNESS_DIR / "mitigated"
 COMPARISON_DIR = FAIRNESS_DIR / "comparison"
 FAIRNESS_SUMMARY_FILENAME = "fairness_summary.json"
 FAIRNESS_COMPARISON_FILENAME = "comparison.csv"
-FAIRNESS_SUMMARY_FILENAME = "comparison_summary.json"
+COMPARISON_SUMMARY_FILENAME = "comparison_summary.json"
 GOVERNANCE_REPORT_FILENAME = "governance_report.csv"
 EXECUTIVE_SUMMARY_FILENAME = "executive_summary.json"
+INPUT_SCHEMA_FILENAME = "input_schema.json"
 
 # =============================================================================
 # Dataset
@@ -95,7 +96,7 @@ RANDOM_STATE = 123
 
 CV_FOLDS = 5
 
-N_JOBS = -1
+N_JOBS = 1
 
 N_JOBS2 = 1
 
@@ -120,7 +121,7 @@ MODEL_SELECTION_WEIGHTS = {
 
 OPTUNA_TRIALS = 50
 
-OPTUNA_TIMEOUT = 900      # seconds
+OPTUNA_TIMEOUT = 900  # seconds
 
 OPTUNA_DIRECTION = "maximize"
 
@@ -145,6 +146,8 @@ APPROVAL_THRESHOLD = 0.50
 HIGH_CONFIDENCE = 0.80
 
 LOW_CONFIDENCE = 0.20
+
+THRESHOLD_OPTIMIZATION_METRIC = "balanced_accuracy"
 
 # =============================================================================
 # Evaluation
@@ -186,7 +189,7 @@ LOG_FILE = LOG_DIR / "training.log"
 
 FAIRNESS_CONSTRAINT = "equalized_odds"
 
-FAIRNESS_OBJECTIVE = "accuracy_score"
+FAIRNESS_OBJECTIVE = "balanced_accuracy_score"
 
 FAIRNESS_MITIGATION_METHOD = "threshold_optimizer"
 
@@ -198,3 +201,57 @@ MAX_ROC_AUC_DEGRADATION = 0.01
 
 MAX_F1_DEGRADATION = 0.02
 
+# =============================================================================
+# Explainability
+# =============================================================================
+
+EXPLAINABILITY_DIR = ARTIFACT_DIR / "explainability"
+
+GLOBAL_IMPORTANCE_FILENAME = "global_feature_importance.csv"
+
+LOCAL_EXPLANATION_FILENAME = "local_explanation.json"
+
+SHAP_VALUES_FILENAME = "shap_values.pkl"
+
+BEESWARM_FILENAME = "beeswarm.png"
+
+BAR_IMPORTANCE_FILENAME = "global_importance.png"
+
+WATERFALL_FILENAME = "waterfall.png"
+
+FORCE_PLOT_FILENAME = "force_plot.html"
+
+INTERACTION_FILENAME = "interaction_heatmap.png"
+
+INTERACTION_VALUES_FILENAME = "interaction_values.csv"
+
+TOP_INTERACTIONS = 20
+
+MAX_EXPLANATIONS = 100
+
+SHAP_EXPLAINER_FILENAME = "shap_explainer.pkl"
+
+SHAP_INTERACTION_VALUES_FILENAME = "shap_interaction_values.pkl"
+
+SHAP_MAX_DISPLAY = 15
+
+DEPENDENCE_FEATURES = [
+    "numeric__age",
+    "numeric__credit_amount",
+    "numeric__duration",
+]
+
+DEPENDENCE_FILENAME = "dependence_{feature}.png"
+
+
+# =============================================================================
+# Performance
+# =============================================================================
+
+PERFORMANCE_DIR = ARTIFACT_DIR / "performance"
+
+ROC_CURVE_FILENAME = "roc_curve.png"
+
+CONFUSION_MATRIX_FILENAME = "confusion_matrix.png"
+
+CALIBRATION_CURVE_FILENAME = "calibration_curve.png"

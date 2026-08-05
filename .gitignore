@@ -1,29 +1,82 @@
-__pycache__/
-
+# =========================
 # Python
+# =========================
 __pycache__/
-.pytest_cache/
-.ipynb_checkpoints/
+*.py[cod]
+*.pyo
 
-# IDE
-.vscode/
+# =========================
+# Virtual environments
+# =========================
+venv/
 .venv/
+
+# =========================
+# Environment variables
+# =========================
 .env
 
-# Models
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/secrets.toml
+
+# =========================
+# Testing
+# =========================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Linters / Type Checkers
+# =========================
+.ruff_cache/
+.mypy_cache/
+
+# =========================
+# Build artifacts
+# =========================
+dist/
+build/
+*.egg-info/
+
+# =========================
+# Logs
+# =========================
+logs/
+
+# =========================
+# Machine Learning
+# =========================
+
+# Trained models
 models/*.joblib
 models/*.pkl
 models/*.json
 
+# CatBoost training output
+catboost_info/
+
 # Generated artifacts
 artifacts/
 reports/
-logs/
 notebooks/
 models/
 
-# CatBoost
-catboost_info/
-
-# OS
+# =========================
+# Operating System
+# =========================
 .DS_Store
+Thumbs.db

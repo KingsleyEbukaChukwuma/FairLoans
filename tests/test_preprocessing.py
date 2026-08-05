@@ -5,9 +5,7 @@ def test_prepare_data(sample_data):
 
     preprocessor = CreditPreprocessor()
 
-    X, y, sensitive = preprocessor.prepare_data(
-        sample_data
-    )
+    X, y, sensitive = preprocessor.prepare_data(sample_data)
 
     assert X.shape[0] == len(sample_data)
 

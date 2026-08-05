@@ -1,4 +1,3 @@
-from sklearn.linear_model import LogisticRegression
 
 from src.features.preprocessing import CreditPreprocessor
 from src.models.build_pipeline import build_pipeline
@@ -8,9 +7,7 @@ def test_pipeline_fit(sample_data):
 
     preprocessor = CreditPreprocessor()
 
-    X, y, _ = preprocessor.prepare_data(
-        sample_data
-    )
+    X, y, _ = preprocessor.prepare_data(sample_data)
 
     transformer = preprocessor.build_transformer()
 
@@ -33,9 +30,7 @@ def test_pipeline_predict_proba(sample_data):
 
     preprocessor = CreditPreprocessor()
 
-    X, y, _ = preprocessor.prepare_data(
-        sample_data
-    )
+    X, y, _ = preprocessor.prepare_data(sample_data)
 
     transformer = preprocessor.build_transformer()
 

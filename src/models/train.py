@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
 
 from configs.config import (
     RAW_DATA_DIR,
@@ -13,9 +14,11 @@ from configs.config import (
     PIPELINE_FILENAME,
     RESULTS_FILENAME,
     METRICS_FILENAME,
+    THRESHOLD_FILENAME,
     TRAINING_SUMMARY_FILENAME,
     FEATURE_NAMES_FILENAME,
     OPTIMIZATION_METRIC,
+    THRESHOLD_OPTIMIZATION_METRIC,
     CV_FOLDS,
     TRAINING_LOG,
     FAIRNESS_DIR,
@@ -26,6 +29,15 @@ from configs.config import (
     EXECUTIVE_SUMMARY_FILENAME,
     FAIRNESS_CONSTRAINT,
     FAIRNESS_OBJECTIVE,
+    EXPLAINABILITY_DIR,
+    SHAP_VALUES_FILENAME,
+    SHAP_EXPLAINER_FILENAME,
+    DEPENDENCE_FEATURES,
+    INTERACTION_VALUES_FILENAME,
+    TOP_INTERACTIONS,
+    SHAP_INTERACTION_VALUES_FILENAME,
+    FAIRNESS_MITIGATION_METHOD,
+    INPUT_SCHEMA_FILENAME,
 )
 
 from src.fairness.evaluator import FairnessEvaluator
@@ -43,7 +55,15 @@ from src.utils.logger import get_logger
 from src.fairness.mitigation import BiasMitigator
 from src.fairness.comparison import FairnessComparison
 from src.fairness.governance import GovernanceReport
-
+from src.explainability.explainer import SHAPExplainer
+from src.explainability.global_importance import GlobalFeatureImportance
+from src.explainability.beeswarm import BeeswarmPlot
+from src.explainability.waterfall import WaterfallPlot
+from src.explainability.dependence import DependencePlot
+from src.explainability.interactions import InteractionPlot
+from src.explainability.local_explanation import LocalExplanation
+from src.models.threshold import DecisionThresholdOptimizer
+from src.models.evaluation_plots import EvaluationPlots
 
 class TrainingManager:
 
@@ -167,7 +187,7 @@ class TrainingManager:
 
             self.logger.info(metrics)
 
-    def save_best_model(self, X_train, y_train, dataset_size):
+    def save_best_model(self, X_train, X_test, y_train, y_test, dataset_size):
 
         best = select_best(self.results)
 
@@ -184,6 +204,51 @@ class TrainingManager:
             y_train,
         )
 
+
+        y_prob = trainer.calibrated_pipeline.predict_proba(
+            X_test,
+        )[:, 1]
+
+        y_pred = trainer.calibrated_pipeline.predict(
+            X_test,
+        )
+
+        EvaluationPlots.build(
+            y_true=y_test,
+            y_pred=y_pred,
+            y_prob=y_prob,
+        )
+
+
+        best_threshold, best_score = (
+            DecisionThresholdOptimizer.optimize(
+                y_true=y_test,
+                y_prob=y_prob,
+                metric=THRESHOLD_OPTIMIZATION_METRIC,
+            )
+        )
+
+
+        save_json(
+
+            {
+
+                "threshold": float(
+                    best_threshold
+                ),
+
+                "metric":
+                    "balanced_accuracy",
+
+                "score":
+                    float(best_score),
+
+            },
+
+            MODEL_DIR /
+            THRESHOLD_FILENAME,
+
+        )
         save_model(
             trainer.calibrated_pipeline,
             MODEL_DIR / PIPELINE_FILENAME,
@@ -245,10 +310,14 @@ class TrainingManager:
             y_test,
         )
 
+        save_json(
+            baseline_performance,
+            FAIRNESS_DIR / "baseline_performance.json",
+        )
+
         baseline_fairness = FairnessEvaluator.evaluate(
             y_true=y_test,
             y_pred=baseline_pred,
-            y_prob=baseline_prob,
             sensitive_features=self.sensitive_test,
         )
 
@@ -262,16 +331,32 @@ class TrainingManager:
         # Bias Mitigation
         # ---------------------------------------------------------
 
-        self.logger.info("Applying Threshold Optimizer...")
+        self.logger.info(f"Applying {FAIRNESS_MITIGATION_METHOD}...")
+        if FAIRNESS_MITIGATION_METHOD == "threshold_optimizer":
 
-        mitigator = BiasMitigator.threshold_optimizer(
-            estimator=trainer.calibrated_pipeline,
-            X_train=X_train,
-            y_train=y_train,
-            sensitive_features=self.sensitive_train,
-            constraints=FAIRNESS_CONSTRAINT,
-            objective=FAIRNESS_OBJECTIVE,
-        )
+            mitigator = BiasMitigator.threshold_optimizer(
+                estimator=trainer.calibrated_pipeline,
+                X_train=X_train,
+                y_train=y_train,
+                sensitive_features=self.sensitive_train,
+                constraints=FAIRNESS_CONSTRAINT,
+                objective=FAIRNESS_OBJECTIVE,
+            )
+
+        elif FAIRNESS_MITIGATION_METHOD == "exponentiated_gradient":
+
+            mitigator = BiasMitigator.exponentiated_gradient(
+                estimator=trainer.pipeline,
+                X_train=X_train,
+                y_train=y_train,
+                sensitive_features=self.sensitive_train,
+                constraint=FAIRNESS_CONSTRAINT,
+            )
+
+        else:
+            raise ValueError(
+                f"Unknown fairness method: {FAIRNESS_MITIGATION_METHOD}"
+            )
 
         mitigated_pred = BiasMitigator.predict(
             mitigator,
@@ -279,15 +364,67 @@ class TrainingManager:
             self.sensitive_test,
         )
 
-        # ThresholdOptimizer does not change probabilities,
-        # so we reuse the calibrated probabilities.
-        mitigated_prob = baseline_prob
+
+
+        if FAIRNESS_MITIGATION_METHOD == "threshold_optimizer":
+
+            mitigated_prob = baseline_prob
+
+            mitigated_performance = ModelEvaluator.classification_metrics(
+                y_test,
+                mitigated_pred,
+                mitigated_prob,
+            )
+
+            mitigated_performance.update(
+                ModelEvaluator.credit_metrics(
+                    y_test,
+                    mitigated_prob,
+                )
+            )
+
+            mitigated_performance["Confusion Matrix"] = (
+               confusion_matrix(
+                    y_test,
+                    mitigated_pred,
+                ).tolist()
+            )
+
+        elif FAIRNESS_MITIGATION_METHOD == "exponentiated_gradient":
+
+            mitigated_performance =  ModelEvaluator.basic_evaluation(
+                y_test,
+                mitigated_pred,
+            )
+
+            mitigated_performance.update(
+                {
+                    "ROC AUC": None,
+                    "PR AUC": None,
+                    "Log Loss": None,
+                    "Brier Score": None,
+                    "Gini": None,
+                    "KS": None,
+                }
+            )
+
+            mitigated_performance["Confusion Matrix"] = (
+               confusion_matrix(
+                    y_test,
+                    mitigated_pred,
+                ).tolist()
+            )
 
         mitigated_fairness = FairnessEvaluator.evaluate(
             y_true=y_test,
             y_pred=mitigated_pred,
-            y_prob=mitigated_prob,
             sensitive_features=self.sensitive_test,
+        )
+
+
+        save_json(
+            mitigated_performance,
+            FAIRNESS_DIR / "mitigated_performance.json",
         )
 
         FairnessEvaluator.save(
@@ -295,30 +432,7 @@ class TrainingManager:
             stage="mitigated",
         )
 
-        # ---------------------------------------------------------
-        # Performance after mitigation
-        # ---------------------------------------------------------
 
-        mitigated_performance = {}
-
-        mitigated_performance.update(
-
-            ModelEvaluator.classification_metrics(
-                y_test,
-                mitigated_pred,
-                mitigated_prob,
-            )
-
-        )
-
-        mitigated_performance.update(
-
-            ModelEvaluator.credit_metrics(
-                y_test,
-                mitigated_prob,
-            )
-
-        )
 
         # ---------------------------------------------------------
         # Comparison
@@ -372,6 +486,105 @@ class TrainingManager:
 
         return comparison
 
+
+
+
+    def build_explainability(
+        self,
+        trainer,
+        X_train,
+        X_test,
+    ):
+        """
+        Build and cache SHAP artifacts.
+
+        SHAP values are expensive to compute,
+        so compute them once after training
+        and reuse them everywhere.
+        """
+
+        self.logger.info(
+            "Building SHAP explainability..."
+        )
+    
+        explainer = SHAPExplainer(
+            trainer.pipeline,
+        ).fit(
+            X_train,
+        )
+
+        shap_values = explainer.shap_values(
+            X_test,
+        )
+
+        interaction_values = explainer.interaction_values(
+            X_test,
+        )
+
+        save_pickle(
+            explainer,
+            EXPLAINABILITY_DIR
+            / SHAP_EXPLAINER_FILENAME,
+        )
+
+        save_pickle(
+            shap_values,
+            EXPLAINABILITY_DIR
+            / SHAP_VALUES_FILENAME,
+        )
+
+        if interaction_values is not None:
+
+            save_pickle(
+                interaction_values,
+                EXPLAINABILITY_DIR /
+                SHAP_INTERACTION_VALUES_FILENAME,
+            )
+
+            InteractionPlot.build(
+                explainer,
+                interaction_values,
+            )
+        else:
+
+            self.logger.warning(
+                "Selected model does not support SHAP interaction values."
+            )
+
+        GlobalFeatureImportance.build(
+            explainer,
+            shap_values,
+        )
+
+        BeeswarmPlot.build(
+            shap_values,
+        )
+
+        WaterfallPlot.build(
+            shap_values,
+            instance=0,
+        )
+
+        LocalExplanation.build(
+            explainer,
+            shap_values,
+            instance=0,
+        )
+
+        for feature in DEPENDENCE_FEATURES:
+
+            DependencePlot.build(
+                shap_values=shap_values,
+                feature=feature,
+            )
+
+
+        self.logger.info(
+            "Explainability artifacts created."
+        )
+
+        return explainer, shap_values
+
     def save_results(self):
 
         save_dataframe(
@@ -418,9 +631,28 @@ class TrainingManager:
 
         trainer = self.save_best_model(
             X_train,
+            X_test,
             y_train,
+            y_test,
             dataset_size=len(df),
         )
+
+        self.logger.info(
+            "Input schema saved."
+        )
+
+        schema = CreditPreprocessor.get_input_schema(
+            trainer.pipeline.named_steps[
+                "preprocessor"
+            ]
+        )
+
+        save_json(
+            schema,
+            MODEL_DIR / INPUT_SCHEMA_FILENAME,
+        )
+
+
 
         self.logger.info(
             "Running Responsible AI pipeline"
@@ -433,6 +665,17 @@ class TrainingManager:
             y_train,
             y_test,
         )
+
+        self.logger.info(
+            "Building Explainability"
+        )
+
+        self.build_explainability(
+            trainer,
+            X_train,
+            X_test,
+        )
+
 
         self.logger.info(
             "Saving benchmark results"

@@ -1,12 +1,12 @@
 import pytest
 
-from src.data.loader import DataLoader
-from src.features.preprocessing import CreditPreprocessor
 from configs.config import (
-    RAW_DATA_DIR,
     DATASET_FILENAME,
     RANDOM_STATE,
+    RAW_DATA_DIR,
 )
+from src.data.loader import DataLoader
+from src.features.preprocessing import CreditPreprocessor
 
 
 @pytest.fixture(scope="session")
@@ -16,9 +16,7 @@ def sample_data():
 
     preprocessor = CreditPreprocessor()
 
-    df = loader.load_arff(
-        RAW_DATA_DIR / DATASET_FILENAME
-    )
+    df = loader.load_arff(RAW_DATA_DIR / DATASET_FILENAME)
 
     # Random sample of 50 rows
     df = df.sample(

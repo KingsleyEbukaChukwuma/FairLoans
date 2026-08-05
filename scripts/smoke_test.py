@@ -4,13 +4,12 @@ import joblib
 import pandas as pd
 
 from configs.config import (
-    MODEL_DIR,
-    PIPELINE_FILENAME,
     FEATURE_NAMES_FILENAME,
     METRICS_FILENAME,
+    MODEL_DIR,
+    PIPELINE_FILENAME,
     TRAINING_SUMMARY_FILENAME,
 )
-
 from src.models.train import TrainingManager
 
 
@@ -76,9 +75,7 @@ def main():
     # 5. Dummy prediction
     #
 
-    dummy = pd.DataFrame(
-        [{feature: 0 for feature in feature_names}]
-    )
+    dummy = pd.DataFrame([{feature: 0 for feature in feature_names}])
 
     try:
 
@@ -90,9 +87,7 @@ def main():
 
     except Exception as e:
 
-        raise RuntimeError(
-            f"Prediction failed: {e}"
-        )
+        raise RuntimeError(f"Prediction failed: {e}")
 
     print("\n" + "=" * 60)
     print("✓ SMOKE TEST PASSED")

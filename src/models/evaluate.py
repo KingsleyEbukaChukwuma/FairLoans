@@ -151,6 +151,97 @@ class ModelEvaluator:
         }
 
     @staticmethod
+    def basic_metrics(
+        y_true,
+        y_pred,
+    ):
+        """
+        Metrics that only require predictions.
+        """
+
+        return {
+
+            "Accuracy":
+                accuracy_score(
+                    y_true,
+                    y_pred,
+                ),
+
+            "Balanced Accuracy":
+                balanced_accuracy_score(
+                    y_true,
+                    y_pred,
+                ),
+
+            "Precision":
+                precision_score(
+                    y_true,
+                    y_pred,
+                ),
+    
+            "Recall":
+                recall_score(
+                    y_true,
+                    y_pred,
+                ),
+
+            "F1":
+                f1_score(
+                    y_true,
+                    y_pred,
+                ),
+
+            "MCC":
+                matthews_corrcoef(
+                    y_true,
+                    y_pred,
+                ),
+
+            "Cohen Kappa":
+                cohen_kappa_score(
+                    y_true,
+                    y_pred,
+                ),
+        }
+
+
+    @staticmethod
+    def basic_evaluation(
+        y_true,
+        y_pred,
+    ):
+        """
+        Evaluation for models without probability outputs.
+        """
+
+        metrics = ModelEvaluator.basic_metrics(
+            y_true,
+            y_pred,
+        )
+
+        metrics.update(
+            {
+                "ROC AUC": None,
+                "PR AUC": None,
+                "Log Loss": None,
+                "Brier Score": None,
+                "Gini": None,
+                "KS": None,
+            }
+        )
+
+        metrics["Confusion Matrix"] = (
+            confusion_matrix(
+                y_true,
+                y_pred,
+            ).tolist()
+        )
+
+        return metrics
+
+
+    @staticmethod
+
     def evaluate(
         model,
         X_test,
@@ -159,35 +250,37 @@ class ModelEvaluator:
 
         y_pred = model.predict(X_test)
 
-        y_prob = model.predict_proba(
-            X_test
-        )[:, 1]
-
         metrics = {}
 
-        metrics.update(
+        if hasattr(model, "predict_proba"):
 
-            ModelEvaluator.classification_metrics(
+            y_prob = model.predict_proba(X_test)[:, 1]
+    
+            metrics.update(
+
+                ModelEvaluator.classification_metrics(
+                    y_test,
+                    y_pred,
+                    y_prob,
+                )
+
+            )
+
+            metrics.update(
+
+                ModelEvaluator.credit_metrics(
+                    y_test,
+                    y_prob,
+                )
+
+            )
+
+        else:
+
+            metrics = ModelEvaluator.basic_evaluation(
                 y_test,
                 y_pred,
-                y_prob,
             )
-
-        )
-
-        metrics.update(
-
-            ModelEvaluator.credit_metrics(
-                y_test,
-                y_prob,
-            )
-
-        )
-
-        metrics["Confusion Matrix"] = confusion_matrix(
-            y_test,
-            y_pred,
-        ).tolist()
 
         return metrics
 

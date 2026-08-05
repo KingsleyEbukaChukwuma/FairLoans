@@ -1,15 +1,5 @@
 from __future__ import annotations
 
-import pandas as pd
-
-from sklearn.metrics import (
-    accuracy_score,
-    precision_score,
-    recall_score,
-    f1_score,
-    confusion_matrix,
-)
-
 from fairlearn.metrics import (
     MetricFrame,
     count,
@@ -18,6 +8,13 @@ from fairlearn.metrics import (
     equal_opportunity_difference,
     equalized_odds_difference,
     selection_rate,
+)
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    f1_score,
+    precision_score,
+    recall_score,
 )
 
 
@@ -87,7 +84,6 @@ def true_positive_rate(
 def compute_fairness_metrics(
     y_true,
     y_pred,
-    y_prob,
     sensitive_features,
 ):
     """
@@ -95,93 +91,62 @@ def compute_fairness_metrics(
     """
 
     return {
-
-        "Demographic Parity Difference":
-            float(
-                demographic_parity_difference(
-                    y_true=y_true,
-                    y_pred=y_pred,
-                    sensitive_features=sensitive_features,
-                )
-            ),
-
-        "Demographic Parity Ratio":
-            float(
-                demographic_parity_ratio(
-                    y_true=y_true,
-                    y_pred=y_pred,
-                    sensitive_features=sensitive_features,
-                )
-            ),
-
-        "Equal Opportunity Difference":
-            float(
-                equal_opportunity_difference(
-                    y_true=y_true,
-                    y_pred=y_pred,
-                    sensitive_features=sensitive_features,
-                )
-            ),
-
-        "Equalized Odds Difference":
-            float(
-                equalized_odds_difference(
-                    y_true=y_true,
-                    y_pred=y_pred,
-                    sensitive_features=sensitive_features,
-                )
-            ),
+        "Demographic Parity Difference": float(
+            demographic_parity_difference(
+                y_true=y_true,
+                y_pred=y_pred,
+                sensitive_features=sensitive_features,
+            )
+        ),
+        "Demographic Parity Ratio": float(
+            demographic_parity_ratio(
+                y_true=y_true,
+                y_pred=y_pred,
+                sensitive_features=sensitive_features,
+            )
+        ),
+        "Equal Opportunity Difference": float(
+            equal_opportunity_difference(
+                y_true=y_true,
+                y_pred=y_pred,
+                sensitive_features=sensitive_features,
+            )
+        ),
+        "Equalized Odds Difference": float(
+            equalized_odds_difference(
+                y_true=y_true,
+                y_pred=y_pred,
+                sensitive_features=sensitive_features,
+            )
+        ),
     }
 
 
 def compute_metric_frame(
     y_true,
     y_pred,
-    y_prob,
     sensitive_features,
 ):
     """
     Compute group fairness metrics.
     """
-    
+
     metrics = {
-
-        "Count":
-            count,
-
-        "Accuracy":
-            accuracy_score,
-
-        "Precision":
-            precision_score,
-
-        "Recall":
-            recall_score,
-
-        "F1":
-            f1_score,
-
-        "Selection Rate":
-            selection_rate,
-
-        "True Positive Rate":
-            true_positive_rate,
-
-        "False Positive Rate":
-            false_positive_rate,
-
-        "False Negative Rate":
-            false_negative_rate,
+        "Count": count,
+        "Accuracy": accuracy_score,
+        "Precision": precision_score,
+        "Recall": recall_score,
+        "F1": f1_score,
+        "Selection Rate": selection_rate,
+        "True Positive Rate": true_positive_rate,
+        "False Positive Rate": false_positive_rate,
+        "False Negative Rate": false_negative_rate,
     }
 
     frame = MetricFrame(
-
         metrics=metrics,
-
         y_true=y_true,
-
         y_pred=y_pred,
-
         sensitive_features=sensitive_features,
     )
 

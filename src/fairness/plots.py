@@ -33,17 +33,11 @@ class FairnessPlots:
             by_group[metric],
         )
 
-        plt.title(
-            f"{metric} by Group"
-        )
+        plt.title(f"{metric} by Group")
 
-        plt.xlabel(
-            "Protected Group"
-        )
+        plt.xlabel("Protected Group")
 
-        plt.ylabel(
-            metric
-        )
+        plt.ylabel(metric)
 
         plt.grid(
             axis="y",
@@ -70,31 +64,19 @@ class FairnessPlots:
         """
 
         metrics = [
-
             "Selection Rate",
-
             "Accuracy",
-
             "Precision",
-
             "Recall",
-
             "F1",
-
             "True Positive Rate",
-
             "False Positive Rate",
-
             "False Negative Rate",
         ]
 
         for metric in metrics:
 
-            filename = (
-                metric.lower()
-                .replace(" ", "_")
-                + ".png"
-            )
+            filename = metric.lower().replace(" ", "_") + ".png"
 
             FairnessPlots.plot_metric(
                 by_group,

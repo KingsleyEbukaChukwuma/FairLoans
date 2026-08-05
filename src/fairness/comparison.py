@@ -10,7 +10,6 @@ class FairnessComparison:
 
     # Higher values are better
     HIGHER_IS_BETTER = {
-
         "Accuracy",
         "Balanced Accuracy",
         "Precision",
@@ -27,7 +26,6 @@ class FairnessComparison:
 
     # Lower values are better
     LOWER_IS_BETTER = {
-
         "Log Loss",
         "Brier Score",
         "Demographic Parity Difference",
@@ -50,7 +48,6 @@ class FairnessComparison:
         rows = []
 
         performance_metrics = [
-
             "Accuracy",
             "Balanced Accuracy",
             "Precision",
@@ -67,7 +64,6 @@ class FairnessComparison:
         ]
 
         fairness_metrics = [
-
             "Demographic Parity Difference",
             "Demographic Parity Ratio",
             "Equal Opportunity Difference",
@@ -80,14 +76,12 @@ class FairnessComparison:
             after = mitigated_performance.get(metric)
 
             rows.append(
-
                 FairnessComparison._build_row(
                     "Performance",
                     metric,
                     before,
                     after,
                 )
-
             )
 
         for metric in fairness_metrics:
@@ -96,14 +90,12 @@ class FairnessComparison:
             after = mitigated_fairness.get(metric)
 
             rows.append(
-
                 FairnessComparison._build_row(
                     "Fairness",
                     metric,
                     before,
                     after,
                 )
-
             )
 
         return pd.DataFrame(rows)
@@ -119,7 +111,6 @@ class FairnessComparison:
         if before is None or after is None:
 
             return {
-
                 "Category": category,
                 "Metric": metric,
                 "Before": before,
@@ -136,36 +127,22 @@ class FairnessComparison:
 
         elif metric in FairnessComparison.HIGHER_IS_BETTER:
 
-            outcome = (
-                "Improved"
-                if after > before
-                else "Worse"
-            )
+            outcome = "Improved" if after > before else "Worse"
 
         elif metric in FairnessComparison.LOWER_IS_BETTER:
 
-            outcome = (
-                "Improved"
-                if after < before
-                else "Worse"
-            )
+            outcome = "Improved" if after < before else "Worse"
 
         else:
 
             outcome = "Unknown"
 
         return {
-
             "Category": category,
-
             "Metric": metric,
-
             "Before": before,
-
             "After": after,
-
             "Change": change,
-
             "Outcome": outcome,
         }
 
@@ -177,50 +154,15 @@ class FairnessComparison:
         Summarize comparison results.
         """
 
-        performance = comparison[
-            comparison["Category"] == "Performance"
-        ]
+        performance = comparison[comparison["Category"] == "Performance"]
 
-        fairness = comparison[
-            comparison["Category"] == "Fairness"
-        ]
+        fairness = comparison[comparison["Category"] == "Fairness"]
 
         return {
-
-            "Performance Metrics Improved":
-
-                int(
-                    (
-                        performance["Outcome"]
-                        == "Improved"
-                    ).sum()
-                ),
-
-            "Performance Metrics Worse":
-
-                int(
-                    (
-                        performance["Outcome"]
-                        == "Worse"
-                    ).sum()
-                ),
-
-            "Fairness Metrics Improved":
-
-                int(
-                    (
-                        fairness["Outcome"]
-                        == "Improved"
-                    ).sum()
-                ),
-
-            "Fairness Metrics Worse":
-
-                int(
-                    (
-                        fairness["Outcome"]
-                        == "Worse"
-                    ).sum()
-                ),
-
+            "Performance Metrics Improved": int(
+                (performance["Outcome"] == "Improved").sum()
+            ),
+            "Performance Metrics Worse": int((performance["Outcome"] == "Worse").sum()),
+            "Fairness Metrics Improved": int((fairness["Outcome"] == "Improved").sum()),
+            "Fairness Metrics Worse": int((fairness["Outcome"] == "Worse").sum()),
         }
