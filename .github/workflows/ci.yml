@@ -53,4 +53,4 @@ jobs:
 
         run: |
 
-          pytest
+          python -m pytest
