@@ -1,0 +1,344 @@
+[
+    {
+        "Feature":"categorical__checking_status_<0",
+        "Feature Value":1.0,
+        "SHAP Value":0.4105385285,
+        "Absolute SHAP":0.4105385285
+    },
+    {
+        "Feature":"categorical__checking_status_no checking",
+        "Feature Value":0.0,
+        "SHAP Value":0.3711383213,
+        "Absolute SHAP":0.3711383213
+    },
+    {
+        "Feature":"numeric__duration",
+        "Feature Value":0.5660345241,
+        "SHAP Value":0.3180601515,
+        "Absolute SHAP":0.3180601515
+    },
+    {
+        "Feature":"categorical__savings_status_<100",
+        "Feature Value":1.0,
+        "SHAP Value":0.2458234892,
+        "Absolute SHAP":0.2458234892
+    },
+    {
+        "Feature":"categorical__credit_history_critical\/other existing credit",
+        "Feature Value":0.0,
+        "SHAP Value":0.1363722998,
+        "Absolute SHAP":0.1363722998
+    },
+    {
+        "Feature":"categorical__purpose_radio\/tv",
+        "Feature Value":1.0,
+        "SHAP Value":-0.1022243778,
+        "Absolute SHAP":0.1022243778
+    },
+    {
+        "Feature":"categorical__purpose_used car",
+        "Feature Value":0.0,
+        "SHAP Value":0.0945700654,
+        "Absolute SHAP":0.0945700654
+    },
+    {
+        "Feature":"numeric__installment_commitment",
+        "Feature Value":-0.0103353998,
+        "SHAP Value":0.0873386133,
+        "Absolute SHAP":0.0873386133
+    },
+    {
+        "Feature":"categorical__employment_1<=X<4",
+        "Feature Value":1.0,
+        "SHAP Value":0.0839280489,
+        "Absolute SHAP":0.0839280489
+    },
+    {
+        "Feature":"numeric__residence_since",
+        "Feature Value":-0.7337817041,
+        "SHAP Value":0.0838228869,
+        "Absolute SHAP":0.0838228869
+    },
+    {
+        "Feature":"categorical__purpose_new car",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0766296811,
+        "Absolute SHAP":0.0766296811
+    },
+    {
+        "Feature":"numeric__age",
+        "Feature Value":-0.7471744657,
+        "SHAP Value":0.0734267841,
+        "Absolute SHAP":0.0734267841
+    },
+    {
+        "Feature":"categorical__job_high qualif\/self emp\/mgmt",
+        "Feature Value":1.0,
+        "SHAP Value":-0.0629946787,
+        "Absolute SHAP":0.0629946787
+    },
+    {
+        "Feature":"numeric__credit_amount",
+        "Feature Value":0.063495257,
+        "SHAP Value":-0.0593505559,
+        "Absolute SHAP":0.0593505559
+    },
+    {
+        "Feature":"categorical__housing_own",
+        "Feature Value":1.0,
+        "SHAP Value":-0.0568527124,
+        "Absolute SHAP":0.0568527124
+    },
+    {
+        "Feature":"categorical__own_telephone_none",
+        "Feature Value":1.0,
+        "SHAP Value":-0.0510986375,
+        "Absolute SHAP":0.0510986375
+    },
+    {
+        "Feature":"categorical__employment_4<=X<7",
+        "Feature Value":0.0,
+        "SHAP Value":0.0507408667,
+        "Absolute SHAP":0.0507408667
+    },
+    {
+        "Feature":"categorical__property_magnitude_car",
+        "Feature Value":1.0,
+        "SHAP Value":0.0459368667,
+        "Absolute SHAP":0.0459368667
+    },
+    {
+        "Feature":"categorical__credit_history_existing paid",
+        "Feature Value":1.0,
+        "SHAP Value":-0.0431155344,
+        "Absolute SHAP":0.0431155344
+    },
+    {
+        "Feature":"categorical__employment_<1",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0384657314,
+        "Absolute SHAP":0.0384657314
+    },
+    {
+        "Feature":"categorical__property_magnitude_real estate",
+        "Feature Value":0.0,
+        "SHAP Value":0.038334683,
+        "Absolute SHAP":0.038334683
+    },
+    {
+        "Feature":"categorical__job_skilled",
+        "Feature Value":0.0,
+        "SHAP Value":0.0314466636,
+        "Absolute SHAP":0.0314466636
+    },
+    {
+        "Feature":"categorical__credit_history_no credits\/all paid",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0304529386,
+        "Absolute SHAP":0.0304529386
+    },
+    {
+        "Feature":"categorical__property_magnitude_life insurance",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0268992825,
+        "Absolute SHAP":0.0268992825
+    },
+    {
+        "Feature":"categorical__purpose_education",
+        "Feature Value":0.0,
+        "SHAP Value":-0.026526035,
+        "Absolute SHAP":0.026526035
+    },
+    {
+        "Feature":"categorical__employment_>=7",
+        "Feature Value":0.0,
+        "SHAP Value":0.0252791499,
+        "Absolute SHAP":0.0252791499
+    },
+    {
+        "Feature":"categorical__other_parties_guarantor",
+        "Feature Value":0.0,
+        "SHAP Value":0.0252444666,
+        "Absolute SHAP":0.0252444666
+    },
+    {
+        "Feature":"numeric__existing_credits",
+        "Feature Value":-0.7071218048,
+        "SHAP Value":-0.0214280066,
+        "Absolute SHAP":0.0214280066
+    },
+    {
+        "Feature":"categorical__own_telephone_yes",
+        "Feature Value":0.0,
+        "SHAP Value":-0.020497073,
+        "Absolute SHAP":0.020497073
+    },
+    {
+        "Feature":"categorical__other_parties_none",
+        "Feature Value":1.0,
+        "SHAP Value":0.0168945875,
+        "Absolute SHAP":0.0168945875
+    },
+    {
+        "Feature":"categorical__credit_history_all paid",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0167780341,
+        "Absolute SHAP":0.0167780341
+    },
+    {
+        "Feature":"categorical__checking_status_0<=X<200",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0167089532,
+        "Absolute SHAP":0.0167089532
+    },
+    {
+        "Feature":"categorical__employment_unemployed",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0165957144,
+        "Absolute SHAP":0.0165957144
+    },
+    {
+        "Feature":"categorical__property_magnitude_no known property",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0127546408,
+        "Absolute SHAP":0.0127546408
+    },
+    {
+        "Feature":"categorical__purpose_furniture\/equipment",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0121100215,
+        "Absolute SHAP":0.0121100215
+    },
+    {
+        "Feature":"categorical__checking_status_>=200",
+        "Feature Value":0.0,
+        "SHAP Value":0.0110835865,
+        "Absolute SHAP":0.0110835865
+    },
+    {
+        "Feature":"categorical__other_payment_plans_bank",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0091907443,
+        "Absolute SHAP":0.0091907443
+    },
+    {
+        "Feature":"categorical__credit_history_delayed previously",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0076516768,
+        "Absolute SHAP":0.0076516768
+    },
+    {
+        "Feature":"categorical__savings_status_>=1000",
+        "Feature Value":0.0,
+        "SHAP Value":0.0074461377,
+        "Absolute SHAP":0.0074461377
+    },
+    {
+        "Feature":"categorical__savings_status_100<=X<500",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0057186238,
+        "Absolute SHAP":0.0057186238
+    },
+    {
+        "Feature":"categorical__other_payment_plans_none",
+        "Feature Value":1.0,
+        "SHAP Value":0.0025498957,
+        "Absolute SHAP":0.0025498957
+    },
+    {
+        "Feature":"categorical__housing_rent",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0023363243,
+        "Absolute SHAP":0.0023363243
+    },
+    {
+        "Feature":"categorical__housing_for free",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0022445868,
+        "Absolute SHAP":0.0022445868
+    },
+    {
+        "Feature":"categorical__purpose_business",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0013048113,
+        "Absolute SHAP":0.0013048113
+    },
+    {
+        "Feature":"categorical__job_unemp\/unskilled non res",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0010780274,
+        "Absolute SHAP":0.0010780274
+    },
+    {
+        "Feature":"numeric__num_dependents",
+        "Feature Value":-0.4317877696,
+        "SHAP Value":-0.000943976,
+        "Absolute SHAP":0.000943976
+    },
+    {
+        "Feature":"categorical__savings_status_no known savings",
+        "Feature Value":0.0,
+        "SHAP Value":0.0007823263,
+        "Absolute SHAP":0.0007823263
+    },
+    {
+        "Feature":"categorical__other_parties_co applicant",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0007505836,
+        "Absolute SHAP":0.0007505836
+    },
+    {
+        "Feature":"categorical__foreign_worker_no",
+        "Feature Value":0.0,
+        "SHAP Value":0.0005482044,
+        "Absolute SHAP":0.0005482044
+    },
+    {
+        "Feature":"categorical__savings_status_500<=X<1000",
+        "Feature Value":0.0,
+        "SHAP Value":0.000461832,
+        "Absolute SHAP":0.000461832
+    },
+    {
+        "Feature":"categorical__foreign_worker_yes",
+        "Feature Value":1.0,
+        "SHAP Value":0.000419815,
+        "Absolute SHAP":0.000419815
+    },
+    {
+        "Feature":"categorical__other_payment_plans_stores",
+        "Feature Value":0.0,
+        "SHAP Value":0.0003896937,
+        "Absolute SHAP":0.0003896937
+    },
+    {
+        "Feature":"categorical__purpose_retraining",
+        "Feature Value":0.0,
+        "SHAP Value":0.0001740079,
+        "Absolute SHAP":0.0001740079
+    },
+    {
+        "Feature":"categorical__purpose_repairs",
+        "Feature Value":0.0,
+        "SHAP Value":-0.0001662595,
+        "Absolute SHAP":0.0001662595
+    },
+    {
+        "Feature":"categorical__job_unskilled resident",
+        "Feature Value":0.0,
+        "SHAP Value":0.0000270299,
+        "Absolute SHAP":0.0000270299
+    },
+    {
+        "Feature":"categorical__purpose_other",
+        "Feature Value":0.0,
+        "SHAP Value":0.0,
+        "Absolute SHAP":0.0
+    },
+    {
+        "Feature":"categorical__purpose_domestic appliance",
+        "Feature Value":0.0,
+        "SHAP Value":0.0,
+        "Absolute SHAP":0.0
+    }
+]

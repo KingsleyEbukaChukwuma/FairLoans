@@ -1,0 +1,9 @@
+{
+    "best_model": "catboost",
+    "models_trained": 7,
+    "optimization_metric": "roc_auc",
+    "calibrated": true,
+    "cross_validation_folds": 5,
+    "optuna_trials": 50,
+    "dataset_size": 1000
+}

@@ -1,0 +1,11 @@
+{
+    "Count": 196.0,
+    "Accuracy": 0.7788461538461539,
+    "Precision": 0.7391304347826086,
+    "Recall": 0.5,
+    "F1": 0.5964912280701754,
+    "Selection Rate": 0.22115384615384615,
+    "True Positive Rate": 0.5,
+    "False Positive Rate": 0.11428571428571428,
+    "False Negative Rate": 0.5178571428571429
+}

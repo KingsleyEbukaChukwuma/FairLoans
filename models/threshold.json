@@ -1,0 +1,5 @@
+{
+    "threshold": 0.21000000000000002,
+    "metric": "balanced_accuracy",
+    "score": 0.7357142857142858
+}

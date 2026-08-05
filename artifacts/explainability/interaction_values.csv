@@ -1,0 +1,21 @@
+Feature 1,Feature 2,Mean Interaction
+numeric__duration,numeric__credit_amount,0.0
+numeric__duration,numeric__installment_commitment,0.0
+numeric__duration,numeric__residence_since,0.0
+numeric__duration,numeric__age,0.0
+numeric__duration,numeric__existing_credits,0.0
+numeric__duration,numeric__num_dependents,0.0
+numeric__duration,categorical__checking_status_0<=X<200,0.0
+numeric__duration,categorical__checking_status_<0,0.0
+numeric__duration,categorical__checking_status_>=200,0.0
+numeric__duration,categorical__checking_status_no checking,0.0
+numeric__duration,categorical__credit_history_all paid,0.0
+numeric__duration,categorical__credit_history_critical/other existing credit,0.0
+numeric__duration,categorical__credit_history_delayed previously,0.0
+numeric__duration,categorical__credit_history_existing paid,0.0
+numeric__duration,categorical__credit_history_no credits/all paid,0.0
+numeric__duration,categorical__purpose_business,0.0
+numeric__duration,categorical__purpose_domestic appliance,0.0
+numeric__duration,categorical__purpose_education,0.0
+numeric__duration,categorical__purpose_furniture/equipment,0.0
+numeric__duration,categorical__purpose_new car,0.0

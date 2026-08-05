@@ -1,0 +1,16 @@
+Feature,Importance
+categorical__checking_status_no checking,0.4145798329418253
+numeric__duration,0.3749812670250124
+categorical__checking_status_<0,0.2751603075824416
+numeric__credit_amount,0.23302082820610218
+categorical__savings_status_<100,0.20996979418935327
+numeric__age,0.1811518726414811
+categorical__credit_history_critical/other existing credit,0.16757733192370292
+numeric__installment_commitment,0.1482552591502315
+categorical__housing_own,0.11895741476117606
+categorical__purpose_new car,0.11108622457643676
+categorical__purpose_used car,0.0915758051256465
+numeric__residence_since,0.07785034521990582
+categorical__employment_<1,0.07283830971422918
+categorical__purpose_radio/tv,0.07262793739047964
+categorical__own_telephone_yes,0.06051084889553536

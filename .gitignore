@@ -62,18 +62,15 @@ logs/
 # =========================
 
 # Trained models
-models/*.joblib
 models/*.pkl
-models/*.json
+models/studies/
 
 # CatBoost training output
 catboost_info/
 
 # Generated artifacts
-artifacts/
 reports/
 notebooks/
-models/
 
 # =========================
 # Operating System
