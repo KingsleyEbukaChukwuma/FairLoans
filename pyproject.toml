@@ -1,5 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fairloans"
+version = "1.0.0"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
 [tool.black]
 line-length = 120
+target-version = ["py313"]
 
 [tool.ruff]
 line-length = 120
@@ -8,11 +24,10 @@ target-version = "py313"
 [tool.ruff.lint]
 select = ["E", "F", "I", "N"]
 
-# Ignore rules that don't fit Streamlit or ML conventions
 ignore = [
-    "N803",  # function arguments like X_train, X_test
-    "N806",  # variables like X, X_processed
-    "N999",  # Streamlit Home.py filename
+    "N803",  # X_train, X_test
+    "N806",  # X, X_processed
+    "N999",  # Streamlit Home.py
 ]
 
 [tool.ruff.lint.per-file-ignores]

@@ -4,7 +4,7 @@ import joblib
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.pipeline import Pipeline
 
-from configs.config import CALIBRATION_CV, CALIBRATION_METHOD
+from src.configs.config import CALIBRATION_CV, CALIBRATION_METHOD
 
 
 class ModelTrainer:

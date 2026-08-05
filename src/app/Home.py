@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from configs.config import APP_NAME
+from src.configs.config import APP_NAME
 
 st.set_page_config(
     page_title=APP_NAME,

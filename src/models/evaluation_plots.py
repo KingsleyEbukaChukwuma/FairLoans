@@ -7,7 +7,7 @@ from sklearn.metrics import (
     RocCurveDisplay,
 )
 
-from configs.config import (
+from src.configs.config import (
     CALIBRATION_CURVE_FILENAME,
     CONFUSION_MATRIX_FILENAME,
     PERFORMANCE_DIR,

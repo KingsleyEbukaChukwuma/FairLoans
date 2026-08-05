@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import shap
 
-from configs.config import (
+from src.configs.config import (
     BAR_IMPORTANCE_FILENAME,
     EXPLAINABILITY_DIR,
     GLOBAL_IMPORTANCE_FILENAME,

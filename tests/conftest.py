@@ -1,6 +1,6 @@
 import pytest
 
-from configs.config import (
+from src.configs.config import (
     DATASET_FILENAME,
     RANDOM_STATE,
     RAW_DATA_DIR,

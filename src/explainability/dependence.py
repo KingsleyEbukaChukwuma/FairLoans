@@ -5,7 +5,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import shap
 
-from configs.config import (
+from src.configs.config import (
     DEPENDENCE_FILENAME,
     EXPLAINABILITY_DIR,
 )

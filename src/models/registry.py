@@ -8,7 +8,7 @@ from sklearn.ensemble import (
 )
 from sklearn.linear_model import LogisticRegression
 
-from configs.config import (
+from src.configs.config import (
     LOGISTIC_MAX_ITER,
     N_JOBS2,
     RANDOM_STATE,

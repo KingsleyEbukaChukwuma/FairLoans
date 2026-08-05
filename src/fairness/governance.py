@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from configs.config import (
+from src.configs.config import (
     MAX_F1_DEGRADATION,
     MAX_ROC_AUC_DEGRADATION,
 )

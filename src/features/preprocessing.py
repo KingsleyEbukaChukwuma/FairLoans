@@ -9,7 +9,7 @@ from sklearn.preprocessing import (
     StandardScaler,
 )
 
-from configs.config import (
+from src.configs.config import (
     CATEGORICAL_FEATURES,
     MODEL_FEATURES,
     NUMERIC_FEATURES,

@@ -7,7 +7,7 @@ from pathlib import Path
 APP_NAME = "FairLoans"
 VERSION = "1.0.0"
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parents[2]
 
 DATA_DIR = ROOT_DIR / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"

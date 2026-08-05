@@ -21,3 +21,4 @@ streamlit-extras
 black
 ruff
 pytest
+-e .
