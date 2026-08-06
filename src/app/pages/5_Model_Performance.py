@@ -40,19 +40,9 @@ st.title("📈 Model Performance")
 
 st.caption("Evaluate the predictive performance, diagnostic behaviour, and deployment readiness of the selected credit risk model.")
 
-#
-# -------------------------------------------------------
-# Load Dashboard Artifacts
-# -------------------------------------------------------
-#
 
 dashboard = get_performance_dashboard()
 
-#
-# -------------------------------------------------------
-# Overview
-# -------------------------------------------------------
-#
 
 performance_overview(
     dashboard,
@@ -60,11 +50,6 @@ performance_overview(
 
 st.divider()
 
-#
-# -------------------------------------------------------
-# Executive Summary
-# -------------------------------------------------------
-#
 
 performance_banner(
     dashboard,
@@ -72,11 +57,6 @@ performance_banner(
 
 st.divider()
 
-#
-# -------------------------------------------------------
-# Dashboard Tabs
-# -------------------------------------------------------
-#
 
 tab1, tab2, tab3 = st.tabs(
     [
@@ -86,11 +66,6 @@ tab1, tab2, tab3 = st.tabs(
     ]
 )
 
-#
-# -------------------------------------------------------
-# Performance Metrics
-# -------------------------------------------------------
-#
 
 with tab1:
 
@@ -98,11 +73,6 @@ with tab1:
         dashboard,
     )
 
-#
-# -------------------------------------------------------
-# Model Diagnostics
-# -------------------------------------------------------
-#
 
 with tab2:
 
@@ -110,11 +80,6 @@ with tab2:
         dashboard,
     )
 
-#
-# -------------------------------------------------------
-# Best Model
-# -------------------------------------------------------
-#
 
 with tab3:
 
@@ -124,11 +89,6 @@ with tab3:
 
 st.divider()
 
-#
-# -------------------------------------------------------
-# Footer
-# -------------------------------------------------------
-#
 
 footer(
     dashboard,

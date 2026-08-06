@@ -2,9 +2,9 @@
 
 **Responsible AI Credit Risk Assessment Platform**
 
-FairLoans is an end-to-end machine learning application for **credit
-risk prediction** that combines predictive modelling with **Responsible
-AI** practices. The platform integrates model training, fairness
+FairLoans is an end-to-end machine learning application for credit
+risk prediction that combines predictive modelling with Responsible
+AI practices. The platform integrates model training, fairness
 evaluation, explainability, governance reporting, and interactive
 deployment into a single Streamlit application.
 
@@ -88,7 +88,7 @@ German Credit Dataset
  Streamlit Dashboard
 ```
 
-The application follows a **train once, deploy many** architecture. All
+The application follows a train once, deploy many architecture, all
 computationally intensive tasks are performed during training and
 persisted as artifacts. The Streamlit application loads these artifacts
 at runtime, providing fast, reproducible, and deterministic dashboards.
@@ -139,6 +139,11 @@ python -m venv .venv
 pip install -r requirements.txt
 streamlit run Home.py
 ```
+or install FairLoans in editable mode:
+
+```bash
+pip install -e .
+```
 
 ------------------------------------------------------------------------
 
@@ -156,6 +161,8 @@ the Streamlit application.
 
 # License
 
-This project is intended for educational and research purposes. Verify
+MIT License.
+
+NB: This project is intended for educational and research purposes, Verify
 fairness, governance, and regulatory requirements before using the
 workflow in production.
