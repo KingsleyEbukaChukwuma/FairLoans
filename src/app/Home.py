@@ -10,139 +10,80 @@ st.set_page_config(
     layout="wide",
 )
 
-# ==========================================================
+#
+# -------------------------------------------------------
 # Header
-# ==========================================================
+# -------------------------------------------------------
+#
 
 st.title("🏦 FairLoans")
 
-st.subheader("Responsible AI Credit Risk Assessment Platform")
+st.caption("A Responsible AI platform for credit risk prediction, fairness assessment, and model explainability.")
 
-st.markdown("""
-FairLoans is an end-to-end machine learning application for
-**credit risk prediction** with an emphasis on **Responsible AI**.
+st.divider()
 
-The platform combines predictive modelling, fairness evaluation,
-bias mitigation and explainability into a single interactive
-dashboard.
+#
+# -------------------------------------------------------
+# Platform Overview
+# -------------------------------------------------------
+#
+
+st.subheader("Platform Overview")
+
+st.write("""
+FairLoans combines machine learning with Responsible AI practices to
+predict credit risk, evaluate fairness, explain model decisions, and
+support transparent deployment.
 """)
 
 st.divider()
 
-# ==========================================================
-# Platform Overview
-# ==========================================================
+#
+# -------------------------------------------------------
+# Explore the Platform
+# -------------------------------------------------------
+#
 
-st.header("Platform Overview")
+st.subheader("Explore the Platform")
 
 col1, col2 = st.columns(2)
 
 with col1:
 
-    st.markdown("""
-### Core Capabilities
+    st.info("""
+### 🏠 Prediction
 
-- Credit Risk Prediction
-- Probability Estimation
-- Threshold Optimization
-- Probability Calibration
-- Model Selection
-- Hyperparameter Optimization
+Predict the credit risk of an applicant and
+view the factors influencing the decision.
+""")
+
+    st.info("""
+### 📊 Dataset Explorer
+
+Explore the German Credit dataset through
+interactive summaries and visualisations.
 """)
 
 with col2:
 
-    st.markdown("""
-### Responsible AI
+    st.info("""
+### ⚖️ Fairness Dashboard
 
-- Fairness Evaluation
-- Bias Mitigation
-- SHAP Explainability
-- Model Governance
-- Model Diagnostics
-- Deployment Reporting
+Assess fairness metrics, compare bias
+mitigation results, and review governance
+recommendations.
+""")
+
+    st.info("""
+### 🔍 Explainability & 📈 Performance
+
+Understand model behaviour using SHAP
+explanations and review evaluation metrics,
+diagnostic plots, and deployment readiness.
 """)
 
 st.divider()
 
-# ==========================================================
-# Navigation
-# ==========================================================
-
-st.header("Application Pages")
-
-pages = [
-    (
-        "🏠 Prediction",
-        "Predict credit risk for an applicant and view the model explanation.",
-    ),
-    (
-        "📊 Dataset Explorer",
-        "Explore the German Credit dataset using interactive filters and summary statistics.",
-    ),
-    (
-        "⚖️ Fairness Dashboard",
-        "Compare fairness metrics before and after bias mitigation and review governance recommendations.",
-    ),
-    (
-        "🔍 Explainability",
-        "Inspect SHAP-based explanations including global importance, beeswarm, waterfall and interaction plots.",
-    ),
-    (
-        "📈 Model Performance",
-        "Review evaluation metrics, calibration, confusion matrix, ROC curve and model training details.",
-    ),
-]
-
-for page, description in pages:
-
-    st.markdown(f"""
-### {page}
-
-{description}
+st.success("""
+**Use the navigation menu on the left to explore each dashboard.**
 """)
-
-st.divider()
-
-# ==========================================================
-# Machine Learning Pipeline
-# ==========================================================
-
-st.header("Machine Learning Pipeline")
-
-st.code(
-    """
-Raw Data
-      │
-      ▼
-Preprocessing
-      │
-      ▼
-Feature Engineering
-      │
-      ▼
-Hyperparameter Optimization
-      │
-      ▼
-Model Selection
-      │
-      ▼
-Probability Calibration
-      │
-      ▼
-Threshold Optimization
-      │
-      ▼
-Fairness Evaluation
-      │
-      ▼
-Bias Mitigation
-      │
-      ▼
-SHAP Explainability
-      │
-      ▼
-Deployment Dashboard
-""",
-    language="text",
-)
