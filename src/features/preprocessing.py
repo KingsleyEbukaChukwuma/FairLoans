@@ -40,9 +40,7 @@ class CreditPreprocessor:
 
         df = df.copy()
 
-        df[SENSITIVE_FEATURE] = df[PERSONAL_STATUS_COLUMN].apply(
-            lambda x: "male" if str(x).lower().startswith("male") else "female"
-        )
+        df[SENSITIVE_FEATURE] = df[PERSONAL_STATUS_COLUMN].apply(lambda x: "male" if str(x).lower().startswith("male") else "female")
 
         return df
 

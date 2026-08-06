@@ -68,34 +68,11 @@ class GovernanceReport:
 
         eo = get("Equal Opportunity Difference")
 
-        performance_summary = (
-            f"ROC AUC {roc['outcome'].lower()} "
-            f"from {roc['before']:.3f} "
-            f"to {roc['after']:.3f} "
-            f"({roc['change']:+.3f}). "
-            f"F1 {f1['outcome'].lower()} "
-            f"from {f1['before']:.3f} "
-            f"to {f1['after']:.3f} "
-            f"({f1['change']:+.3f})."
-        )
+        performance_summary = f"ROC AUC {roc['outcome'].lower()} " f"from {roc['before']:.3f} " f"to {roc['after']:.3f} " f"({roc['change']:+.3f}). " f"F1 {f1['outcome'].lower()} " f"from {f1['before']:.3f} " f"to {f1['after']:.3f} " f"({f1['change']:+.3f})."
 
-        calibration_summary = (
-            f"Brier Score {brier['outcome'].lower()} "
-            f"from {brier['before']:.3f} "
-            f"to {brier['after']:.3f} "
-            f"({brier['change']:+.3f})."
-        )
+        calibration_summary = f"Brier Score {brier['outcome'].lower()} " f"from {brier['before']:.3f} " f"to {brier['after']:.3f} " f"({brier['change']:+.3f})."
 
-        fairness_summary = (
-            f"Demographic Parity Difference "
-            f"{dp['outcome'].lower()} "
-            f"from {dp['before']:.3f} "
-            f"to {dp['after']:.3f}. "
-            f"Equal Opportunity Difference "
-            f"{eo['outcome'].lower()} "
-            f"from {eo['before']:.3f} "
-            f"to {eo['after']:.3f}."
-        )
+        fairness_summary = f"Demographic Parity Difference " f"{dp['outcome'].lower()} " f"from {dp['before']:.3f} " f"to {dp['after']:.3f}. " f"Equal Opportunity Difference " f"{eo['outcome'].lower()} " f"from {eo['before']:.3f} " f"to {eo['after']:.3f}."
 
         roc_drop = roc["before"] - roc["after"]
 
@@ -105,21 +82,11 @@ class GovernanceReport:
 
         if fairness_improved and roc_drop <= MAX_ROC_AUC_DEGRADATION and f1_drop <= MAX_F1_DEGRADATION:
 
-            recommendation = (
-                "Adopt the mitigated model because "
-                "fairness improved substantially while "
-                "predictive performance remained within "
-                "the acceptable governance thresholds."
-            )
+            recommendation = "Adopt the mitigated model because " "fairness improved substantially while " "predictive performance remained within " "the acceptable governance thresholds."
 
         else:
 
-            recommendation = (
-                "Retain the baseline model because "
-                "the fairness improvements do not justify "
-                "the observed degradation in predictive "
-                "performance."
-            )
+            recommendation = "Retain the baseline model because " "the fairness improvements do not justify " "the observed degradation in predictive " "performance."
 
         return {
             "Performance Summary": performance_summary,
