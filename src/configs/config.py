@@ -279,7 +279,7 @@ FIELD_LABELS = {
     "age": "Age (Years)",
     "employment": "Employment Duration",
     "personal_status": "Personal Status",
-    "job": "Occupation",
+    "job": "Employment Type",
     "foreign_worker": "Foreign Worker",
     "own_telephone": "Telephone",
     # Credit
@@ -288,9 +288,9 @@ FIELD_LABELS = {
     "other_payment_plans": "Other Payment Plans",
     # Residence
     "housing": "Housing",
-    "property_magnitude": "Property",
+    "property_magnitude": "Primary Asset",
     "residence_since": "Current Residence (Years)",
-    "other_parties": "Other Parties",
+    "other_parties": "Co-applicant / Guarantor",
     "num_dependents": "Number of Dependents",
 }
 
@@ -430,4 +430,63 @@ CATEGORY_DISPLAY_MAPS = {
         "yes": "Yes",
         "no": "No",
     },
+}
+
+
+# ============================================================
+# Dataset Visualization Configuration
+# ============================================================
+
+
+DEFAULT_PLOT_FEATURES = [
+    "age",
+    "credit_amount",
+    "duration",
+    "credit_history",
+    "checking_status",
+    "purpose",
+]
+
+
+HISTOGRAM_FEATURES = [
+    "age",
+    "credit_amount",
+]
+
+
+DISCRETE_NUMERIC_FEATURES = [
+    "duration",
+    "installment_commitment",
+    "residence_since",
+    "existing_credits",
+    "num_dependents",
+]
+
+
+CATEGORY_ORDER = {
+    "checking_status": [
+        "Negative Balance",
+        "Low Balance (0 - 199)",
+        "High Balance (200+)",
+        "No Checking Account",
+    ],
+    "savings_status": [
+        "Less than 100",
+        "100 - 499",
+        "500 - 999",
+        "1000 or More",
+        "No Savings Account",
+    ],
+    "employment": [
+        "Unemployed",
+        "Less than 1 Year",
+        "1 to 3 Years",
+        "4 to 6 Years",
+        "7 Years or More",
+    ],
+    "duration": sorted(range(1, 73)),
+    "installment_commitment": [1, 2, 3, 4],
+    "residence_since": [1, 2, 3, 4],
+    "existing_credits": [1, 2, 3, 4],
+    "num_dependents": [1, 2],
 }

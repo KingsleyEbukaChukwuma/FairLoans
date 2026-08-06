@@ -1,31 +1,31 @@
 FIELD_GROUPS = {
-    "👤 Applicant Information": [
+    "👤 Personal Information": [
         "age",
-        "employment",
-        "num_dependents",
         "job",
+        "employment",
+        "foreign_worker",
+        "own_telephone",
     ],
-    "💰 Loan Information": [
+    "💳 Credit Request": [
+        "purpose",
         "credit_amount",
         "duration",
         "installment_commitment",
-        "existing_credits",
     ],
-    "🏦 Financial Profile": [
+    "🏦 Financial Information": [
         "checking_status",
         "savings_status",
         "credit_history",
-        "other_payment_plans",
+        "existing_credits",
     ],
     "🏠 Residence & Assets": [
         "housing",
         "property_magnitude",
         "residence_since",
-        "other_parties",
+        "other_payment_plans",
     ],
-    "📌 Additional Information": [
-        "purpose",
-        "own_telephone",
-        "foreign_worker",
+    "👨‍👩‍👧 Household": [
+        "other_parties",
+        "num_dependents",
     ],
 }

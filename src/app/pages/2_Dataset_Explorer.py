@@ -25,6 +25,8 @@ st.set_page_config(
 
 st.title("📊 Dataset Explorer")
 
+st.caption("Explore the German Credit dataset, inspect data quality, and visualize feature distributions.")
+
 #
 # Load dataset
 #
@@ -32,38 +34,35 @@ st.title("📊 Dataset Explorer")
 df = get_dataset()
 
 #
-# Sidebar filters
-#
-
-with st.sidebar:
-
-    st.header("🔍 Filters")
-
-    filtered = apply_filters(df)
-
-#
-# Create tabs
+# Tabs
 #
 
 tab1, tab2, tab3, tab4 = st.tabs(
     [
-        "📋 Dataset",
-        "📈 Summary",
-        "🩹 Missing Values",
-        "📊 Distributions",
+        "📋 Data Preview",
+        "📊 Summary Statistics",
+        "📈 Visualizations",
+        "🩹 Data Quality",
     ]
 )
 
 #
-# Dataset
+# Dataset Preview
 #
 
 with tab1:
 
+    with st.expander(
+        "🔍 Filter Dataset",
+        expanded=True,
+    ):
+
+        filtered = apply_filters(df)
+
     dataset_table(filtered)
 
 #
-# Summary
+# Summary Statistics
 #
 
 with tab2:
@@ -71,17 +70,17 @@ with tab2:
     dataset_summary(filtered)
 
 #
-# Missing Values
+# Data Quality
 #
 
-with tab3:
+with tab4:
 
     dataset_missing(filtered)
 
 #
-# Distributions
+# Visualizations
 #
 
-with tab4:
+with tab3:
 
     dataset_plots(filtered)
