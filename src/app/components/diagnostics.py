@@ -14,20 +14,23 @@ class Diagnostics:
     def image(
         path: Path,
         title: str,
+        caption: str,
     ) -> None:
         """
-        Display an image if it exists.
+        Display a diagnostic image if it exists.
         """
 
-        st.subheader(
-            title,
-        )
+        st.markdown(f"### {title}")
 
         if path.exists():
 
             st.image(
                 path,
-                use_container_width=True,
+                width="stretch",
+            )
+
+            st.caption(
+                caption,
             )
 
         else:
@@ -44,7 +47,7 @@ class Diagnostics:
         """
 
         #
-        # Classification diagnostics
+        # Classification Diagnostics
         #
 
         st.subheader("Classification Diagnostics")
@@ -56,6 +59,7 @@ class Diagnostics:
             cls.image(
                 dashboard["roc"],
                 "ROC Curve",
+                ("Shows the trade-off between the true positive rate " "and false positive rate across all classification thresholds."),
             )
 
         with col2:
@@ -63,13 +67,16 @@ class Diagnostics:
             cls.image(
                 dashboard["confusion"],
                 "Confusion Matrix",
+                ("Summarises the number of correct and incorrect " "predictions for each class."),
             )
 
         st.divider()
 
         #
-        # Calibration diagnostics
+        # Calibration
         #
+
+        st.subheader("Probability Calibration")
 
         _, center, _ = st.columns([1, 2, 1])
 
@@ -78,6 +85,7 @@ class Diagnostics:
             cls.image(
                 dashboard["calibration"],
                 "Calibration Curve",
+                ("Compares predicted probabilities with observed outcomes " "to assess how well the model is calibrated."),
             )
 
 
@@ -85,7 +93,7 @@ def diagnostics(
     dashboard: dict,
 ) -> None:
     """
-    Display all model diagnostics.
+    Display model diagnostics.
     """
 
     Diagnostics.show(

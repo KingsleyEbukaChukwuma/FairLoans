@@ -12,8 +12,7 @@ from src.configs.config import (
 
 class Footer:
     """
-    Display application metadata and model
-    provenance information.
+    Display application and model metadata.
     """
 
     @staticmethod
@@ -25,9 +24,9 @@ class Footer:
 
         best_model = dashboard["best_model"]
 
-        st.caption("---")
+        st.divider()
 
-        left, right = st.columns([3, 2])
+        left, right = st.columns(2)
 
         #
         # Application
@@ -44,24 +43,24 @@ Generated from saved model artifacts.
 """)
 
         #
-        # Model metadata
+        # Model
         #
 
         with right:
 
-            st.caption(f"**Model:** {best_model['Model']}")
+            st.caption(f"""
+**Production Model:** {best_model["Model"]}
 
-            st.caption(f"**Training Samples:** {summary['dataset_size']}")
+**Training Samples:** {summary["dataset_size"]:,}
 
-            st.caption(f"**Cross Validation:** {summary['cross_validation_folds']}-Fold")
+**Generated:** {datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")}
+""")
 
-        st.caption(f"""
-Generated on **{datetime.now(UTC).strftime("%Y-%m-%d %H:%M")}**
-
-This dashboard displays precomputed evaluation,
-fairness and explainability artifacts. No model
-training or SHAP computation occurs inside the
-Streamlit application.
+        st.caption("""
+This dashboard visualizes precomputed evaluation,
+fairness, and explainability artifacts. No model
+training or SHAP computations are performed within
+the Streamlit application.
 """)
 
 

@@ -5,8 +5,8 @@ import streamlit as st
 
 class PerformanceOverview:
     """
-    Display key performance indicators for
-    the trained model.
+    Display the key performance indicators
+    for the selected model.
     """
 
     @staticmethod
@@ -14,106 +14,76 @@ class PerformanceOverview:
         dashboard: dict,
     ):
 
-        summary = dashboard["summary"]
-
         metrics = dashboard["metrics"]
 
         best_model = dashboard["best_model"]
 
-        st.subheader("Model Overview")
+        summary = dashboard["summary"]
 
-        c1, c2, c3 = st.columns(3)
+        st.subheader("Performance Overview")
 
         #
-        # Row 1
+        # Primary KPIs
         #
 
-        with c1:
+        col1, col2, col3, col4 = st.columns(4)
+
+        with col1:
 
             st.metric(
-                label="Best Model",
-                value=best_model["Model"],
-                help="Selected after model comparison.",
+                "Selected Model",
+                best_model["Model"],
             )
 
-        with c2:
+        with col2:
 
             st.metric(
-                label="Primary Metric",
-                value=summary["optimization_metric"].upper(),
+                "ROC AUC",
+                f"{metrics['ROC AUC']:.3f}",
             )
 
-        with c3:
+        with col3:
 
             st.metric(
-                label="Calibration",
-                value="Sigmoid" if summary["calibrated"] else "None",
+                "F1 Score",
+                f"{metrics['F1']:.3f}",
+            )
+
+        with col4:
+
+            st.metric(
+                "Brier Score",
+                f"{metrics['Brier Score']:.3f}",
             )
 
         st.divider()
 
         #
-        # Row 2
+        # Deployment KPIs
         #
 
-        c4, c5, c6 = st.columns(3)
+        col5, col6, col7 = st.columns(3)
 
-        with c4:
-
-            st.metric(
-                label="ROC AUC",
-                value=f"{metrics['ROC AUC']:.3f}",
-            )
-
-        with c5:
+        with col5:
 
             st.metric(
-                label="Brier Score",
-                value=f"{metrics['Brier Score']:.3f}",
+                "Decision Threshold",
+                f"{dashboard['threshold']:.3f}",
             )
 
-        with c6:
+        with col6:
 
             st.metric(
-                label="Decision Threshold",
-                value=f"{dashboard['threshold']:.3f}",
+                "Primary Metric",
+                summary["optimization_metric"].upper(),
             )
 
-        st.divider()
-
-        #
-        # Training Information
-        #
-
-        c7, c8, c9 = st.columns(3)
-
-        with c7:
+        with col7:
 
             st.metric(
-                label="Cross Validation",
-                value=summary["cross_validation_folds"],
+                "Calibration",
+                "Enabled" if summary["calibrated"] else "Disabled",
             )
-
-        with c8:
-
-            st.metric(
-                label="Optuna Trials",
-                value=summary["optuna_trials"],
-            )
-
-        with c9:
-
-            st.metric(
-                label="Training Samples",
-                value=summary["dataset_size"],
-            )
-
-        st.info("""
-The selected model achieved the best balance
-between predictive performance and calibration.
-All evaluation metrics shown below are loaded
-from saved training artifacts.
-""")
 
 
 def performance_overview(

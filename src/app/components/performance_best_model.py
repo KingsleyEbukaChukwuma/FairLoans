@@ -22,72 +22,67 @@ class PerformanceBestModel:
 
         threshold = dashboard["threshold"]
 
-        st.subheader("🏆 Selected Model")
+        st.subheader("🏆 Production Model")
 
         st.success(f"""
-The **{best["Model"]}** model achieved the
-highest overall score and was selected
-for deployment.
+The **{best["Model"]}** model achieved the highest
+**{summary["optimization_metric"].upper()}** during model
+selection and is recommended for deployment.
 """)
 
+        st.divider()
+
         #
-        # -------------------------------------------------------
-        # Model Information
-        # -------------------------------------------------------
+        # Model Card
         #
 
-        st.markdown("### Model Information")
+        st.subheader("Model Card")
+
+        left, right = st.columns(2)
+
+        with left:
+
+            st.write(f"**Model:** {best['Model']}")
+
+            st.write(f"**Optimization Metric:** {summary['optimization_metric'].upper()}")
+
+            st.write(f"**Decision Threshold:** {threshold:.3f}")
+
+            st.write(f"**Calibration:** {'Sigmoid' if summary['calibrated'] else 'None'}")
+
+        with right:
+
+            st.write(f"**Training Samples:** {summary['dataset_size']:,}")
+
+            st.write(f"**Cross-Validation:** {summary['cross_validation_folds']}-Fold")
+
+            st.write(f"**Optuna Trials:** {summary['optuna_trials']}")
+
+        st.divider()
+
+        #
+        # Key Performance
+        #
+
+        st.subheader("Key Performance Metrics")
 
         c1, c2, c3 = st.columns(3)
 
         with c1:
 
             st.metric(
-                "Model",
-                best["Model"],
-            )
-
-        with c2:
-
-            st.metric(
-                "Primary Metric",
-                summary["optimization_metric"].upper(),
-            )
-
-        with c3:
-
-            st.metric(
-                "Decision Threshold",
-                f"{threshold:.3f}",
-            )
-
-        st.divider()
-
-        #
-        # -------------------------------------------------------
-        # Performance
-        # -------------------------------------------------------
-        #
-
-        st.markdown("### Performance")
-
-        p1, p2, p3 = st.columns(3)
-
-        with p1:
-
-            st.metric(
                 "ROC AUC",
                 f'{metrics["ROC AUC"]:.3f}',
             )
 
-        with p2:
+        with c2:
 
             st.metric(
                 "F1 Score",
                 f'{metrics["F1"]:.3f}',
             )
 
-        with p3:
+        with c3:
 
             st.metric(
                 "Brier Score",
@@ -97,77 +92,28 @@ for deployment.
         st.divider()
 
         #
-        # -------------------------------------------------------
-        # Training Configuration
-        # -------------------------------------------------------
+        # Deployment Notes
         #
 
-        st.markdown("### Training Configuration")
+        st.subheader("Deployment Notes")
 
-        t1, t2, t3 = st.columns(3)
-
-        with t1:
-
-            st.metric(
-                "Cross Validation",
-                summary["cross_validation_folds"],
-            )
-
-        with t2:
-
-            st.metric(
-                "Optuna Trials",
-                summary["optuna_trials"],
-            )
-
-        with t3:
-
-            st.metric(
-                "Training Samples",
-                summary["dataset_size"],
-            )
-
-        st.divider()
-
-        #
-        # -------------------------------------------------------
-        # Calibration
-        # -------------------------------------------------------
-        #
-
-        st.markdown("### Calibration")
+        notes = []
 
         if summary["calibrated"]:
 
-            st.success("✔ Model probabilities are calibrated " "using **Sigmoid Calibration**.")
+            notes.append("✔ Probability estimates are calibrated using Sigmoid Calibration.")
 
         else:
 
-            st.warning("No probability calibration applied.")
+            notes.append("• Probability calibration was not applied.")
 
-        st.divider()
+        notes.append(f"✔ Decision threshold set to **{threshold:.3f}** for production inference.")
 
-        #
-        # -------------------------------------------------------
-        # Deployment Status
-        # -------------------------------------------------------
-        #
+        notes.append(f"✔ Model selected using **{summary['optimization_metric'].upper()}**.")
 
-        st.markdown("### Deployment Status")
+        for note in notes:
 
-        st.info(f"""
-**Production Model:** {best["Model"]}
-
-**Optimization Metric:** {summary["optimization_metric"].upper()}
-
-**Calibration:** {"Sigmoid" if summary["calibrated"] else "None"}
-
-**Decision Threshold:** {threshold:.3f}
-
-This model is the recommended production
-candidate based on the completed
-training and evaluation pipeline.
-""")
+            st.write(note)
 
 
 def performance_best_model(

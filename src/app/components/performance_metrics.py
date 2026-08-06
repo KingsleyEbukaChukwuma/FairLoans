@@ -13,56 +13,12 @@ class PerformanceMetrics:
     def show(
         dashboard: dict,
     ) -> None:
-        """
-        Display the evaluation metrics table.
-        """
 
         metrics = dashboard["metrics"]
 
         #
-        # Convert metrics dictionary
-        # into a tidy table.
+        # Key Performance Indicators
         #
-
-        table = pd.DataFrame(
-            metrics.items(),
-            columns=[
-                "Metric",
-                "Value",
-            ],
-        )
-
-        #
-        # Round numeric values.
-        #
-
-        table["Value"] = table["Value"].apply(
-            lambda value: (
-                round(value, 4)
-                if isinstance(
-                    value,
-                    (
-                        int,
-                        float,
-                    ),
-                )
-                else value
-            )
-        )
-
-        st.subheader("Evaluation Metrics")
-
-        st.dataframe(
-            table,
-            use_container_width=True,
-            hide_index=True,
-        )
-
-        #
-        # Key metrics
-        #
-
-        st.divider()
 
         st.subheader("Key Performance Indicators")
 
@@ -85,24 +41,57 @@ class PerformanceMetrics:
         with col3:
 
             st.metric(
-                "Brier Score",
-                f"{metrics['Brier Score']:.3f}",
+                "Balanced Accuracy",
+                f"{metrics['Balanced Accuracy']:.3f}",
             )
 
         with col4:
 
             st.metric(
-                "KS Statistic",
-                f"{metrics['KS']:.3f}",
+                "Brier Score",
+                f"{metrics['Brier Score']:.3f}",
             )
+
+        st.divider()
+
+        #
+        # Complete Metrics Table
+        #
+
+        st.subheader("Complete Evaluation Metrics")
+
+        table = pd.DataFrame(
+            metrics.items(),
+            columns=[
+                "Metric",
+                "Value",
+            ],
+        )
+
+        table["Value"] = table["Value"].apply(
+            lambda value: (
+                round(value, 4)
+                if isinstance(
+                    value,
+                    (
+                        int,
+                        float,
+                    ),
+                )
+                else value
+            )
+        )
+
+        st.dataframe(
+            table,
+            use_container_width=True,
+            hide_index=True,
+        )
 
 
 def performance_metrics(
     dashboard: dict,
 ) -> None:
-    """
-    Display model performance metrics.
-    """
 
     PerformanceMetrics.show(
         dashboard,
