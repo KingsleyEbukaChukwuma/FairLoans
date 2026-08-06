@@ -1,20 +1,40 @@
+from __future__ import annotations
+
 import streamlit as st
 
 
 def explainability_overview():
 
+    st.subheader("Explainability Overview")
+
     c1, c2, c3 = st.columns(3)
 
-    c1.metric("Global Explanations", "✔")
+    with c1:
 
-    c2.metric("Local Explanations", "✔")
+        st.metric(
+            "Global Analysis",
+            "2",
+            help="Feature Importance and SHAP Feature Impact",
+        )
 
-    c3.metric("SHAP", "Enabled")
+    with c2:
+
+        st.metric(
+            "Local Analysis",
+            "2",
+            help="Waterfall Plot and Individual Prediction Summary",
+        )
+
+    with c3:
+
+        st.metric(
+            "Feature Relationships",
+            "1",
+            help="SHAP Feature Interaction Analysis",
+        )
 
     st.info("""
-This dashboard displays precomputed SHAP artifacts generated
-during model training.
+This dashboard explains **why** the model makes its predictions.
 
-No SHAP computation occurs within the Streamlit application,
-ensuring fast loading and consistent explanations.
+The visualizations are generated from explainability artifacts created during model training and rendered interactively within the application.
 """)

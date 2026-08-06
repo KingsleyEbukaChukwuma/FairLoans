@@ -22,55 +22,41 @@ from src.app.utils import (
 )
 
 st.set_page_config(
-    page_title="Fairness Dashboard",
+    page_title="Responsible AI Dashboard",
     page_icon="⚖️",
     layout="wide",
 )
 
 st.title("⚖️ Responsible AI Dashboard")
 
-st.caption("Evaluate fairness, bias mitigation " "and governance of the selected model.")
+st.caption("Assess model fairness, evaluate the impact of bias mitigation, and review deployment governance.")
 
-#
-# -------------------------------------------------------
-# Load all dashboard artifacts
-# -------------------------------------------------------
-#
 
 dashboard = get_fairness_dashboard()
 
-#
-# -------------------------------------------------------
-# KPI Cards
-# -------------------------------------------------------
-#
 
 fairness_overview(
     dashboard["summary"],
 )
 
+
 st.divider()
 
-#
-# -------------------------------------------------------
-# Dashboard Tabs
-# -------------------------------------------------------
-#
+executive_summary(
+    dashboard["summary"],
+)
 
-tab1, tab2, tab3, tab4 = st.tabs(
+st.divider()
+
+
+tab1, tab2, tab3 = st.tabs(
     [
-        "📊 Fairness by Group",
-        "⚖️ Before vs After",
-        "📋 Governance",
-        "📌 Executive Summary",
+        "📊 Fairness Analysis",
+        "📈 Mitigation Impact",
+        "🏛️ Governance",
     ]
 )
 
-#
-# -------------------------------------------------------
-# MetricFrame
-# -------------------------------------------------------
-#
 
 with tab1:
 
@@ -79,11 +65,6 @@ with tab1:
         mitigated=dashboard["mitigated"],
     )
 
-#
-# -------------------------------------------------------
-# Comparison
-# -------------------------------------------------------
-#
 
 with tab2:
 
@@ -91,26 +72,8 @@ with tab2:
         dashboard["comparison"],
     )
 
-#
-# -------------------------------------------------------
-# Governance
-# -------------------------------------------------------
-#
-
 with tab3:
 
     governance(
         dashboard["governance"],
-    )
-
-#
-# -------------------------------------------------------
-# Executive Summary
-# -------------------------------------------------------
-#
-
-with tab4:
-
-    executive_summary(
-        dashboard["summary"],
     )

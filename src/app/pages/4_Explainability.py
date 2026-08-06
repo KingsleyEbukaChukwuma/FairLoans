@@ -11,9 +11,6 @@ from src.app.components.explainability_overview import (
 from src.app.components.global_importance import (
     global_importance,
 )
-from src.app.components.interaction import (
-    interaction,
-)
 from src.app.components.local_explanation import (
     local_explanation,
 )
@@ -32,50 +29,61 @@ st.set_page_config(
 
 st.title("🔍 Model Explainability")
 
-st.caption("Interpret how the model reaches its decisions.")
+st.caption("Understand how the model makes predictions through global and applicant-level explanations.")
+
+#
+# Load explainability artifacts
+#
 
 dashboard = get_explainability_dashboard()
+
+#
+# Overview
+#
 
 explainability_overview()
 
 st.divider()
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(
+#
+# Dashboard Tabs
+#
+
+tab1, tab2 = st.tabs(
     [
-        "🌍 Global Importance",
-        "🐝 Beeswarm",
-        "💧 Waterfall",
-        "🔗 Interactions",
-        "📄 Local Explanation",
+        "Model Insights",
+        "Individual Prediction",
     ]
 )
+
+#
+# Global Explanations
+#
 
 with tab1:
 
     global_importance(
-        dashboard["global_importance"],
+        dashboard["feature_importance"],
     )
+
+    st.divider()
+
+    beeswarm(
+        dashboard["shap_values"],
+    )
+
+#
+# Local Prediction
+#
 
 with tab2:
 
-    beeswarm(
-        dashboard["beeswarm"],
-    )
-
-with tab3:
-
     waterfall(
-        dashboard["waterfall"],
+        dashboard["shap_values"],
     )
 
-with tab4:
-
-    interaction(
-        dashboard["interaction"],
-    )
-
-with tab5:
+    st.divider()
 
     local_explanation(
-        dashboard["local"],
+        dashboard["local_explanation"],
     )

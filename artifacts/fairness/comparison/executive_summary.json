@@ -1,10 +1,10 @@
 {
-    "Performance Summary": "ROC AUC unchanged from 0.806 to 0.806 (+0.000). F1 improved from 0.564 to 0.598 (+0.034).",
+    "Performance Summary": "ROC AUC unchanged from 0.806 to 0.806 (+0.000). F1 improved from 0.564 to 0.590 (+0.025).",
     "Calibration Summary": "Brier Score unchanged from 0.158 to 0.158 (+0.000).",
-    "Fairness Summary": "Demographic Parity Difference worse from 0.002 to 0.016. Equal Opportunity Difference improved from 0.018 to 0.017.",
-    "Performance Metrics Improved": 5,
-    "Performance Metrics Worse": 2,
-    "Fairness Metrics Improved": 1,
-    "Fairness Metrics Worse": 3,
+    "Fairness Summary": "Demographic Parity Difference worse from 0.002 to 0.011. Equal Opportunity Difference worse from 0.018 to 0.035.",
+    "Performance Metrics Improved": 4,
+    "Performance Metrics Worse": 3,
+    "Fairness Metrics Improved": 0,
+    "Fairness Metrics Worse": 4,
     "Recommendation": "Retain the baseline model because the fairness improvements do not justify the observed degradation in predictive performance."
 }

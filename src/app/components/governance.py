@@ -6,117 +6,97 @@ import streamlit as st
 
 class GovernanceDashboard:
     """
-    Display the Responsible AI governance report.
+    Display Responsible AI governance assessment.
     """
 
     @staticmethod
-    def style(
+    def checklist(
         report: pd.DataFrame,
     ):
-
-        def colour(value):
-
-            if value == "Improved":
-
-                return "background-color:#d4edda;" "color:#155724;" "font-weight:bold;"
-
-            if value == "Worse":
-
-                return "background-color:#f8d7da;" "color:#721c24;" "font-weight:bold;"
-
-            return "background-color:#fff3cd;" "color:#856404;"
-
-        numeric = report.select_dtypes(
-            include="number",
-        ).columns
-
-        return (
-            report.style.format({column: "{:.3f}" for column in numeric})
-            .background_gradient(
-                cmap="Blues",
-                subset=["Before", "After"],
-            )
-            .background_gradient(
-                cmap="RdYlGn",
-                subset=["Change"],
-            )
-            .map(
-                colour,
-                subset=["Outcome"],
-            )
-        )
-
-    @staticmethod
-    def deployment_decision(
-        report: pd.DataFrame,
-    ):
-
-        improved = (report["Outcome"] == "Improved").sum()
-
-        worse = (report["Outcome"] == "Worse").sum()
-
-        if improved >= worse:
-
-            st.success("""
-### ✅ Deployment Recommendation
-
-Deploy the **Mitigated Model**.
-
-The governance assessment indicates that
-fairness improvements outweigh the
-performance degradation.
-""")
-
-        else:
-
-            st.warning("""
-### ⚠ Deployment Recommendation
-
-Retain the **Baseline Model**.
-
-The fairness improvements are insufficient
-to justify the observed performance loss.
-""")
-
-    @staticmethod
-    def trade_offs(
-        report: pd.DataFrame,
-    ):
-
-        st.subheader("Trade-off Summary")
 
         fairness = report[report["Category"] == "Fairness"]
 
         performance = report[report["Category"] == "Performance"]
 
-        col1, col2 = st.columns(2)
+        fairness_pass = (fairness["Outcome"] == "Improved").sum() >= (fairness["Outcome"] == "Worse").sum()
 
-        with col1:
+        performance_pass = (performance["Outcome"] == "Worse").sum() <= (performance["Outcome"] == "Improved").sum()
 
-            st.info(f"""
-### Fairness
+        st.subheader("Deployment Readiness")
 
-Improved Metrics
+        checks = [
+            (
+                "Fairness objectives achieved",
+                fairness_pass,
+            ),
+            (
+                "Performance degradation acceptable",
+                performance_pass,
+            ),
+            (
+                "Governance assessment completed",
+                True,
+            ),
+        ]
 
-**{(fairness["Outcome"]=="Improved").sum()}**
+        for label, passed in checks:
 
-Worse Metrics
+            if passed:
 
-**{(fairness["Outcome"]=="Worse").sum()}**
+                st.success(f"✔ {label}")
+
+            else:
+
+                st.error(f"✖ {label}")
+
+        return fairness_pass and performance_pass
+
+    @staticmethod
+    def overview(
+        report: pd.DataFrame,
+    ):
+
+        st.subheader("Governance Assessment")
+
+        numeric = report.select_dtypes(
+            include="number",
+        ).columns
+
+        st.dataframe(
+            report.style.format({column: "{:.3f}" for column in numeric}),
+            use_container_width=True,
+            hide_index=True,
+        )
+
+    @staticmethod
+    def decision(
+        deploy: bool,
+    ):
+
+        st.subheader("Governance Decision")
+
+        if deploy:
+
+            st.success("""
+### Approved for Deployment
+
+The mitigated model satisfies the governance
+criteria for fairness and predictive performance.
+
+The assessment indicates that the fairness gains
+justify the observed performance trade-offs.
 """)
 
-        with col2:
+        else:
 
-            st.info(f"""
-### Performance
+            st.warning("""
+### Further Review Recommended
 
-Improved Metrics
+The current mitigation does not yet satisfy the
+governance criteria for deployment.
 
-**{(performance["Outcome"]=="Improved").sum()}**
-
-Worse Metrics
-
-**{(performance["Outcome"]=="Worse").sum()}**
+Additional model development or bias mitigation
+is recommended before production deployment.
 """)
 
     @classmethod
@@ -125,28 +105,22 @@ Worse Metrics
         report: pd.DataFrame,
     ):
 
-        st.subheader("Governance Report")
+        st.caption("Review governance compliance and deployment readiness.")
 
-        st.caption("Assessment of fairness and " "performance trade-offs.")
-
-        st.dataframe(
-            cls.style(
-                report,
-            ),
-            use_container_width=True,
-            hide_index=True,
-        )
-
-        st.divider()
-
-        cls.trade_offs(
+        deploy = cls.checklist(
             report,
         )
 
         st.divider()
 
-        cls.deployment_decision(
+        cls.overview(
             report,
+        )
+
+        st.divider()
+
+        cls.decision(
+            deploy,
         )
 
 

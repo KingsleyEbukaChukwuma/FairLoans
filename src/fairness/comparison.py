@@ -123,6 +123,31 @@ class FairnessComparison:
 
         change = after - before
 
+        if before != 0:
+
+            if metric in FairnessComparison.HIGHER_IS_BETTER:
+
+                improvement = ((after - before) / abs(before)) * 100
+
+            elif metric in FairnessComparison.LOWER_IS_BETTER:
+
+                improvement = ((before - after) / abs(before)) * 100
+
+            else:
+
+                improvement = None
+
+        else:
+
+            improvement = None
+
+        if improvement is not None:
+
+            improvement = round(
+                improvement,
+                2,
+            )
+
         if abs(change) < 1e-6:
 
             outcome = "Unchanged"
@@ -138,13 +163,13 @@ class FairnessComparison:
         else:
 
             outcome = "Unknown"
-
         return {
             "Category": category,
             "Metric": metric,
             "Before": before,
             "After": after,
             "Change": change,
+            "Improvement (%)": improvement,
             "Outcome": outcome,
         }
 

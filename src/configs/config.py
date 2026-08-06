@@ -225,13 +225,15 @@ INTERACTION_FILENAME = "interaction_heatmap.png"
 
 INTERACTION_VALUES_FILENAME = "interaction_values.csv"
 
-TOP_INTERACTIONS = 20
-
-MAX_EXPLANATIONS = 100
+GLOBAL_FEATURE_IMPORTANCE_FILENAME = "global_feature_importance.csv"
 
 SHAP_EXPLAINER_FILENAME = "shap_explainer.pkl"
 
 SHAP_INTERACTION_VALUES_FILENAME = "shap_interaction_values.pkl"
+
+TOP_INTERACTIONS = 20
+
+MAX_EXPLANATIONS = 100
 
 SHAP_MAX_DISPLAY = 15
 

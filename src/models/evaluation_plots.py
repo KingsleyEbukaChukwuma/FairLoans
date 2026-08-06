@@ -11,7 +11,6 @@ from src.configs.config import (
     CALIBRATION_CURVE_FILENAME,
     CONFUSION_MATRIX_FILENAME,
     PERFORMANCE_DIR,
-    RELIABILITY_DIAGRAM_FILENAME,
     ROC_CURVE_FILENAME,
 )
 
@@ -110,35 +109,6 @@ class EvaluationPlots:
 
         plt.close()
 
-    @staticmethod
-    def reliability_diagram(
-        y_true,
-        y_prob,
-    ):
-
-        plt.figure(figsize=(6, 6))
-
-        plt.hist(
-            y_prob,
-            bins=10,
-        )
-
-        plt.xlabel("Predicted Probability")
-
-        plt.ylabel("Count")
-
-        plt.title("Reliability Diagram")
-
-        plt.tight_layout()
-
-        plt.savefig(
-            PERFORMANCE_DIR / RELIABILITY_DIAGRAM_FILENAME,
-            dpi=300,
-            bbox_inches="tight",
-        )
-
-        plt.close()
-
     @classmethod
     def build(
         cls,
@@ -158,11 +128,6 @@ class EvaluationPlots:
         )
 
         cls.calibration_curve(
-            y_true,
-            y_prob,
-        )
-
-        cls.reliability_diagram(
             y_true,
             y_prob,
         )

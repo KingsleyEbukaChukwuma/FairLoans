@@ -5,115 +5,38 @@ import streamlit as st
 
 class ExecutiveSummary:
     """
-    Display an executive summary of the
+    Display a concise executive summary of the
     Responsible AI assessment.
     """
 
     @staticmethod
-    def recommendation(summary):
+    def summary(summary):
 
         recommendation = summary["Recommendation"]
+
+        fairness_improved = summary["Fairness Metrics Improved"]
+
+        performance_worse = summary["Performance Metrics Worse"]
 
         if recommendation == "Mitigated Model":
 
             st.success(f"""
-## ✅ Recommendation
+### Executive Summary
 
-**Deploy the {recommendation}.**
+The **mitigated model** is recommended for deployment.
 
-The fairness improvements substantially
-outweigh the observed performance
-degradation.
+The bias mitigation strategy improved **{fairness_improved}** fairness metric(s) while maintaining acceptable predictive performance. Overall, the fairness gains outweigh the observed performance trade-offs, making the mitigated model suitable for deployment.
 """)
 
         else:
 
             st.warning(f"""
-## ⚠ Recommendation
+### Executive Summary
 
-**Retain the {recommendation}.**
+The **baseline model** is recommended for deployment.
 
-The reduction in predictive performance
-does not justify deployment of the
-mitigated model.
+Although the mitigation improved **{fairness_improved}** fairness metric(s), the resulting degradation in **{performance_worse}** performance metric(s) outweighs the fairness gains. Further model refinement or bias mitigation is recommended before deployment.
 """)
-
-    @staticmethod
-    def metrics(summary):
-
-        st.subheader("Assessment Summary")
-
-        c1, c2 = st.columns(2)
-
-        with c1:
-
-            st.metric(
-                "Fairness Metrics Improved",
-                summary["Fairness Metrics Improved"],
-            )
-
-            st.metric(
-                "Fairness Metrics Worse",
-                summary["Fairness Metrics Worse"],
-            )
-
-        with c2:
-
-            st.metric(
-                "Performance Metrics Improved",
-                summary["Performance Metrics Improved"],
-            )
-
-            st.metric(
-                "Performance Metrics Worse",
-                summary["Performance Metrics Worse"],
-            )
-
-    @staticmethod
-    def deployment(summary):
-
-        recommendation = summary["Recommendation"]
-
-        st.subheader("Deployment Decision")
-
-        if recommendation == "Mitigated Model":
-
-            st.info("""
-The mitigated model satisfies the
-governance requirements for deployment.
-
-The observed fairness improvements are
-considered sufficient while maintaining
-acceptable predictive performance.
-""")
-
-        else:
-
-            st.info("""
-The baseline model should remain in
-production.
-
-Additional bias mitigation or model
-development is recommended before
-deployment.
-""")
-
-    @staticmethod
-    def key_takeaways(summary):
-
-        st.subheader("Key Takeaways")
-
-        bullets = [
-            f"• Fairness metrics improved: {summary['Fairness Metrics Improved']}",
-            f"• Fairness metrics worsened: {summary['Fairness Metrics Worse']}",
-            f"• Performance metrics improved: {summary['Performance Metrics Improved']}",
-            f"• Performance metrics worsened: {summary['Performance Metrics Worse']}",
-            f"• Recommended model: {summary['Recommendation']}",
-        ]
-
-        for bullet in bullets:
-
-            st.write(bullet)
 
     @classmethod
     def show(
@@ -121,32 +44,12 @@ deployment.
         summary,
     ):
 
-        cls.recommendation(
-            summary,
-        )
-
-        st.divider()
-
-        cls.metrics(
-            summary,
-        )
-
-        st.divider()
-
-        cls.deployment(
-            summary,
-        )
-
-        st.divider()
-
-        cls.key_takeaways(
+        cls.summary(
             summary,
         )
 
 
-def executive_summary(
-    summary,
-):
+def executive_summary(summary):
 
     ExecutiveSummary.show(
         summary,

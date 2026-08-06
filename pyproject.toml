@@ -14,11 +14,11 @@ where = ["."]
 include = ["src*"]
 
 [tool.black]
-line-length = 120
+line-length = 260
 target-version = ["py313"]
 
 [tool.ruff]
-line-length = 120
+line-length = 260
 target-version = "py313"
 
 [tool.ruff.lint]

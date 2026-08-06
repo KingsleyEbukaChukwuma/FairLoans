@@ -1,99 +1,152 @@
 from __future__ import annotations
 
-import matplotlib.pyplot as plt
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 
 
 class FairnessComparison:
     """
-    Display fairness comparison between the
-    baseline and mitigated models.
+    Compare fairness metrics before and after mitigation.
     """
 
     @staticmethod
-    def style(
+    def summary(
         comparison: pd.DataFrame,
     ):
+
+        improved = (comparison["Outcome"] == "Improved").sum()
+
+        worse = (comparison["Outcome"] == "Worse").sum()
+
+        unchanged = (comparison["Outcome"] == "Unchanged").sum()
+
+        c1, c2, c3 = st.columns(3)
+
+        c1.metric(
+            "Metrics Improved",
+            improved,
+        )
+
+        c2.metric(
+            "Metrics Worse",
+            worse,
+        )
+
+        c3.metric(
+            "Unchanged",
+            unchanged,
+        )
+
+    @staticmethod
+    def table(
+        comparison: pd.DataFrame,
+    ):
+
+        st.subheader("Metric Comparison")
+
+        display = comparison.copy()
+
+        #
+        # Format numeric values
+        #
+
+        for column in [
+            "Before",
+            "After",
+        ]:
+
+            display[column] = display[column].map(lambda x: f"{x:.3f}")
+
+        display["Improvement (%)"] = display["Improvement (%)"].map(lambda x: f"{x:+.2f}%" if pd.notna(x) else "-")
+
+        display = display[
+            [
+                "Category",
+                "Metric",
+                "Before",
+                "After",
+                "Improvement (%)",
+                "Outcome",
+            ]
+        ]
+
+        #
+        # Outcome colouring
+        #
 
         def colour_outcome(value):
 
             if value == "Improved":
+
                 return "background-color:#d4edda;" "color:#155724;" "font-weight:bold;"
 
             if value == "Worse":
-                return "background-color:#f8d7da;" "color:#721c24;" "font-weight:bold;"
 
-            return "background-color:#fff3cd;" "color:#856404;"
+                return "background-color:#fdebd0;" "color:#9c640c;" "font-weight:bold;"
 
-        numeric = comparison.select_dtypes(
-            include="number",
-        ).columns
+            return "background-color:#ecf0f1;" "color:#566573;" "font-weight:bold;"
 
-        return (
-            comparison.style.format({column: "{:.3f}" for column in numeric})
-            .background_gradient(
-                cmap="Blues",
-                subset=["Before", "After"],
-            )
-            .background_gradient(
-                cmap="RdYlGn",
-                subset=["Change"],
-            )
-            .map(
+        st.dataframe(
+            display.style.map(
                 colour_outcome,
                 subset=["Outcome"],
-            )
+            ),
+            use_container_width=True,
+            hide_index=True,
         )
 
     @staticmethod
-    def plot(
+    def chart(
         comparison: pd.DataFrame,
     ):
 
-        fig, ax = plt.subplots(
-            figsize=(10, 5),
+        st.subheader("Improvement by Metric")
+
+        chart = comparison.sort_values(
+            "Improvement (%)",
+            ascending=False,
         )
 
-        x = range(len(comparison))
-
-        width = 0.35
-
-        ax.bar(
-            [i - width / 2 for i in x],
-            comparison["Before"],
-            width,
-            label="Baseline",
+        fig = px.bar(
+            chart,
+            x="Improvement (%)",
+            y="Metric",
+            orientation="h",
+            color="Outcome",
+            text="Improvement (%)",
+            color_discrete_map={
+                "Improved": "#2ca02c",
+                "Worse": "#f39c12",
+                "Unchanged": "#95a5a6",
+            },
         )
 
-        ax.bar(
-            [i + width / 2 for i in x],
-            comparison["After"],
-            width,
-            label="Mitigated",
+        fig.update_traces(
+            texttemplate="%{text:.1f}%",
+            textposition="outside",
         )
 
-        ax.set_xticks(
-            list(x),
+        fig.update_layout(
+            template="plotly_white",
+            height=650,
+            title="Impact of Bias Mitigation",
+            title_x=0.5,
+            xaxis_title="Improvement (%)",
+            yaxis_title="",
+            legend_title="Outcome",
+            margin=dict(
+                l=20,
+                r=20,
+                t=60,
+                b=20,
+            ),
         )
 
-        ax.set_xticklabels(
-            comparison["Metric"],
-            rotation=45,
-            ha="right",
+        st.plotly_chart(
+            fig,
+            use_container_width=True,
         )
-
-        ax.set_ylabel(
-            "Metric Value",
-        )
-
-        ax.set_title("Fairness Metrics Before vs After")
-
-        ax.legend()
-
-        plt.tight_layout()
-
-        st.pyplot(fig)
 
     @classmethod
     def show(
@@ -101,40 +154,25 @@ class FairnessComparison:
         comparison: pd.DataFrame,
     ):
 
-        st.subheader("Before vs After")
+        st.subheader("Mitigation Impact")
 
-        st.caption("Compare fairness metrics before " "and after mitigation.")
+        st.caption("Compare fairness and performance before and after bias mitigation.")
 
-        tab1, tab2 = st.tabs(
-            [
-                "Comparison Table",
-                "Visual Comparison",
-            ]
+        cls.summary(
+            comparison,
         )
 
-        #
-        # Table
-        #
+        st.divider()
 
-        with tab1:
+        cls.table(
+            comparison,
+        )
 
-            st.dataframe(
-                cls.style(
-                    comparison,
-                ),
-                use_container_width=True,
-                hide_index=True,
-            )
+        st.divider()
 
-        #
-        # Chart
-        #
-
-        with tab2:
-
-            cls.plot(
-                comparison,
-            )
+        cls.chart(
+            comparison,
+        )
 
 
 def comparison(

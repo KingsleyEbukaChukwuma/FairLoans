@@ -1,12 +1,11 @@
 import json
 from functools import lru_cache
 
+import joblib
 import pandas as pd
 
 from src.configs.config import (
-    BAR_IMPORTANCE_FILENAME,
     BASELINE_DIR,
-    BEESWARM_FILENAME,
     CALIBRATION_CURVE_FILENAME,
     COMPARISON_DIR,
     CONFUSION_MATRIX_FILENAME,
@@ -16,9 +15,9 @@ from src.configs.config import (
     FAIRNESS_BY_GROUP_FILENAME,
     FAIRNESS_COMPARISON_FILENAME,
     FAIRNESS_DIR,
+    GLOBAL_FEATURE_IMPORTANCE_FILENAME,
     GOVERNANCE_REPORT_FILENAME,
     INPUT_SCHEMA_FILENAME,
-    INTERACTION_FILENAME,
     LOCAL_EXPLANATION_FILENAME,
     METRICS_FILENAME,
     MITIGATED_DIR,
@@ -26,9 +25,11 @@ from src.configs.config import (
     PERFORMANCE_DIR,
     RAW_DATA_DIR,
     ROC_CURVE_FILENAME,
+    SHAP_EXPLAINER_FILENAME,
+    SHAP_INTERACTION_VALUES_FILENAME,
+    SHAP_VALUES_FILENAME,
     THRESHOLD_FILENAME,
     TRAINING_SUMMARY_FILENAME,
-    WATERFALL_FILENAME,
 )
 from src.data.loader import DataLoader
 from src.inference.predictor import CreditPredictor
@@ -110,11 +111,11 @@ def get_explainability_dashboard():
         local = json.load(f)
 
     return {
-        "global_importance": EXPLAINABILITY_DIR / BAR_IMPORTANCE_FILENAME,
-        "beeswarm": EXPLAINABILITY_DIR / BEESWARM_FILENAME,
-        "waterfall": EXPLAINABILITY_DIR / WATERFALL_FILENAME,
-        "interaction": EXPLAINABILITY_DIR / INTERACTION_FILENAME,
-        "local": local,
+        "feature_importance": pd.read_csv(EXPLAINABILITY_DIR / GLOBAL_FEATURE_IMPORTANCE_FILENAME),
+        "shap_values": joblib.load(EXPLAINABILITY_DIR / SHAP_VALUES_FILENAME),
+        "shap_explainer": joblib.load(EXPLAINABILITY_DIR / SHAP_EXPLAINER_FILENAME),
+        "shap_interaction_values": joblib.load(EXPLAINABILITY_DIR / SHAP_INTERACTION_VALUES_FILENAME),
+        "local_explanation": local,
     }
 
 
