@@ -255,3 +255,179 @@ ROC_CURVE_FILENAME = "roc_curve.png"
 CONFUSION_MATRIX_FILENAME = "confusion_matrix.png"
 
 CALIBRATION_CURVE_FILENAME = "calibration_curve.png"
+
+
+# =============================================================================
+# App Fields
+# =============================================================================
+
+
+# ============================================================
+# Field Labels
+# ============================================================
+
+FIELD_LABELS = {
+    # Financial
+    "checking_status": "Checking Account Status",
+    "credit_amount": "Credit Amount",
+    "savings_status": "Savings Account Status",
+    # Loan
+    "duration": "Loan Duration (Months)",
+    "purpose": "Loan Purpose",
+    "installment_commitment": "Installment Commitment (1-4)",
+    # Applicant
+    "age": "Age (Years)",
+    "employment": "Employment Duration",
+    "personal_status": "Personal Status",
+    "job": "Occupation",
+    "foreign_worker": "Foreign Worker",
+    "own_telephone": "Telephone",
+    # Credit
+    "credit_history": "Credit History",
+    "existing_credits": "Existing Credits",
+    "other_payment_plans": "Other Payment Plans",
+    # Residence
+    "housing": "Housing",
+    "property_magnitude": "Property",
+    "residence_since": "Current Residence (Years)",
+    "other_parties": "Other Parties",
+    "num_dependents": "Number of Dependents",
+}
+
+
+# ============================================================
+# Numeric Input Configuration
+# ============================================================
+
+NUMERIC_CONFIG = {
+    "age": {
+        "min": 18,
+        "max": 100,
+        "value": 18,
+        "step": 1,
+    },
+    "duration": {
+        "min": 1,
+        "max": 72,
+        "value": 1,
+        "step": 1,
+    },
+    "credit_amount": {
+        "min": 100,
+        "value": 1000,
+        "step": 100,
+    },
+    "installment_commitment": {
+        "min": 1,
+        "max": 4,
+        "value": 1,
+        "step": 1,
+    },
+    "residence_since": {
+        "min": 1,
+        "max": 4,
+        "value": 1,
+        "step": 1,
+    },
+    "existing_credits": {
+        "min": 1,
+        "max": 4,
+        "value": 1,
+        "step": 1,
+    },
+    "num_dependents": {
+        "min": 1,
+        "max": 2,
+        "value": 1,
+        "step": 1,
+    },
+}
+
+
+# ============================================================
+# Display Names for Categories
+# ============================================================
+
+CATEGORY_DISPLAY_MAPS = {
+    "checking_status": {
+        "<0": "Negative Balance",
+        "0<=X<200": "Low Balance (0 - 199)",
+        ">=200": "High Balance (200+)",
+        "no checking": "No Checking Account",
+    },
+    "credit_history": {
+        "no credits/all paid": "No Previous Credit / All Paid",
+        "all paid": "All Previous Credits Paid",
+        "existing paid": "Existing Credits Paid on Time",
+        "delayed previously": "Previously Delayed Payments",
+        "critical/other existing credit": "Critical Credit History",
+    },
+    "purpose": {
+        "new car": "Purchase New Car",
+        "used car": "Purchase Used Car",
+        "furniture/equipment": "Furniture / Equipment",
+        "radio/tv": "Electronics",
+        "domestic appliance": "Domestic Appliance",
+        "repairs": "Repairs",
+        "education": "Education",
+        "business": "Business",
+        "vacation": "Vacation",
+        "retraining": "Retraining",
+        "other": "Other",
+    },
+    "savings_status": {
+        "<100": "Less than 100",
+        "100<=X<500": "100 - 499",
+        "500<=X<1000": "500 - 999",
+        ">=1000": "1000 or More",
+        "no known savings": "No Savings Account",
+    },
+    "employment": {
+        "unemployed": "Unemployed",
+        "<1": "Less than 1 Year",
+        "1<=X<4": "1 to 3 Years",
+        "4<=X<7": "4 to 6 Years",
+        ">=7": "7 Years or More",
+    },
+    "personal_status": {
+        "male single": "Single Male",
+        "male mar/wid": "Married/Widowed Male",
+        "male div/sep": "Divorced/Separated Male",
+        "female div/dep/mar": "Female",
+    },
+    "other_parties": {
+        "none": "None",
+        "co applicant": "Co-applicant",
+        "guarantor": "Guarantor",
+    },
+    "property_magnitude": {
+        "real estate": "Real Estate",
+        "life insurance": "Life Insurance",
+        "car": "Vehicle",
+        "no known property": "No Property",
+    },
+    "other_payment_plans": {
+        "none": "None",
+        "bank": "Bank",
+        "stores": "Store",
+    },
+    "housing": {
+        "own": "Own Home",
+        "rent": "Rent",
+        "for free": "Living Free",
+    },
+    "job": {
+        "high qualif/self emp/mgmt": "Management / Self-employed",
+        "skilled": "Skilled Worker",
+        "unskilled resident": "Unskilled Worker (Resident)",
+        "unemp/unskilled non res": "Unemployed / Non-resident",
+    },
+    "own_telephone": {
+        "none": "No Telephone",
+        "yes": "Own Telephone",
+    },
+    "foreign_worker": {
+        "yes": "Yes",
+        "no": "No",
+    },
+}

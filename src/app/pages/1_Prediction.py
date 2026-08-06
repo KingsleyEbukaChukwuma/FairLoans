@@ -1,22 +1,17 @@
 import streamlit as st
 
-from src.app.components.prediction_form import (
-    applicant_form,
-)
-from src.app.components.prediction_result import (
-    show_prediction,
-)
-from src.app.utils import (
-    get_predictor,
-)
+from src.app.components.prediction_form import applicant_form
+from src.app.components.prediction_result import show_prediction
+from src.app.utils import get_predictor
 
 st.set_page_config(
-    page_title="Prediction",
-    page_icon="🏠",
+    page_title="Credit Risk Assessment",
+    page_icon="💳",
     layout="wide",
 )
 
-st.title("🏠 Credit Risk Prediction")
+st.title("💳 FairLoans Credit Risk Assessment")
+st.caption("Complete the applicant's information below to evaluate the likelihood of credit default.")
 
 submitted, applicant = applicant_form()
 
@@ -24,8 +19,8 @@ if submitted:
 
     predictor = get_predictor()
 
-    result = predictor.predict(applicant)
+    with st.spinner("Assessing applicant..."):
 
-    show_prediction(
-        result,
-    )
+        result = predictor.predict(applicant)
+
+    show_prediction(result)

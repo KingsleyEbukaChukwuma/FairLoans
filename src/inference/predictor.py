@@ -1,12 +1,16 @@
 from __future__ import annotations
 
+import json
+
 import joblib
 import pandas as pd
 
 from src.configs.config import (
-    APPROVAL_THRESHOLD,
+    HIGH_CONFIDENCE,
+    LOW_CONFIDENCE,
     MODEL_DIR,
     PIPELINE_FILENAME,
+    THRESHOLD_FILENAME,
 )
 
 
@@ -19,6 +23,13 @@ class CreditPredictor:
 
         self.pipeline = joblib.load(MODEL_DIR / PIPELINE_FILENAME)
 
+        with open(
+            MODEL_DIR / THRESHOLD_FILENAME,
+            "r",
+        ) as file:
+
+            self.threshold = json.load(file)["threshold"]
+
     def predict(
         self,
         applicant: dict,
@@ -29,17 +40,28 @@ class CreditPredictor:
 
         X = pd.DataFrame([applicant])
 
-        probability = float(self.pipeline.predict_proba(X)[0, 1])
+        probability_default = float(self.pipeline.predict_proba(X)[0, 1])
 
-        prediction = int(probability >= APPROVAL_THRESHOLD)
+        prediction = int(probability_default >= self.threshold)
 
-        decision = "Bad Credit" if prediction == 1 else "Good Credit"
+        probability_good = 1.0 - probability_default
 
         return {
             "prediction": prediction,
-            "decision": decision,
-            "probability": probability,
-            "risk_level": self.risk_level(probability),
+            "decision": ("Bad Credit" if prediction else "Good Credit"),
+            # Backwards compatibility
+            "probability": probability_default,
+            # Explicit probabilities
+            "probability_default": probability_default,
+            "probability_good": probability_good,
+            # Decision metadata
+            "threshold": self.threshold,
+            "risk_level": self.risk_level(
+                probability_default,
+            ),
+            "confidence": self.confidence(
+                probability_default,
+            ),
         }
 
     @staticmethod
@@ -48,21 +70,25 @@ class CreditPredictor:
     ) -> str:
 
         if probability < 0.20:
-
             return "Very Low"
 
-        elif probability < 0.40:
-
+        if probability < 0.40:
             return "Low"
 
-        elif probability < 0.60:
-
+        if probability < 0.60:
             return "Moderate"
 
-        elif probability < 0.80:
-
+        if probability < 0.80:
             return "High"
 
-        else:
+        return "Very High"
 
-            return "Very High"
+    @staticmethod
+    def confidence(
+        probability: float,
+    ) -> str:
+
+        if probability >= HIGH_CONFIDENCE or probability <= LOW_CONFIDENCE:
+            return "High"
+
+        return "Medium"
